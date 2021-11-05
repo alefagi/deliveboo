@@ -10,4 +10,6 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Models\Dish');
     }
+
+    protected $fillable=['name','email','address','phone','date','total','status'];
 }

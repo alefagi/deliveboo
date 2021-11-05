@@ -20,4 +20,6 @@ class Dish extends Model
     {
         return $this->belongsToMany('App\Models\Order');
     }
+
+    protected $fillable = ['name','description','price','cover','user_id','visible'];
 }
