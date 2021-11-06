@@ -105,8 +105,26 @@
                             </div>
                         </div>
 
-                      
 
+                        
+                        <div class="form-group row align-items-center">
+                            <label for="Cuisine" class="col-md-4 col-form-label text-md-right">Cuisine</label>
+
+                            <div class="col-md-6 d-flex flex-wrap">
+                                @foreach ($cuisines as $cuisine)
+                                <div class="d-flex mr-4 align-items-center">
+                                    <input type="checkbox" class="mr-2" name="cuisine" value="{{$cuisine->id}}" id="cuisine">
+                                    <label class="mb-0" for="cuisine">{{$cuisine->name}}</label>
+                                </div>
+                                @endforeach
+                                @error('cuisine')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                       
 
                           {{-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
                         <div class="form-group row mb-0">
