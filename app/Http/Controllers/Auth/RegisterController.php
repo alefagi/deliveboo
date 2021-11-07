@@ -44,7 +44,7 @@ class RegisterController extends Controller
 
 
 
-
+    //Pass new data to Register Controller
     public function showRegistrationForm()
 {
     $cuisines = Cuisine::all();
@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'address' => ['required','string'],
             'p_iva' => ['required','string','size:11','unique:users'],
             'cover' => ['string','nullable'],
-
+            //da aggiungere cuisine
         ]);
     }
 
@@ -80,16 +80,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-    
-        
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'p_iva' => $data['p_iva'],
-            'cover' => $data['cover'],
-            
+            'cover' => $data['cover']
         ]);
+
+
+        $user->cuisines()->attach($data['cuisine']);
+        
+        return $user;
     }
 }
