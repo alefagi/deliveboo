@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'address' => ['required','string'],
             'p_iva' => ['required','string','size:11','unique:users'],
             'cover' => ['string','nullable'],
-            //da aggiungere cuisine
+            'cuisines' => ['required']
         ]);
     }
 

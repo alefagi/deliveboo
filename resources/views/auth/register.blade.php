@@ -108,13 +108,13 @@
 
                         
                         <div class="form-group row align-items-center">
-                            <label for="Cuisine" class="col-md-4 col-form-label text-md-right">Cuisine</label>
+                            <label for="cuisine" class="col-md-4 col-form-label text-md-right">{{ __('Cuisine') }}</label>
 
                             <div class="col-md-6 d-flex flex-wrap">
                                 @foreach ($cuisines as $cuisine)
                                 <div class="d-flex mr-4 align-items-center">
-                                    <input type="checkbox" class="mr-2" name="cuisines[]" value="{{$cuisine->id}}" id="cuisine">
-                                    <label class="mb-0" for="cuisine">{{$cuisine->name}}</label>
+                                    <input type="checkbox" class="mr-2" name="cuisines[]" value="{{$cuisine->id}}" id="cuisine-{{$cuisine->id}}" @if (in_array($cuisine->id, old('cuisines'))) checked @endif>
+                                    <label class="mb-0" for="cuisine-{{$cuisine->id}}">{{$cuisine->name}}</label>
                                 </div>
                                 @endforeach
                                 @error('cuisine')
