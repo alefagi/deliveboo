@@ -113,7 +113,7 @@
                             <div class="col-md-6 d-flex flex-wrap">
                                 @foreach ($cuisines as $cuisine)
                                 <div class="d-flex mr-4 align-items-center">
-                                    <input type="checkbox" class="mr-2" name="cuisine" value="{{$cuisine->id}}" id="cuisine">
+                                    <input type="checkbox" class="mr-2" name="cuisines[]" value="{{$cuisine->id}}" id="cuisine">
                                     <label class="mb-0" for="cuisine">{{$cuisine->name}}</label>
                                 </div>
                                 @endforeach

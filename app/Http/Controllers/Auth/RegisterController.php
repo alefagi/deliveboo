@@ -90,7 +90,7 @@ class RegisterController extends Controller
         ]);
 
 
-        $user->cuisines()->attach($data['cuisine']);
+        $user->cuisines()->attach($data['cuisines']);
         
         return $user;
     }
