@@ -48,8 +48,7 @@ class RegisterController extends Controller
     public function showRegistrationForm()
 {
     $cuisines = Cuisine::all();
-    $cuisinesIds = Cuisine::find('id');
-    return view("auth.register", compact("cuisines",'cuisinesIds'));
+    return view("auth.register", compact("cuisines"));
 }
 
 
@@ -69,7 +68,7 @@ class RegisterController extends Controller
             'address' => ['required','string'],
             'p_iva' => ['required','string','size:11','unique:users'],
             'cover' => ['string','nullable'],
-            'cuisines' => ['required']
+            'cuisines' => ['required','exists:cuisines,id']
         ]);
     }
 
@@ -89,7 +88,6 @@ class RegisterController extends Controller
             'p_iva' => $data['p_iva'],
             'cover' => $data['cover']
         ]);
-
 
         $user->cuisines()->attach($data['cuisines']);
         

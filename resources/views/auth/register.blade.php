@@ -130,7 +130,7 @@
                             <div class="col-md-6 d-flex flex-wrap">
                                 @foreach ($cuisines as $cuisine)
                                 <div class="d-flex mr-4 align-items-center">
-                                    <input type="checkbox" class="mr-2" name="cuisines[]" value="{{$cuisine->id}}" id="cuisine-{{$cuisine->id}}" @if (in_array($cuisine->id, old('cuisines', $cuisinesIds ?? [] ))) checked @endif>
+                                    <input type="checkbox" class="mr-2" name="cuisines[]" value="{{$cuisine->id}}" id="cuisine-{{$cuisine->id}}" @if (in_array($cuisine->id, old('cuisines', [] ))) checked @endif>
                                     <label class="mb-0" for="cuisine-{{$cuisine->id}}">{{$cuisine->name}}</label>
                                 </div>
                                 @endforeach
