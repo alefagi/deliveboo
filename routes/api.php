@@ -19,6 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::namespace('Api')->group(function () {
-    Route::get('/dishes', 'DishController@index');
-});
+
+Route::get('/Api/users', 'UserController@index');
