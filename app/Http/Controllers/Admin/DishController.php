@@ -48,7 +48,7 @@ class DishController extends Controller
             'name' => 'required|string|unique:dishes|min:1',
             'description' => 'nullable|string',
             'cover' => 'nullable|string',
-            'price' => 'required|numeric|min:0.1|max:999999.99',
+            'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
 
@@ -104,7 +104,7 @@ class DishController extends Controller
             'name' => ['required', 'string', Rule::unique('dishes')->ignore($dish->id),'min:1'],
             'description' => 'nullable|string',
             'cover' => 'nullable|string',
-            'price' => 'required|numeric|min:0.1|max:999999.99',
+            'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
 
