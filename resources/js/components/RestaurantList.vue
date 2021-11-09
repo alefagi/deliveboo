@@ -1,11 +1,21 @@
 <template>
     <div class="restaurants-list">
-        <div class="form-cuisine" v-for="cuisine in cuisines" :key="cuisine.index">
-            <input type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
-            <label :for="cuisine.name">{{cuisine.name}}</label>
+        <div>
+            <h3>Cerca per nome</h3>
+            <div><input class="form-string" type="text" id="serached-string" v-model="searchedString"></div>
+            <div class="restaurant" v-for="restaurant in stringRestaurants" :key="restaurant.id" @click="redirect(restaurant.id)">
+                {{restaurant.name}}
+            </div>
         </div>
-        <div v-for="restaurant in displayedRestaurants" :key="restaurant.id" @click="redirect(restaurant.id)">
-            {{restaurant.name}}
+        <div>
+            <h3>Cerca in base a ciò che vuoi mangiare</h3>
+            <div class="form-cuisine" v-for="cuisine in cuisines" :key="cuisine.index">
+                <input type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
+                <label :for="cuisine.name">{{cuisine.name}}</label>
+            </div>
+            <div class="restaurant" v-for="restaurant in cuisineRestaurants" :key="restaurant.id" @click="redirect(restaurant.id)">
+                {{restaurant.name}}
+            </div>
         </div>
     </div>
 </template>
@@ -19,6 +29,7 @@
             cuisines: [],
             cuisinesIds: [],
             checkedCuisines: [],
+            searchedString: "",
         }
         },
         created: function(){
@@ -37,7 +48,7 @@
             },
         },
         computed: {
-            displayedRestaurants() {
+            cuisineRestaurants() {
                 if(this.checkedCuisines.length == 0) {
                     return this.restaurants;
                 }
@@ -50,13 +61,34 @@
                     });
                     return auxBoolean
                 });
+            },
+            stringRestaurants() {
+                if(this.searchedString == "") {
+                    return [];
+                }
+
+                return this.restaurants.filter((restaurant) => {
+                    return restaurant.name.toLowerCase().includes(this.searchedString.toLowerCase()) 
+                });
             }
         },
     }
 </script>
 
 <style>
+.restaurants-list{
+    width: 70%;
+    margin: 0 auto;
+}
 .form-cuisine{
     display: inline-block;
+    margin-bottom: 20px;
+}
+.form-string{
+    margin-bottom: 20px;
+}
+.restaurant {
+    display: inline-block;
+    width: 50%;
 }
 </style>
