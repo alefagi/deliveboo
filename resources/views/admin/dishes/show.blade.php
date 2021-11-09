@@ -4,6 +4,10 @@
   <div class="container">
     <h1>{{ $dish->name }}</h1>
     <p>{{ $dish->description }}</p>
+    @forelse ($dish->tags as $tag)
+      <div>{!! $tag->icon !!} {{ $tag->name }}</div>
+    @empty -
+    @endforelse
     <address>Price: {{ $dish->price }}</address>
     <address>Visibility: {{ $dish->visible }}</address>
     <div class="d-flex justify-content-end">
