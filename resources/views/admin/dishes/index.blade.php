@@ -17,6 +17,7 @@
                                 <th scope="col">Description</th>
                                 <th scope="col">Cover</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Tags</th>
                                 <th scope="col">Visibility</th>
                                 <th scope="col">View</th>
                                 <th scope="col">Edit</th>
@@ -31,6 +32,12 @@
                                     <td>{{ $dish->description }}</td>
                                     <td><img src="{{ $dish->cover }}" class="img-fluid" alt="{{ $dish->name }}"></td>
                                     <td>{{ $dish->price }}</td>
+                                    <td>
+                                        @forelse ($dish->tags as $tag)
+                                        <span>{!! $tag->icon !!}</span>
+                                        @empty -
+                                        @endforelse
+                                    </td>
                                     <td>{{ $dish->visible }}</td>
                                     <td><a href="{{ route('admin.dishes.show', $dish->id) }}" class="btn btn-primary">View</a></td>
                                     <td><a href="{{ route('admin.dishes.edit', $dish->id) }}" class="btn btn-warning">Edit</a></td>

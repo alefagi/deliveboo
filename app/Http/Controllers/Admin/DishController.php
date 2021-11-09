@@ -33,7 +33,7 @@ class DishController extends Controller
         $dish = new Dish();
         $tags = Tag::all();
 
-        return view('admin.dishes.create', compact('dish'));
+        return view('admin.dishes.create', compact('dish', 'tags'));
     }
 
     /**
@@ -85,8 +85,10 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
         $tags = Tag::all();
+        $tagsId = $dish->tags->pluck('id')->toArray();
 
-        return view('admin.dishes.edit', compact('dish', 'tags'));
+
+        return view('admin.dishes.edit', compact('dish', 'tags', 'tagsId'));
     }
 
     /**
