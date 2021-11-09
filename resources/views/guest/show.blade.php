@@ -78,12 +78,11 @@
                     @endauth
                 </div>
             @endif
-
-            <div id="app">
-                <restaurant-list/>
-            </div>
             
+            <div id="app">
+                <dishes-list id="{{$id}}"/>
+            </div>
         </div>
-        <script src="{{ asset('js/guestHome.js') }}"></script> 
+        <script src="{{ asset('js/guestShow.js') }}"></script> 
     </body>
 </html>

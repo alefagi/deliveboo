@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Models\Dish;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +16,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::with('cuisines', 'dishes')->get();
+        return response()->json($users);
+    }
+
+    public function getDishes($id)
+    {
+        $dishes = Dish::with('user')->where('user_id', $id)->get();
+        return response()->json($dishes);
     }
 
     /**

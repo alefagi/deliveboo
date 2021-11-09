@@ -18,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/Api/users', 'UserController@index');
+Route::get('/users', 'Api\UserController@index');
+Route::get('/users/{id}', 'Api\UserController@getDishes');
+Route::get('/cuisines', 'Api\CuisineController@index');

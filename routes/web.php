@@ -29,7 +29,9 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->namespace('Admin')
     });
 });
 
-
+Route::get('/restaurant/{id}', function($id) {
+    return view('guest.show', compact('id'));
+});
 Route::get('{any?}', function () {
     return view('guest.home');
 })->where('any', '.*');
