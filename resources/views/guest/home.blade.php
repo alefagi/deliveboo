@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -20,9 +21,9 @@
                 margin: 0;
             }
 
-            .full-height {
+            /* .full-height {
                 height: 100vh;
-            }
+            } */
 
             .flex-center {
                 align-items: center;
