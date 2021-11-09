@@ -12,8 +12,8 @@
    
         <div class="col-8">
          
-          <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">Back to dishes list</a>
-          <form method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.store') }}">
+         
+          <form  method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.store') }}">
               @csrf
               <div class="form-group">
                   <label for="name">Name</label>
@@ -65,6 +65,7 @@
               </div>
    
               <button type="submit" class="btn btn-success">Save</button>
+              <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">Back to dishes list</a>
           </form>
         </div>
    </div>

@@ -9,7 +9,7 @@
      <div class="row">
          <nav class="col-4">@include('admin.includes.links')</nav>
                 <div class="col-8">
-                    <table class="table table-dark">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
