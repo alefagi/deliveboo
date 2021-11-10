@@ -3,6 +3,7 @@
 @section('content')
   <div class="container">
     <h1>{{ $dish->name }}</h1>
+    <img src="{{ asset('storage/' . $dish->cover) }}" class="img-fluid" alt="{{ $dish->name }}">
     <p>{{ $dish->description }}</p>
     @forelse ($dish->tags as $tag)
       <div>{!! $tag->icon !!} {{ $tag->name }}</div>

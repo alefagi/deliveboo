@@ -8,6 +8,7 @@ use App\Models\Dish;
 use App\Models\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -47,7 +48,7 @@ class DishController extends Controller
         $request->validate([
             'name' => 'required|string|unique:dishes|min:1',
             'description' => 'nullable|string',
-            'cover' => 'nullable|string',
+            'cover' => 'nullable|image',
             'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
@@ -56,6 +57,9 @@ class DishController extends Controller
 
         $dish = new Dish();
         $data['user_id'] = Auth::id();
+        
+        $img_path = Storage::put('uploads', $data['cover']);
+        $data['cover'] = $img_path;
 
         $dish->fill($data);
         $dish->save();
@@ -103,7 +107,7 @@ class DishController extends Controller
         $request->validate([
             'name' => ['required', 'string', Rule::unique('dishes')->ignore($dish->id),'min:1'],
             'description' => 'nullable|string',
-            'cover' => 'nullable|string',
+            'cover' => 'nullable|image',
             'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
@@ -111,6 +115,9 @@ class DishController extends Controller
         $data = $request->all();
         if(!array_key_exists('tags', $data)) $dish->tags()->detach();
         else $dish->tags()->sync($data['tags']);
+
+        $img_path = Storage::put('uploads', $data['cover']);
+        $data['cover'] = $img_path;
 
         $dish->update($data);
 

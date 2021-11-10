@@ -13,7 +13,7 @@
         <div class="col-8">
          
          
-          <form  method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.store') }}">
+          <form method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.store') }}">
               @csrf
               <div class="form-group">
                   <label for="name">Name</label>
@@ -35,14 +35,16 @@
                 @enderror
               </div>
    
-              <div class="form-group">
-                <label for="cover">Cover</label>
-                <input type="file" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover">
-                @error('cover')
-                  <div class="invalid-feedback">
-                    {{ $message }}
-                  </div>
-                @enderror
+              <div class="input-group mb-2">
+                <div class="custom-file">
+                  <label for="cover" class="custom-file-label">Choose a Cover to Upload</label>
+                  <input type="file" class="custom-file-input @error('cover') is-invalid @enderror" id="cover" name="cover">
+                  @error('cover') 
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
               </div>
 
               <div class="form-group">
