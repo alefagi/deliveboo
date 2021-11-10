@@ -16,8 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::All();
-        return view('admin.orders.index',compact('orders'));
+        $orders = Order::orderBy('id', 'asc')->paginate(10);
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -39,6 +39,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+
+
     }
 
     /**
@@ -47,9 +49,11 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
         //
+
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
