@@ -48,7 +48,7 @@ class DishController extends Controller
         $request->validate([
             'name' => 'required|string|unique:dishes|min:1',
             'description' => 'nullable|string',
-            'cover' => 'nullable|image',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
@@ -107,7 +107,7 @@ class DishController extends Controller
         $request->validate([
             'name' => ['required', 'string', Rule::unique('dishes')->ignore($dish->id),'min:1'],
             'description' => 'nullable|string',
-            'cover' => 'nullable|image',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
