@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Dish;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -14,7 +18,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orderBy('id', 'asc')->paginate(10);
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -36,6 +41,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+
+
     }
 
     /**
@@ -44,9 +51,13 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
         //
+        $dishes = Dish::where('user_id', Auth::id())->get();
+
+        //dd($dishes);
+        return view('admin.orders.show', compact('order', 'dishes'));
     }
 
     /**

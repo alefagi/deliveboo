@@ -22,8 +22,10 @@ Auth::routes();
 
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
     Route::resource('dishes', 'DishController');
+    Route::resource('orders', 'OrderController');
+
     Route::get('/{any}', function () {
         abort(404);
     });
