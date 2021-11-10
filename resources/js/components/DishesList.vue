@@ -28,7 +28,6 @@ export default {
         dishes: [],
         tags: [],
         checkedTags: [],
-        provaprova: [],
         cart: [],
     }
     },
@@ -48,9 +47,6 @@ export default {
                 return auxBoolean
             });
         },
-        cartProva() {
-            return localStorage('cart');
-        }
     },
     methods: {
         addToCart(object) {
