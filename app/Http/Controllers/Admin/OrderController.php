@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Dish;
+use Illuminate\Support\Facades\Auth;
 
 
 class OrderController extends Controller
@@ -52,8 +54,10 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+        $dishes = Dish::where('user_id', Auth::id())->get();
 
-        return view('admin.orders.show', compact('order'));
+        //dd($dishes);
+        return view('admin.orders.show', compact('order', 'dishes'));
     }
 
     /**
