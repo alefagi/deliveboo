@@ -35,17 +35,16 @@
                 @enderror
               </div>
    
-              //*************va gestita con l'upload********************
               <div class="form-group">
                 <label for="cover">Cover</label>
-                <input type="text" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ $dish->cover }}">
+                <input type="file" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover">
                 @error('cover')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>
                 @enderror
               </div>
-              //*************va gestita con l'upload********************
+
               <div class="form-group">
                   <label for="price">Price</label>
                   <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ $dish->price }}">
