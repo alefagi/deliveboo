@@ -48,7 +48,10 @@
             </div>
             
         <div> 
-
+        
+        <footer class="d-flex justify-content-end">
+            {{ $orders->links() }}
+        </footer>
     </div>
     
 @endsection

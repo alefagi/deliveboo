@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-
+{{--Vedere se e' piu appropriato una card--}}
 @section('content')
 <div class="container">
   <h1>{{ $order->name }}</h1>
