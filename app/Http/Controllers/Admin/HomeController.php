@@ -17,10 +17,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $dishes = Dish::where('user_id', Auth::id())->get();
-        $orders = Order::with('dishes')->where('user_id', $id)->get();
-        dd($orders);
-        return view('admin.home', compact('orders'));
+        // $id = Auth::user()->id;
+        // $dishes = Dish::where('user_id', Auth::id())->get();
+        // $orders = Order::with('dishes')->where('user_id', $id)->get();
+        // dd($orders);
+        return view('admin.home');
     }
 }
