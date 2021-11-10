@@ -4,13 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>DeliveBoo</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
         <style>
             html, body {
                 background-color: #fff;
@@ -69,7 +70,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/admin') }}">Home</a>
+                        <a href="{{ url('/admin/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -79,17 +80,11 @@
                     @endauth
                 </div>
             @endif
-
-<<<<<<< HEAD
-            <div id="root">
-
-=======
-            <div id="app">
-                <restaurant-list/>
->>>>>>> frontend-vue-2
-            </div>
             
+            <div id="app">
+                <dishes-list id="{{$id}}"/>
+            </div>
         </div>
-        <script src="{{ asset('js/guestHome.js') }}"></script> 
+        <script src="{{ asset('js/guestShow.js') }}"></script> 
     </body>
 </html>
