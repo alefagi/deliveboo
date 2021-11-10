@@ -80,13 +80,8 @@
                 </div>
             @endif
 
-<<<<<<< HEAD
-            <div id="root">
-
-=======
             <div id="app">
                 <restaurant-list/>
->>>>>>> frontend-vue-2
             </div>
             
         </div>
