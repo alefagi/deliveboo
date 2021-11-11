@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    
+
     /**
      * Show the application dashboard.
      *
@@ -18,10 +18,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $id = Auth::user()->id;
+        $id = Auth::user()->id;
         // $dishes = Dish::where('user_id', Auth::id())->get();
         // $orders = Order::with('dishes')->where('user_id', $id)->get();
-        // dd($orders);
         return view('admin.home');
     }
 }
