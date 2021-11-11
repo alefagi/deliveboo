@@ -7,12 +7,12 @@
             </div>
       <div v-for="dish in dishTags" :key="dish.id">
             {{dish.name}}
-            <span @click="addToCart(dish)">Aggiungi al carrello</span>
-            <span @click="removeFronmCart(dish)">Rimuovi dal carrello</span>
+            <span v-if="displayCart" @click="addToCart(dish)">Aggiungi al carrello</span>
+            <span v-if="displayCart" @click="removeFronmCart(dish)">Rimuovi dal carrello</span>
       </div>
       <!-- Prova -->
       <div>
-          <h3>Carrello</h3>
+          <h3>Carrello</h3> <span @click="eraseCart()">Azzera carrello</span>
           <div v-for="item in cart" :key="item.index">
               {{item.dish.name}} {{item.quantity}}
           </div>
@@ -47,6 +47,15 @@ export default {
                 return auxBoolean
             });
         },
+        displayCart() {
+            if (!this.cart.length > 0) {
+                return true
+            }
+            if(this.cart[0].dish.user_id == this.id) {
+                return true
+            }
+            return false
+        },
     },
     methods: {
         addToCart(object) {
@@ -68,6 +77,10 @@ export default {
                 }
             }
             this.updateCart();  
+        },
+        eraseCart() {
+            localStorage.clear();
+            this.cart = [];
         },
         updateCart() {
             let auxKeys = Object.keys(localStorage);
