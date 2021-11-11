@@ -23,4 +23,8 @@
       <a href="{{ route('admin.dishes.index') }}" class="ml-2 btn btn-secondary">Back to dishes list</a>
     </div>
   </div>
+
+  @section('script')
+        <script src="{{ asset('js/confirm-delete.js') }}"></script>
+  @endsection
 @endsection

@@ -14,4 +14,5 @@ const mix = require('laravel-mix');
 mix.js('resources/js/guestHome.js', 'public/js')
     .js('resources/js/guestShow.js', 'public/js')
     .js('resources/js/app.js', 'public/js')
+    .js('resources/js/confirm-delete.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

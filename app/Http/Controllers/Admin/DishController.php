@@ -123,7 +123,6 @@ class DishController extends Controller
             $img_path = Storage::put('uploads', $data['cover']);
             $data['cover'] = $img_path;
         }
-        else $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
         $dish->update($data);
 
