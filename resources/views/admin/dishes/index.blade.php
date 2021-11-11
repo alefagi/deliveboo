@@ -30,7 +30,7 @@
                                     <th scope="row">{{ $dish->id }}</th>
                                     <td>{{ $dish->name }}</td>
                                     <td>{{ $dish->description }}</td>
-                                    <td><img src="{{ asset('storage/' . $dish->cover) }}" class="img-fluid" alt="{{ $dish->name }}"></td>
+                                    <td><img src="{{ ($dish->cover == 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg') ? $dish->cover : asset('storage/' . $dish->cover) }}" class="img-fluid" alt="{{ $dish->name }}"></td>
                                     <td>{{ $dish->price }}</td>
                                     <td>
                                         @forelse ($dish->tags as $tag)

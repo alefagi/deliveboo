@@ -58,8 +58,11 @@ class DishController extends Controller
         $dish = new Dish();
         $data['user_id'] = Auth::id();
         
-        $img_path = Storage::put('uploads', $data['cover']);
-        $data['cover'] = $img_path;
+        if(array_key_exists('cover', $data)) {
+            $img_path = Storage::put('uploads', $data['cover']);
+            $data['cover'] = $img_path;
+        }
+        else $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
         $dish->fill($data);
         $dish->save();
@@ -116,8 +119,11 @@ class DishController extends Controller
         if(!array_key_exists('tags', $data)) $dish->tags()->detach();
         else $dish->tags()->sync($data['tags']);
 
-        $img_path = Storage::put('uploads', $data['cover']);
-        $data['cover'] = $img_path;
+        if(array_key_exists('cover', $data)) {
+            $img_path = Storage::put('uploads', $data['cover']);
+            $data['cover'] = $img_path;
+        }
+        else $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
 
         $dish->update($data);
 
