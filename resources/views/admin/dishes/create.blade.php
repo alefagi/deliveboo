@@ -34,19 +34,21 @@
           </div>
           <div class="input-group mb-2">
             <div class="custom-file">
-              <label for="cover" class="custom-file-label">Choose a Cover to Upload</label>
               <input type="file" class="custom-file-input @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
+              <label for="cover" class="custom-file-label">Choose a Cover to Upload</label>
               @error('cover') 
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
               @enderror
             </div>
+            <div class="input-group-append">
+              <button class="btn btn-outline-danger" type="button" id="remove-cover">Remove</button>
+            </div>
           </div>
-          <div>
+          <div class="mb-2">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
           </div>
-          <button type="button" class="btn btn-danger" id="delete-cover">Delete Cover</button>
           <div class="form-group">
               <label for="price">Price</label>
               <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price'), $dish->price }}">
@@ -100,9 +102,9 @@
         }
       });
 
-      // Delete a cover
-      const deleteCoverElement = document.getElementById('delete-cover');
-      deleteCoverElement.addEventListener('click', function(){
+      // Remove a cover
+      const removeCoverElement = document.getElementById('remove-cover');
+      removeCoverElement.addEventListener('click', function(){
         document.getElementById('cover-preview').setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg');
       });
 
