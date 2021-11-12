@@ -35,13 +35,16 @@
           <div class="input-group mb-2">
             <div class="custom-file">
               <label for="cover" class="custom-file-label">Choose a Cover to Upload</label>
-              <input type="file" class="custom-file-input @error('cover') is-invalid @enderror" id="cover" name="cover">
+              <input type="file" class="custom-file-input @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*" onchange="previewCover();">
               @error('cover') 
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
               @enderror
             </div>
+          </div>
+          <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
           </div>
           <div class="form-group">
               <label for="price">Price</label>
@@ -76,4 +79,35 @@
       </div>
     </div>
   </div>
+
+  @section('script')
+    <script>
+      /* const coverPreview = document.getElementById('cover-preview');
+      const coverPlaceholder = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+      const coverInput = document.getElementById('cover').files[0];
+      
+      coverInput.addEventListener('change', function(e){
+        const uploadedCover = e.target.value;
+        if (uploadedCover) {
+          coverPreview.setAttribute('src', uploadedCover);
+        }
+        else {
+          coverPreview.setAttribute('src', coverPlaceholder);
+        }
+      });   */
+
+      function previewCover() {
+        const coverInput = document.getElementById("cover").files;
+        if (coverInput.length > 0) {
+          const fileReader = new FileReader();
+
+          fileReader.onload = function (event) {
+            document.getElementById("cover-preview").setAttribute("src", event.target.result);
+          };
+
+          fileReader.readAsDataURL(coverInput[0]);
+        }
+      }
+    </script>
+  @endsection
 @endsection
