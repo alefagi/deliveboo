@@ -32,22 +32,17 @@
               </div>
             @enderror
           </div>
-          <div class="input-group mb-2">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
-              <label for="cover" class="custom-file-label">Choose a Cover to Upload</label>
-              @error('cover') 
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
+          <div class="form-group mb-2">
+            <label for="cover">Choose a Cover to Upload</label>
+            <input type="file" class="form-control-file @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
+            @error('cover') 
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+            <div class="mb-2">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
             </div>
-            <div class="input-group-append">
-              <button class="btn btn-outline-danger" type="button" id="remove-cover">Remove</button>
-            </div>
-          </div>
-          <div class="mb-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
           </div>
           <div class="form-group">
               <label for="price">Price</label>
@@ -84,31 +79,6 @@
   </div>
 
   @section('script')
-    <script>
-      // Add a cover
-      const coverElement = document.getElementById('cover');
-
-      coverElement.addEventListener('change', function(){
-        const coverInput = document.getElementById("cover").files;
-
-        if (coverInput.length) {
-          const fileReader = new FileReader();
-
-          fileReader.onload = function (event) {
-            document.getElementById('cover-preview').setAttribute('src', event.target.result);
-          };
-
-          fileReader.readAsDataURL(coverInput[0]);
-        }
-      });
-
-      // Remove a cover
-      const removeCoverElement = document.getElementById('remove-cover');
-      removeCoverElement.addEventListener('click', function(){
-        document.getElementById('cover-preview').setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg');
-      });
-
-      
-    </script>
+    <script src="{{ asset('js/cover-preview.js') }}"></script>
   @endsection
 @endsection

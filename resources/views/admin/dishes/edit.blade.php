@@ -4,7 +4,6 @@
     <div class="container">
       <header class="d-flex justify-content-between align-items-center">
         <h1>Edit Dish</h1>
-        <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">Back to dishes list</a>
       </header>
       
       <form method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.update', $dish->id) }}">
@@ -31,15 +30,16 @@
           @enderror
         </div>
     
-        <div class="input-group mb-2">
-          <div class="custom-file">
-            <label for="cover" class="custom-file-label">Choose a Cover to Upload</label>
-            <input type="file" class="custom-file-input @error('cover') is-invalid @enderror" id="cover" name="cover">
-            @error('cover') 
-              <div class="invalid-feedback">
-                {{ $message }}
-              </div>
-            @enderror
+        <div class="form-group mb-2">
+          <label for="cover">Choose a Cover to Upload</label>
+          <input type="file" class="form-control-file @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
+          @error('cover') 
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="mb-2">
+            <img src="{{ ($dish->cover == 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg') ? $dish->cover : asset('storage/' . $dish->cover) }}" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
           </div>
         </div>
 
@@ -72,6 +72,11 @@
         </div>
     
         <button type="submit" class="btn btn-success">Save</button>
+        <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">Back to dishes list</a>
     </form>
     </div>
+
+    @section('script')
+      <script src="{{ asset('js/cover-preview.js') }}"></script>
+    @endsection
 @endsection
