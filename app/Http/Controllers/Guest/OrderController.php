@@ -39,6 +39,8 @@ class OrderController extends Controller
             $total += $item->dish->price * $item->quantity;
         };
         $order = new Order();
+
+        setcookie('cart', json_encode($cart), time()+3600);
         return view('guest.orders.create',compact('order','cart','total'));
     }
 
@@ -50,6 +52,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $cart = json_decode($_COOKIE['cart'], true);
+        
+
+        // dd($cart);
+
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string',
@@ -57,12 +64,17 @@ class OrderController extends Controller
             'phone' => 'required|numeric',
         ]);
 
+        $total = 0;
+        foreach($cart as $item){
+            $total += $item['dish']['price'] * $item['quantity']; 
+        };
+
         $data = $request->all();
 
 
         $order = new Order();
         $order->fill($data);
-        $order->total = 22.5;
+        $order->total = $total;
         $order->status = 0;
         $order->save();
 
