@@ -1,13 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="my-5 d-flex justify-content-between align-items-center">
-    <h1 class="text-center w-100">Inserisci i tuoi dati</h1>
-  </header>
-  
+
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
+        <h1 class="text-center w-100">Your address data </h1>
         <form method="post" enctype="multipart/form-data" action="{{ url('buy/{cart}') }}">
           @csrf
           <div class="form-group">
@@ -51,10 +49,31 @@
         </div>
 
         
+
+        
           <button type="submit" class="btn btn-success">Save</button>
         
           <a href="http://127.0.0.1:8000/restaurant/{id} " class="btn btn-secondary">Back to Chart</a>
         </form>
+      </div>
+      <div class="col-4">
+        <h1>Order Summary</h1>
+        <ul>
+          
+          @foreach ($cart as $item)
+              <li>
+               <h5>
+                 {{$item->dish->name}}
+              </h5>
+              <span>Quantity: {{$item->quantity}}</span>
+              <p>Price: {{$item->dish->price * $item->quantity }} €</p>
+            </li>
+          @endforeach
+        </ul>
+        <hr>
+        <div id="total">
+          <h4>Total: {{$total}}</h3>
+        </div>
       </div>
     </div>
   </div>

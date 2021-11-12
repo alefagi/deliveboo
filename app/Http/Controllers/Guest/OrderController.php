@@ -34,8 +34,12 @@ class OrderController extends Controller
         foreach($auxArray as $item) {
             array_push($cart, (object)["dish" => Dish::findOrFail($item->dishId), "quantity" => $item->quantity]);
         };
+        $total = 0;
+        foreach($cart as $item){
+            $total += $item->dish->price * $item->quantity;
+        };
         $order = new Order();
-        return view('guest.orders.create',compact('order','cart'));
+        return view('guest.orders.create',compact('order','cart','total'));
     }
 
     /**
