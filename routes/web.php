@@ -36,8 +36,10 @@ Route::get('/restaurant/{id}', function($id) {
 });
 
 
-Route::resource('/buy','Guest\OrderController');
 
+Route::get('/buy','Guest\OrderController@index')->name('buy.index');
+Route::get('/buy/{cart}','Guest\OrderController@create');
+Route::post('/buy/{cart}','Guest\OrderController@store');
 
 Route::get('{any?}', function () {
     return view('guest.home');

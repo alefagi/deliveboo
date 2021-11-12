@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Dish;
+
 
 
 
@@ -25,10 +27,15 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($cart)
     {   
+        $auxArray = json_decode($cart);
+        $cart = [];
+        foreach($auxArray as $item) {
+            array_push($cart, (object)["dish" => Dish::findOrFail($item->dishId), "quantity" => $item->quantity]);
+        };
         $order = new Order();
-        return view('guest.orders.create',compact('order'));
+        return view('guest.orders.create',compact('order','cart'));
     }
 
     /**
@@ -48,10 +55,11 @@ class OrderController extends Controller
 
         $data = $request->all();
 
+
         $order = new Order();
         $order->fill($data);
         $order->total = 22.5;
-        $order->status = 1;
+        $order->status = 0;
         $order->save();
 
         return redirect()->route('buy.index');

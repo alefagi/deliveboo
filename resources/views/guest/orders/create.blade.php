@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <form method="post" enctype="multipart/form-data" action="{{ route('buy.store') }}">
+        <form method="post" enctype="multipart/form-data" action="{{ url('buy/{cart}') }}">
           @csrf
           <div class="form-group">
               <label for="name">Name</label>
@@ -49,6 +49,7 @@
               </div>
             @enderror
         </div>
+
         
           <button type="submit" class="btn btn-success">Save</button>
         

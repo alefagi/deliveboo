@@ -21,9 +21,10 @@
             <div v-for="item in cart" :key="item.index">
                 {{ item.dish.name }} {{ item.quantity }}
             </div>
-            <a href="http://127.0.0.1:8000/buy/create"
-                >Procedi con l'acquisto</a
-            >
+
+            <div class="pointer" @click="redirect()">
+                Procedi con l'acquisto
+            </div>
         </div>
     </div>
 </template>
@@ -98,6 +99,16 @@ export default {
                 auxCart.push(JSON.parse(localStorage.getItem(key)));
             });
             this.cart = auxCart;
+        },
+        redirect() {
+            window.location.href =
+                "/buy/" +
+                JSON.stringify(
+                    this.cart.map((i) => ({
+                        dishId: i.dish.id,
+                        quantity: i.quantity,
+                    }))
+                );
         },
     },
     created: function () {
