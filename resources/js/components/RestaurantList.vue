@@ -1,19 +1,13 @@
 <template>
     <div class="restaurants-list">
         <div>
-            <h3>Cerca per nome</h3>
-            <div><input class="form-string" type="text" id="serached-string" v-model="searchedString"></div>
-            <div class="restaurant" v-for="restaurant in stringRestaurants" :key="restaurant.id">
-                <RestaurantCard :restaurant="restaurant" />
-            </div>
-        </div>
-        <div>
-            <h3>Cerca in base a ciò che vuoi mangiare</h3>
+            <h3>Ricerca avanzata</h3>
+            <div><input class="form-string" type="text" id="serached-string" v-model="searchedString" placeholder="Cerca per nome..."></div>
             <div class="form-cuisine" v-for="cuisine in cuisines" :key="cuisine.index">
                 <input type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
                 <label class="mr-2" :for="cuisine.name">{{cuisine.name}}</label>
             </div>
-            <div class="restaurant" v-for="restaurant in cuisineRestaurants" :key="restaurant.id">
+            <div class="restaurant" v-for="restaurant in searchedRestaurants" :key="restaurant.id">
                 <RestaurantCard :restaurant="restaurant" />
             </div>
         </div>
@@ -39,7 +33,6 @@ export default {
     created: function(){
         axios.get('http://127.0.0.1:8000/api/users').then(res => {
             this.restaurants = res.data;
-            console.log(this.restaurants);
         });
         axios.get('http://127.0.0.1:8000/api/cuisines').then(res => {
             this.cuisines = res.data;
@@ -47,23 +40,25 @@ export default {
         });
     },
     computed: {
-        cuisineRestaurants() {
-            if(this.checkedCuisines.length == 0) {
+        searchedRestaurants() {
+            if(this.checkedCuisines.length == 0 && this.searchedString == "") {
+                console.log("hey")
                 return this.restaurants;
             }
 
-            return this.restaurants.filter((restaurant) => {
-                let auxBoolean = false;
-                restaurant.cuisines.forEach(cuisine => {
-                    if (this.checkedCuisines.includes(cuisine.id))
-                        auxBoolean = true;
-                });
+            return this.stringRestaurants.filter((restaurant) => {
+                let auxBoolean = true;
+                this.checkedCuisines.forEach(cuisine => {
+                    if(!restaurant.cuisines.map(i => i['id']).includes(cuisine)){
+                        auxBoolean = false;
+                    }
+                })
                 return auxBoolean
             });
         },
         stringRestaurants() {
             if(this.searchedString == "") {
-                return [];
+                return this.restaurants;
             }
 
             return this.restaurants.filter((restaurant) => {

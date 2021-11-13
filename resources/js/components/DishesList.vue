@@ -1,32 +1,27 @@
 <template>
-    <div class="dishes-list">
-        <h3>Cerca in base al tipo di piatto</h3>
-        <div class="form-tag" v-for="tag in tags" :key="tag.index">
-            <input
-                type="checkbox"
-                :id="tag.name"
-                :value="tag.id"
-                v-model="checkedTags"
-            />
-            <label class="mr-2" :for="tag.name">{{ tag.name }}</label>
-        </div>
-        <div v-for="dish in dishTags" :key="dish.id">
-            {{ dish.name }}
-            <span @click="addToCart(dish)">Aggiungi al carrello</span>
-            <span @click="removeFronmCart(dish)">Rimuovi dal carrello</span>
-        </div>
-        <!-- Prova -->
-        <div>
-            <h3>Carrello</h3>
-            <div v-for="item in cart" :key="item.index">
-                {{ item.dish.name }} {{ item.quantity }}
+  <div class="dishes-list">
+      <h3>Cerca in base al tipo di piatto</h3>
+            <div class="form-tag" v-for="tag in tags" :key="tag.index">
+                <input type="checkbox" :id="tag.name" :value="tag.id" v-model="checkedTags">
+                <label class="mr-2" :for="tag.name">{{tag.name}}</label>
             </div>
+      <div v-for="dish in dishTags" :key="dish.id">
+            {{dish.name}}
+            <span v-if="displayCart" @click="addToCart(dish)">Aggiungi al carrello</span>
+            <span v-if="displayCart" @click="removeFronmCart(dish)">Rimuovi dal carrello</span>
+      </div>
+      <!-- Prova -->
+      <div>
+          <h3>Carrello</h3> <span @click="eraseCart()">Azzera carrello</span>
+          <div v-for="item in cart" :key="item.index">
+              {{item.dish.name}} {{item.quantity}}
+          </div>
 
-            <div class="pointer" @click="redirect()">
+          <div class="pointer" @click="redirect()">
                 Procedi con l'acquisto
             </div>
-        </div>
-    </div>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -54,6 +49,15 @@ export default {
                 });
                 return auxBoolean;
             });
+        },
+        displayCart() {
+            if (!this.cart.length > 0) {
+                return true
+            }
+            if(this.cart[0].dish.user_id == this.id) {
+                return true
+            }
+            return false
         },
     },
     methods: {
@@ -91,6 +95,10 @@ export default {
                 }
             }
             this.updateCart();
+        },
+        eraseCart() {
+            localStorage.clear();
+            this.cart = [];
         },
         updateCart() {
             let auxKeys = Object.keys(localStorage);
