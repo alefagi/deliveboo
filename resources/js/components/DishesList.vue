@@ -13,6 +13,7 @@
       <!-- Prova -->
       <div>
           <h3>Carrello</h3> <span @click="eraseCart()">Azzera carrello</span>
+          
           <div v-for="item in cart" :key="item.index">
               {{item.dish.name}} {{item.quantity}}
           </div>
@@ -62,51 +63,38 @@ export default {
     },
     methods: {
         addToCart(object) {
-            let auxLocal = JSON.parse(localStorage.getItem(object.name));
-            if (auxLocal) {
-                localStorage.setItem(
-                    object.name,
-                    JSON.stringify({
-                        dish: object,
-                        quantity: auxLocal.quantity + 1,
-                    })
-                );
-            } else {
-                localStorage.setItem(
-                    object.name,
-                    JSON.stringify({ dish: object, quantity: 1 })
-                );
+            let cartIncludesDish = false;
+            this.cart.forEach(item => {
+                if(item.dish == object) {
+                    item.quantity++;
+                    cartIncludesDish = true;
+                }
+            });
+            if(!cartIncludesDish) {
+                this.cart.push({dish: object, quantity: 1});
             }
-            this.updateCart();
+            localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         removeFronmCart(object) {
-            let auxLocal = JSON.parse(localStorage.getItem(object.name));
-            if (auxLocal) {
-                if (auxLocal.quantity == 1) {
-                    localStorage.removeItem(object.name);
-                } else {
-                    localStorage.setItem(
-                        object.name,
-                        JSON.stringify({
-                            dish: object,
-                            quantity: auxLocal.quantity - 1,
-                        })
-                    );
-                }
-            }
-            this.updateCart();
+            this.cart.forEach((item, index) => {
+                if(item.dish.id == object.id) {
+                    if(item.quantity != 1) { 
+                        item.quantity--;
+                    } else {
+                        this.cart.splice(index, 1);
+                    }
+                } 
+            });
+            localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         eraseCart() {
             localStorage.clear();
             this.cart = [];
         },
-        updateCart() {
-            let auxKeys = Object.keys(localStorage);
-            let auxCart = [];
-            auxKeys.forEach((key) => {
-                auxCart.push(JSON.parse(localStorage.getItem(key)));
-            });
-            this.cart = auxCart;
+        getCart() {
+            if(localStorage.getItem("cart") != null) {
+                this.cart = JSON.parse(localStorage.getItem('cart'));
+            }
         },
         redirect() {
             window.location.href =
@@ -126,7 +114,7 @@ export default {
         axios.get("http://127.0.0.1:8000/api/tags").then((res) => {
             this.tags = res.data;
         });
-        this.updateCart();
+        this.getCart();
     },
 };
 </script>

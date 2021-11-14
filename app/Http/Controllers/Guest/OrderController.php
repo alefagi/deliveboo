@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Dish;
-
+use Braintree;
 
 
 
@@ -17,9 +17,64 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function payment($total)
     {
-        return view('guest.orders.index');
+        $gateway = new Braintree\Gateway ([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        $token = $gateway->ClientToken()->generate();
+        return view('guest.orders.payment', compact('token', 'total'));
+    }
+
+    public function store(Request $request, $total) {
+        $gateway = new Braintree\Gateway ([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        $amount = $total;
+        $nonce = $request->payment_method_nonce;
+
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+
+        if ($result->success) {
+            $data = $cart = json_decode($_COOKIE['data'], true);
+            $cart = json_decode($_COOKIE['cart'], true);
+
+            $order = new Order();
+            $order->fill($data);
+            $order->total = $total;
+            $order->status = 0;
+            $order->save();
+
+            foreach($cart as $item) {
+                $order->dishes()->attach($item['dish']['id'], ['quantity' => $item['quantity']]);
+            }
+
+            $transaction = $result->transaction;
+            return view('guest.orders.confirmation');
+        } else {
+            $errorString = "An error occured with the payment we're sorry";
+
+            foreach($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+
+            $_SESSION["errors"] = $errorString;
+            return view('guest.home', compact('errorString'));
+        }
     }
 
     /**
@@ -41,7 +96,7 @@ class OrderController extends Controller
         $order = new Order();
 
         setcookie('cart', json_encode($cart), time()+3600);
-        return view('guest.orders.create',compact('order','cart','total'));
+        return view('guest.orders.create', compact('order','cart','total'));
     }
 
     /**
@@ -50,12 +105,9 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function redirect(Request $request)
     {
         $cart = json_decode($_COOKIE['cart'], true);
-        
-
-        // dd($cart);
 
         $request->validate([
             'name' => 'required|string',
@@ -70,60 +122,8 @@ class OrderController extends Controller
         };
 
         $data = $request->all();
+        setcookie('data', json_encode($data), time()+3600);
 
-
-        $order = new Order();
-        $order->fill($data);
-        $order->total = $total;
-        $order->status = 0;
-        $order->save();
-
-        return redirect()->route('buy.index');
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('buy.payment', ['total' => $total]);
     }
 }
