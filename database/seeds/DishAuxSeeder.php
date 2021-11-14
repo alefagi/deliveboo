@@ -1,18 +1,15 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
-use App\Models\Dish;
 
-class DishesTableSeeder extends Seeder
+class DishAuxSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         $dishes = [
             [
             'visibility' => 1,
@@ -3314,12 +3311,12 @@ class DishesTableSeeder extends Seeder
 
         foreach($dishes as $dish) {
             $new_dish = new Dish;
-            $new_dish->visible = $dish['visibility'];
-            $new_dish->user_id = $dish['user_id'];
-            $new_dish->name = $dish['name'];
-            $new_dish->description = $dish['description'];
-            $new_dish->cover = $dish['cover'];
-            $new_dish->price = $dish['price'];
+            $new_dish->visibility = $dish->visibility;
+            $new_dish->user_id = $dish->user_id;
+            $new_dish->name = $dish->name;
+            $new_dish->description = $dish->description;
+            $new_dish->cover = $dish->cover;
+            $new_dish->price = $dish->price;
             $new_dish->save();
         }
     }

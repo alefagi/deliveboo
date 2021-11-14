@@ -1,33 +1,53 @@
 <template>
-  <div class="dishes-list">
-      <h3>Cerca in base al tipo di piatto</h3>
-            <div class="form-tag" v-for="tag in tags" :key="tag.index">
+    <div class="dishes-list">
+        <h3 class="text-center">Cerca in base al tipo di piatto</h3>
+        <div class="d-flex justify-content-center">
+            <div class="form-tag d-inline-block" v-for="tag in tags" :key="tag.index">
                 <input type="checkbox" :id="tag.name" :value="tag.id" v-model="checkedTags">
                 <label class="mr-2" :for="tag.name">{{tag.name}}</label>
             </div>
-      <div v-for="dish in dishTags" :key="dish.id">
-            {{dish.name}}
-            <span v-if="displayCart" @click="addToCart(dish)">Aggiungi al carrello</span>
-            <span v-if="displayCart" @click="removeFronmCart(dish)">Rimuovi dal carrello</span>
-      </div>
-      <!-- Prova -->
-      <div>
-          <h3>Carrello</h3> <span @click="eraseCart()">Azzera carrello</span>
-          
-          <div v-for="item in cart" :key="item.index">
-              {{item.dish.name}} {{item.quantity}}
-          </div>
-
-          <div class="pointer" @click="redirect()">
-                Procedi con l'acquisto
+        </div>
+        <h3 class="text-center">I nostri piatti</h3>
+        <div class="d-flex flex-wrap">
+            <div v-for="dish in dishTags" :key="dish.id" class="col-6">
+                <div class="my-3">
+                    <div class="d-flex">
+                        <div class="col-3">
+                            <div class="dish_img" :style="{ backgroundImage: 'url(' + dish.cover + ')' }"></div>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{dish.name}}</h3>
+                            <div>{{dish.description}}</div>
+                            <div>{{dish.price}}€ </div>
+                        </div>
+                        <div class="col-3">
+                            <span v-if="displayCart()" @click="addToCart(dish)">Add</span>
+                            <span v-if="displayCart()" @click="removeFronmCart(dish)">Remove</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-      </div>
-  </div>
+        </div>
+        <!-- Cart -->
+        <div>
+            <div class="d-flex flex-column text-center pb-5">
+                <h3>Carrello</h3> 
+
+                <span @click="eraseCart()">Azzera carrello</span>
+
+                <div v-for="item in cart" :key="item.index">
+                    {{item.dish.name}} {{item.quantity}}
+                </div>
+                <div class="pointer" @click="redirect()">
+                    Procedi con l'acquisto
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
-    name: "RestaurantList",
     data() {
         return {
             dishes: [],
@@ -119,4 +139,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.dish_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}</style>
