@@ -1,32 +1,53 @@
 <template>
-  <div class="dishes-list">
-      <h3>Cerca in base al tipo di piatto</h3>
-            <div class="form-tag" v-for="tag in tags" :key="tag.index">
+    <div class="dishes-list">
+        <h3 class="text-center">Cerca in base al tipo di piatto</h3>
+        <div class="d-flex justify-content-center">
+            <div class="form-tag d-inline-block" v-for="tag in tags" :key="tag.index">
                 <input type="checkbox" :id="tag.name" :value="tag.id" v-model="checkedTags">
                 <label class="mr-2" :for="tag.name">{{tag.name}}</label>
             </div>
-      <div v-for="dish in dishTags" :key="dish.id">
-            {{dish.name}}
-            <span v-if="displayCart" @click="addToCart(dish)">Aggiungi al carrello</span>
-            <span v-if="displayCart" @click="removeFronmCart(dish)">Rimuovi dal carrello</span>
-      </div>
-      <!-- Prova -->
-      <div>
-          <h3>Carrello</h3> <span @click="eraseCart()">Azzera carrello</span>
-          <div v-for="item in cart" :key="item.index">
-              {{item.dish.name}} {{item.quantity}}
-          </div>
-
-          <div class="pointer" @click="redirect()">
-                Procedi con l'acquisto
+        </div>
+        <h3 class="text-center">I nostri piatti</h3>
+        <div class="d-flex flex-wrap">
+            <div v-for="dish in dishTags" :key="dish.id" class="col-6">
+                <div class="my-3">
+                    <div class="d-flex">
+                        <div class="col-3">
+                            <div class="dish_img" :style="{ backgroundImage: 'url(' + dish.cover + ')' }"></div>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{dish.name}}</h3>
+                            <div>{{dish.description}}</div>
+                            <div>{{dish.price}}€ </div>
+                        </div>
+                        <div class="col-3">
+                            <span v-if="displayCart" @click="addToCart(dish)">Add</span>
+                            <span v-if="displayCart" @click="removeFronmCart(dish)">Remove</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-      </div>
-  </div>
+        </div>
+        <!-- Cart -->
+        <div>
+            <div class="d-flex flex-column text-center pb-5">
+                <h3>Carrello</h3> 
+
+                <span @click="eraseCart()">Azzera carrello</span>
+
+                <div v-for="item in cart" :key="item.index">
+                    {{item.dish.name}} {{item.quantity}}
+                </div>
+                <div class="pointer" @click="redirect()">
+                    Procedi con l'acquisto
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
-    name: "RestaurantList",
     data() {
         return {
             dishes: [],
@@ -62,51 +83,38 @@ export default {
     },
     methods: {
         addToCart(object) {
-            let auxLocal = JSON.parse(localStorage.getItem(object.name));
-            if (auxLocal) {
-                localStorage.setItem(
-                    object.name,
-                    JSON.stringify({
-                        dish: object,
-                        quantity: auxLocal.quantity + 1,
-                    })
-                );
-            } else {
-                localStorage.setItem(
-                    object.name,
-                    JSON.stringify({ dish: object, quantity: 1 })
-                );
+            let cartIncludesDish = false;
+            this.cart.forEach(item => {
+                if(item.dish == object) {
+                    item.quantity++;
+                    cartIncludesDish = true;
+                }
+            });
+            if(!cartIncludesDish) {
+                this.cart.push({dish: object, quantity: 1});
             }
-            this.updateCart();
+            localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         removeFronmCart(object) {
-            let auxLocal = JSON.parse(localStorage.getItem(object.name));
-            if (auxLocal) {
-                if (auxLocal.quantity == 1) {
-                    localStorage.removeItem(object.name);
-                } else {
-                    localStorage.setItem(
-                        object.name,
-                        JSON.stringify({
-                            dish: object,
-                            quantity: auxLocal.quantity - 1,
-                        })
-                    );
-                }
-            }
-            this.updateCart();
+            this.cart.forEach((item, index) => {
+                if(item.dish.id == object.id) {
+                    if(item.quantity != 1) { 
+                        item.quantity--;
+                    } else {
+                        this.cart.splice(index, 1);
+                    }
+                } 
+            });
+            localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         eraseCart() {
             localStorage.clear();
             this.cart = [];
         },
-        updateCart() {
-            let auxKeys = Object.keys(localStorage);
-            let auxCart = [];
-            auxKeys.forEach((key) => {
-                auxCart.push(JSON.parse(localStorage.getItem(key)));
-            });
-            this.cart = auxCart;
+        getCart() {
+            if(localStorage.getItem("cart") != null) {
+                this.cart = JSON.parse(localStorage.getItem('cart'));
+            }
         },
         redirect() {
             window.location.href =
@@ -126,9 +134,16 @@ export default {
         axios.get("http://127.0.0.1:8000/api/tags").then((res) => {
             this.tags = res.data;
         });
-        this.updateCart();
+        this.getCart();
     },
 };
 </script>
 
-<style></style>
+<style>
+.dish_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}</style>

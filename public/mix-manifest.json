@@ -1,5 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/confirm-delete.js": "/js/confirm-delete.js",
+    "/js/cover-preview.js": "/js/cover-preview.js",
     "/js/guestHome.js": "/js/guestHome.js",
     "/css/app.css": "/css/app.css",
     "/js/guestShow.js": "/js/guestShow.js"

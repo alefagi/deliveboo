@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
-
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('dishes', 'DishController');
@@ -35,12 +33,11 @@ Route::get('/restaurant/{id}', function($id) {
     return view('guest.show', compact('id'));
 });
 
-
-
-Route::get('/buy','Guest\OrderController@index')->name('buy.index');
+Route::post('/buy/checkout/{total}','Guest\OrderController@store')->name('buy.store');
+Route::get('/buy/home/{total}','Guest\OrderController@payment')->name('buy.payment');
 Route::get('/buy/{cart}','Guest\OrderController@create');
-Route::post('/buy/{cart}','Guest\OrderController@store');
+Route::post('/buy/{cart}','Guest\OrderController@redirect');
 
 Route::get('{any?}', function () {
     return view('guest.home');
-})->where('any', '.*');
+})->where('any', '.*')->name('guest.home');
