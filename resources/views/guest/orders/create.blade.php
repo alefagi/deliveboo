@@ -48,12 +48,9 @@
             @enderror
         </div>
 
+        <button type="submit" class="btn btn-success">Save</button>
         
-
-        
-          <button type="submit" class="btn btn-success">Save</button>
-        
-          <a href="http://127.0.0.1:8000/restaurant/{id} " class="btn btn-secondary">Back to Chart</a>
+        <a href=" {{ url("/") }} " class="btn btn-secondary">Back to Chart</a>
         </form>
       </div>
       <div class="col-4">

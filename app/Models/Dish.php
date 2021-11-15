@@ -18,7 +18,7 @@ class Dish extends Model
 
     public function orders() 
     {
-        return $this->belongsToMany('App\Models\Order');
+        return $this->belongsToMany('App\Models\Order')->withPivot('quantity');
     }
 
     protected $fillable = ['name','description','price','cover','user_id','visible'];
