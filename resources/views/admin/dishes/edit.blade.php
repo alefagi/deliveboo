@@ -32,14 +32,15 @@
     
         <div class="form-group mb-2">
           <label for="cover">Choose a Cover to Upload</label>
-          <input type="file" class="form-control-file @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
+            <input type="file" class="form-control-file @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
+            <input type="text" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ old('cover'), $dish->cover }}">
           @error('cover') 
             <div class="invalid-feedback">
               {{ $message }}
             </div>
           @enderror
           <div class="mb-2">
-            <img src="{{ ($dish->cover == 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg') ? $dish->cover : asset('storage/' . $dish->cover) }}" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
+            <img src="{{ str_starts_with($dish->cover, 'http') ? $dish->cover : asset('storage/' . $dish->cover) }}" alt="cover-preview" class="img-fluid w-50" id="cover-preview">
           </div>
         </div>
 

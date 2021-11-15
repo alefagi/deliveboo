@@ -9,6 +9,7 @@ use App\Models\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 
 class DishController extends Controller
 {
@@ -48,7 +49,13 @@ class DishController extends Controller
         $request->validate([
             'name' => 'required|string|unique:dishes|min:1',
             'description' => 'nullable|string',
-            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'cover' => [
+                function ($attribute, $value, $fail) {
+                    if ($value && !is_string($value) && !($value instanceof UploadedFile)) {
+                        $fail('The '.$attribute.' must either be a string or file.');
+                    }
+                }   
+            ],
             'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
@@ -57,13 +64,15 @@ class DishController extends Controller
 
         $dish = new Dish();
         $data['user_id'] = Auth::id();
-        
-        if(array_key_exists('cover', $data)) {
+
+        if(!is_null($data['cover']) && !str_starts_with($data['cover'], 'http')) {
             $img_path = Storage::put('uploads', $data['cover']);
             $data['cover'] = $img_path;
         }
-        else $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
-
+        else if(is_null($data['cover'])) {
+            $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+        }
+        
         $dish->fill($data);
         $dish->save();
 
@@ -110,7 +119,13 @@ class DishController extends Controller
         $request->validate([
             'name' => ['required', 'string', Rule::unique('dishes')->ignore($dish->id),'min:1'],
             'description' => 'nullable|string',
-            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'cover' => [
+                function ($attribute, $value, $fail) {
+                    if ($value && !is_string($value) && !($value instanceof UploadedFile)) {
+                        $fail('The '.$attribute.' must either be a string or file.');
+                    }
+                }   
+            ],
             'price' => 'required|numeric|min:0.01|max:999999.99',
             'visible' => 'required|boolean',
         ]);
@@ -119,9 +134,12 @@ class DishController extends Controller
         if(!array_key_exists('tags', $data)) $dish->tags()->detach();
         else $dish->tags()->sync($data['tags']);
 
-        if(array_key_exists('cover', $data)) {
+        if(!is_null($data['cover']) && !str_starts_with($data['cover'], 'http')) {
             $img_path = Storage::put('uploads', $data['cover']);
             $data['cover'] = $img_path;
+        }
+        else if(is_null($data['cover'])) {
+            $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
         }
 
         $dish->update($data);
