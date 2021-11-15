@@ -50,7 +50,7 @@
         <div> 
         
         <footer class="d-flex justify-content-end">
-            {{ $orders->links() }}
+            {{-- {{ $orders->links() }} --}}
         </footer>
     </div>
     

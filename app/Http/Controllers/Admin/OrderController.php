@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 use App\Models\Order;
 use App\Models\Dish;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +22,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('id', 'asc')->paginate(10);
+        $allOrders = Order::with('dishes')->get();
+        $orders = [];
+        foreach($allOrders as $order) {
+            if($order->dishes[0]->user_id == Auth::id()) {
+                array_push($orders, $order);
+            }
+        };
+        $orders = $this->paginate($orders);
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -31,6 +42,8 @@ class OrderController extends Controller
     {
         //
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -92,5 +105,17 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    public function paginate($items, $perPage = 10, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }
