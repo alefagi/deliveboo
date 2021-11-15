@@ -32,8 +32,8 @@
     
         <div class="form-group mb-2">
           <label for="cover">Choose a Cover to Upload</label>
-            <input type="file" class="form-control-file @error('cover') is-invalid @enderror" id="cover" name="cover" accept="image/*">
-            <input type="text" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ old('cover'), $dish->cover }}">
+            <input type="file" class="form-control-file @error('cover') is-invalid @enderror" id="cover-file" name="cover" accept="image/*">
+            <input type="text" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover'), $dish->cover }}">
           @error('cover') 
             <div class="invalid-feedback">
               {{ $message }}

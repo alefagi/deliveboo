@@ -1,9 +1,11 @@
 // Add a cover
-const coverElement = document.getElementById('cover');
+const coverElementFile = document.getElementById('cover-file');
+const coverElementUrl = document.getElementById('cover-url');
 const coverPreviewElement = document.getElementById('cover-preview');
 
-coverElement.addEventListener('change', function(){
-  const coverInput = document.getElementById("cover").files;
+coverElementFile.addEventListener('change', function(){
+  const coverInput = document.getElementById("cover-file").files;
+  console.log(coverInput);
   
   if (coverInput) {
     const fileReader = new FileReader();
@@ -13,7 +15,13 @@ coverElement.addEventListener('change', function(){
 
     fileReader.readAsDataURL(coverInput[0]);
   }
-  else {
+});
+
+coverElementUrl.addEventListener('change', function(){
+  const coverInput = document.getElementById("cover-url").value;
+  console.log(coverInput);
+
+  if(coverInput) {
     const url = this.value;
     if(url) {
       coverPreviewElement.setAttribute('src', url);
