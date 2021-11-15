@@ -18,14 +18,22 @@
 
 @section('script')
 <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
+
+    function getTotals(year = 2021){
+
+    };
+
+
+    var totals = {!! json_encode($totals_year) !!};
+    console.log(totals);
+const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+                label: '# Totale Ordini',
+                data: totals,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -52,6 +60,6 @@
                 }
             }
         }
-    });
-    </script>
+    });    
+</script>
 @endsection
