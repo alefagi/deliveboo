@@ -21,8 +21,8 @@
                             <div>{{dish.price}}€ </div>
                         </div>
                         <div class="col-3">
-                            <span v-if="displayCart()" @click="addToCart(dish)">Add</span>
-                            <span v-if="displayCart()" @click="removeFronmCart(dish)">Remove</span>
+                            <span v-if="displayCart" @click="addToCart(dish)">Add</span>
+                            <span v-if="displayCart" @click="removeFronmCart(dish)">Remove</span>
                         </div>
                     </div>
                 </div>

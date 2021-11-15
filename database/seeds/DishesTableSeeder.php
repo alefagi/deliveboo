@@ -16,6 +16,46 @@ class DishesTableSeeder extends Seeder
         $dishes = [
             [
             'visibility' => 1,
+            'user_id' => 1,
+            'name' => 'Vanilla ice cream small cone',
+            'description' => 'Fresh and delicious small ice cream cone',
+            'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+            'price' => 2.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 1,
+            'name' => 'Vanilla ice cream medium cone',
+            'description' => 'Fresh and delicious medium ice cream cone',
+            'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+            'price' => 3.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 1,
+            'name' => 'Vanilla ice cream big cone',
+            'description' => 'Fresh and delicious big ice cream cone',
+            'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+            'price' => 4.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 1,
+            'name' => 'Chocolate ice cream small cone',
+            'description' => 'Fresh and delicious small ice cream cone',
+            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
+            'price' => 2.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 1,
+            'name' => 'Chocolate ice cream medium cone',
+            'description' => 'Fresh and delicious medium ice cream cone',
+            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
+            'price' => 3.00
+            ],
+            [
+            'visibility' => 1,
             'user_id' => 2,
             'name' => 'Vanilla ice cream small cone',
             'description' => 'Fresh and delicious small ice cream cone',
