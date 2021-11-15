@@ -21,16 +21,22 @@ class HomeController extends Controller
     public function index()
     {
 
-        $orders_all = Order::with('dishes')->get()->toArray();
         $orders = [];
         $totals = [];
+
+
+        $orders_all = Order::with('dishes')->get()->toArray();
+        // $dishes_user = Dish::with('user')->where('user_id', Auth::id())->get()->toArray();
+        // dd($dishes_user);
         // dd($orders_all[101]['dishes'][0]);
         foreach ($orders_all as $order) {
             $dishes = $order['dishes'];
-            if ($dishes) {
+            if ($dishes && $order['dishes'][0]['user_id'] == Auth::id()) {
+                // dd($order['dishes'][0]['user_id']);
                 $orders[] = $order;
             }
         };
+        // dd($orders);
 
         foreach ($orders as $order) {
             $date = Carbon::parse($order['date']);
@@ -58,7 +64,7 @@ class HomeController extends Controller
                 $totals_year[] = 0;
             }
         }
-        // dd($totals_year);
+        dd($totals_year);
         return view('admin.home', compact('totals', 'totals_year'));
     }
 }

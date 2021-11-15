@@ -11,7 +11,9 @@
  <div class="container">
      <div class="row">
          <div class="col-4">@include('admin.includes.links')</div>
-         <div class="col-8"><canvas id="myChart" width="400" height="400"></canvas></div>
+         <div class="col-8">
+             <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
      </div>
  </div>
 @endsection
