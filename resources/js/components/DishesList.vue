@@ -4,11 +4,17 @@
         <h3 class="text-center">Cerca in base al tipo di piatto</h3>
         <div class="d-flex justify-content-center">
             <div class="form-tag d-inline-block" v-for="tag in tags" :key="tag.index">
-                <input type="checkbox" :id="tag.name" :value="tag.id" v-model="checkedTags">
-                <label class="mr-2" :for="tag.name">{{tag.name}}</label>
+                <input class="checkbox-tag" type="checkbox" :id="tag.name" :value="tag.id" v-model="checkedTags">
+                <label class="checkbox-label rounded-pill"
+                 :style="{backgroundColor: tag.color}"
+                 :class="checkedTags.includes(tag.id) ? 'checkbox-lable-checked' : ''"
+                 :for="tag.name">
+                    <span v-html="tag.icon"></span> {{tag.name}}
+                </label>
             </div>
         </div>
         <h3 class="text-center">I nostri piatti</h3>
+        <ErrorMessage v-if="showError" :user="cart[0].dish.user"/>
         <div class="d-flex flex-wrap">
             <div v-for="dish in dishTags" :key="dish.id" class="col-6">
                 <div class="my-3">
@@ -55,9 +61,11 @@
 
 <script>
 import RestaurantHeader from './RestaurantHeader';
+import ErrorMessage from './ErrorMessage.vue';
 export default {
     components: {
         RestaurantHeader,
+        ErrorMessage,
     },
     data() {
         return {
@@ -66,6 +74,7 @@ export default {
             tags: [],
             checkedTags: [],
             cart: [],
+            showError: false,
         };
     },
     props: ["id"],
@@ -78,7 +87,7 @@ export default {
             return this.dishes.filter((dish) => {
                 let auxBoolean = false;
                 dish.tags.forEach((tag) => {
-                    if (this.checkedTag.includes(tag.id)) auxBoolean = true;
+                    if (this.checkedTags.includes(tag.id)) auxBoolean = true;
                 });
                 return auxBoolean;
             });
@@ -96,28 +105,42 @@ export default {
     methods: {
         addToCart(object) {
             let cartIncludesDish = false;
-            this.cart.forEach(item => {
-                if(item.dish == object) {
-                    item.quantity++;
-                    cartIncludesDish = true;
+            if(this.displayCart) {
+                this.cart.forEach(item => {
+                    if(item.dish.id == object.id) {
+                        item.quantity++;
+                        cartIncludesDish = true;
+                    }
+                });
+                if(!cartIncludesDish) {
+                    this.cart.push({dish: object, quantity: 1});
                 }
-            });
-            if(!cartIncludesDish) {
-                this.cart.push({dish: object, quantity: 1});
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+            } else {
+                this.showError = true;
+                this.scrollToTop();
             }
-            localStorage.setItem('cart', JSON.stringify(this.cart));
         },
         removeFronmCart(object) {
-            this.cart.forEach((item, index) => {
-                if(item.dish.id == object.id) {
-                    if(item.quantity != 1) { 
-                        item.quantity--;
-                    } else {
-                        this.cart.splice(index, 1);
-                    }
-                } 
-            });
-            localStorage.setItem('cart', JSON.stringify(this.cart));
+            if(this.displayCart) {
+                this.cart.forEach((item, index) => {
+                    if(item.dish.id == object.id) {
+                        if(item.quantity != 1) { 
+                            item.quantity--;
+                        } else {
+                            this.cart.splice(index, 1);
+                        }
+                    } 
+                });
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+            } else {
+                this.showError = true;
+                this.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            }
         },
         eraseCart() {
             localStorage.clear();
@@ -127,6 +150,9 @@ export default {
             if(localStorage.getItem("cart") != null) {
                 this.cart = JSON.parse(localStorage.getItem('cart'));
             }
+        },
+        scrollToTop() {
+            window.scrollTo(0,0);
         },
         redirect() {
             window.location.href =
@@ -147,6 +173,8 @@ export default {
         axios.get("http://127.0.0.1:8000/api/tags").then((res) => {
             this.tags = res.data;
         });
+        this.errorElement = document.getElementById('#error-message');
+        console.log(this.$refs.errorElement);
         this.getCart();
     },
 };
@@ -161,10 +189,24 @@ export default {
     background-size: cover;
 }
 .cart-button {
-    
     height: 20px;
     width: 20px;
     color: white;
     border-radius: 50%;
+}
+.checkbox-tag {
+    display: none;
+}
+.checkbox-label {
+    width: 120px;
+    padding: 10px 10px;
+    text-align: center;
+    margin: 0 10px;
+    color: white;
+
+    font-weight: bold;
+}
+.checkbox-lable-checked {
+    border: 1px solid black;
 }
 </style>

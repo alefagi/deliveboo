@@ -1,40 +1,14 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.guest')
+@section('content')
+    <div>{{$errorString ?? ""}}</div>
+    <div class="container">
+        <div id="app">
+            <restaurant-list/>
+        </div> 
+    </div> 
+@endsection
 
-        <title>Laravel</title>
+@section('script')
+<script src="{{ asset('js/guestHome.js') }}"></script> 
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        
-    </head>
-    <body>
-        <div>{{$errorString ?? ""}}</div>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/admin') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div id="app">
-                <restaurant-list/>
-            </div>
-            
-        </div>
-        <script src="{{ asset('js/guestHome.js') }}"></script> 
-    </body>
-</html>

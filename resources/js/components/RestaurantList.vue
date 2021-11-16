@@ -6,7 +6,7 @@
             <div class="form-cuisine" v-for="cuisine in cuisines" :key="cuisine.index">
                 <input class="cuisine-checkbox" type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
                 <label class="cuisine-img mr-2" 
-                :style="checkedCuisines.includes(cuisine.id) ? {'backgroundColor': 'lightblue'} : {'backgroundColor': 'lightgray'}" :for="cuisine.name"><img :src="cuisine.cover" alt=""></label>
+                :class="checkedCuisines.includes(cuisine.id) ? 'cuisine-img-checked' : ''" :for="cuisine.name"><img :src="cuisine.cover" alt=""></label>
             </div>
             <div class="restaurant">
                 <RestaurantCard v-for="restaurant in searchedRestaurants" :key="restaurant.id" :restaurant="restaurant" />
@@ -82,6 +82,10 @@ export default {
     padding: 10px;
     background-color: lightgray;
     border-radius: 50%;
+}
+.cuisine-img-checked {
+    background-color: lightblue;
+    border: 1px solid blue;
 }
 .cuisine-img img {
     height: 55px;
