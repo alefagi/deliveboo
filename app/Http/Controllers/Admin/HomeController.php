@@ -25,6 +25,8 @@ class HomeController extends Controller
         $totals = [];
         $years = [];
 
+        $months = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+
         $orders_all = Order::with('dishes')->get()->toArray();
 
         foreach ($orders_all as $order) {
@@ -36,38 +38,52 @@ class HomeController extends Controller
         };
         // dd($orders);
 
-        foreach ($orders as $order) {
-            $date = Carbon::parse($order['date']);
-            if (array_key_exists($date->year, $totals)) {
-                if (array_key_exists($date->month, $totals[$date->year])) {
-                    $totals[$date->year][$date->month]['total'] += $order['total'];
-                };
-                // $total[$date->year]['total'] += $order['total'];
-            } else {
-                $total[$date->year][$date->month]['total'] = $order['total'];
-                $totals[$date->year] = $total[$date->year];
+        if (!empty($orders)) {
+            foreach ($orders as $order) {
+                $date = Carbon::parse($order['date']);
+                if (array_key_exists($date->year, $totals)) {
+                    if (array_key_exists($date->month, $totals[$date->year])) {
+                        $totals[$date->year][$date->month]['total'] += $order['total'];
+
+                        if (array_key_exists($date->day, $totals[$date->year][$date->month])) {
+
+                            $totals[$date->year][$date->month][$date->day] += $order['total'];
+                        } else {
+
+                            $totals[$date->year][$date->month][$date->day] = $order['total'];
+                        }
+                    };
+                    // $total[$date->year]['total'] += $order['total'];
+                } else {
+                    $totals[$date->year][$date->month]['total'] = $order['total'];
+                    $totals[$date->year][$date->month][$date->day] = $order['total'];
+                }
+                // dd($date->day);
+                if (!array_key_exists($date->year, $years)) {
+                    if (!in_array($date->year, $years)) {
+                        $years[] = $date->year;
+                    }
+                }
             }
-            if (!array_key_exists($date->year, $years)) {
-                if (!in_array($date->year, $years)) {
-                    $years[] = $date->year;
+
+
+            // dd($totals);
+
+
+            $totals_current_year = [];
+            for ($i = 1; $i <= 12; $i++) {
+                if (array_key_exists($i, $totals[Carbon::now()->year])) {
+                    $month = $totals[2021][$i];
+                    if ($month['total']) {
+                        $totals_current_year[] = $month['total'];
+                    }
+                } else {
+
+                    $totals_current_year[] = 0;
                 }
             }
         }
 
-
-        $totals_current_year = [];
-        for ($i = 1; $i <= 12; $i++) {
-            if (array_key_exists($i, $totals[Carbon::now()->year])) {
-                $month = $totals[2021][$i];
-                if ($month['total']) {
-                    $totals_current_year[] = $month['total'];
-                }
-            } else {
-
-                $totals_current_year[] = 0;
-            }
-        }
-        // dd($totals);
-        return view('admin.home', compact('totals', 'totals_current_year', 'years'));
+        return view('admin.home', compact('totals', 'totals_current_year', 'years', 'months'));
     }
 }
