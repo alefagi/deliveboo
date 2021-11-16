@@ -3,7 +3,7 @@
 @section('content')
   <div class="container">
     <h1>{{ $dish->name }}</h1>
-    <img src="{{ ($dish->cover == 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg') ? $dish->cover : asset('storage/' . $dish->cover) }}" class="img-fluid" alt="{{ $dish->name }}">
+    <img src="{{ str_starts_with($dish->cover, 'http') ? $dish->cover : asset('storage/' . $dish->cover) }}" class="img-fluid" alt="{{ $dish->name }}">
     <p>{{ $dish->description }}</p>
     @forelse ($dish->tags as $tag)
       <div>{!! $tag->icon !!} {{ $tag->name }}</div>
