@@ -86,10 +86,26 @@ export default {
         return auxBoolean;
       });
     },
-    stringRestaurants() {
-      if (this.searchedString == "") {
-        return this.restaurants;
-      }
+    computed: {
+        searchedRestaurants() {
+            if(this.checkedCuisines.length == 0 && this.searchedString == "") {
+                return this.restaurants;
+            }
+
+            return this.stringRestaurants.filter((restaurant) => {
+                let auxBoolean = true;
+                this.checkedCuisines.forEach(cuisine => {
+                    if(!restaurant.cuisines.map(i => i['id']).includes(cuisine)){
+                        auxBoolean = false;
+                    }
+                })
+                return auxBoolean
+            });
+        },
+        stringRestaurants() {
+            if(this.searchedString == "") {
+                return this.restaurants;
+            }
 
       return this.restaurants.filter((restaurant) => {
         return restaurant.name
@@ -98,22 +114,36 @@ export default {
       });
     },
   },
-};
+}
 </script>
 
 <style>
-.restaurants-list {
-  width: 70%;
-  margin: 0 auto;
-}
 .form-cuisine {
   display: inline-block;
   margin-bottom: 20px;
 }
+.cuisine-checkbox {
+  display: none;
+}
+.cuisine-img {
+  text-align: center;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+.cuisine-img-checked {
+  background-color: lightblue;
+  border: 1px solid blue;
+}
+.cuisine-img img {
+  height: 55px;
+  width: 55px;
+}
+.restaurants-list {
+  width: 70%;
+  margin: 0 auto;
+}
 .form-string {
   margin-bottom: 20px;
-}
-.restaurant {
-  display: inline-block;
 }
 </style>

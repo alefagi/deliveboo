@@ -36,7 +36,7 @@ class HomeController extends Controller
                 $orders[] = $order;
             }
         };
-        // dd($orders);
+        
 
         foreach ($orders as $order) {
             $date = Carbon::parse($order['date']);
@@ -50,7 +50,6 @@ class HomeController extends Controller
                 $totals[$date->year] = $total[$date->year];
             }
         }
-
 
         $totals_year = [];
         for ($i = 1; $i <= 12; $i++) {
