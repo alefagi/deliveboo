@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Dish;
 use Braintree;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmationMail;
 
 
 
@@ -64,6 +66,15 @@ class OrderController extends Controller
             }
 
             $transaction = $result->transaction;
+
+            $mail = new OrderConfirmationMail();
+            
+            Mail::to($order->email)->send($mail);
+
+            //------------ da inserire  mail ristorante------------------//
+            Mail::to('test@prova.it')->send($mail);
+
+            
             return view('guest.orders.confirmation');
         } else {
             $errorString = "An error occured with the payment we're sorry";
