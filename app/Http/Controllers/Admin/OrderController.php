@@ -24,13 +24,28 @@ class OrderController extends Controller
     {
         $allOrders = Order::with('dishes')->get();
         $orders = [];
+        
         foreach($allOrders as $order) {
-            if($order->dishes[0]->user_id == Auth::id()) {
-                array_push($orders, $order);
+           
+
+            foreach($order->dishes as $dish){
+                if($dish->user_id == Auth::id()) {
+                    array_push($orders, $order);
+                }
+
             }
+
+
+
+
         };
         $orders = $this->paginate($orders);
         return view('admin.orders.index', compact('orders'));
+
+
+
+
+        
     }
 
     /**
