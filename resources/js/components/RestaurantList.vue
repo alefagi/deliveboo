@@ -15,6 +15,7 @@
     </div>
 </template>
 
+
 <script>
 import RestaurantCard from "./RestaurantCard.vue";
 export default {
