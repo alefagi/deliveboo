@@ -7,13 +7,15 @@ coverElementFile.addEventListener('change', function(){
   const coverInput = document.getElementById("cover-file").files;
   console.log(coverInput);
   
-  if (coverInput) {
+  if (coverInput.length > 0) {
     const fileReader = new FileReader();
     fileReader.onload = function (event) {
       document.getElementById('cover-preview').setAttribute('src', event.target.result);
     };
 
     fileReader.readAsDataURL(coverInput[0]);
+  } else {
+    coverPreviewElement.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg');
   }
 });
 
@@ -26,8 +28,7 @@ coverElementUrl.addEventListener('change', function(){
     if(url) {
       coverPreviewElement.setAttribute('src', url);
     }
-    else {
-      coverPreviewElement.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg');
-    }
+  } else {
+    coverPreviewElement.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg');
   }
 });
