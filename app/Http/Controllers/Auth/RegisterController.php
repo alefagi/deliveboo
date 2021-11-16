@@ -67,7 +67,13 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required','string'],
             'p_iva' => ['required','string','size:11','unique:users'],
-            'cover' => ['string','nullable'],
+            'cover' => [
+                function ($attribute, $value, $fail) {
+                    if ($value && !is_string($value) && !($value instanceof UploadedFile)) {
+                        $fail('The '.$attribute.' must either be a string or file.');
+                    }
+                }   
+            ],
             'cuisines' => ['required','exists:cuisines,id']
         ]);
     }
@@ -88,6 +94,14 @@ class RegisterController extends Controller
             'p_iva' => $data['p_iva'],
             'cover' => $data['cover']
         ]);
+        
+        if(!is_null($data['cover']) && !str_starts_with($data['cover'], 'http')) {
+            $img_path = Storage::put('uploads', $data['cover']);
+            $data['cover'] = $img_path;
+        }
+        else if(is_null($data['cover'])) {
+            $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+        }
 
         $user->cuisines()->attach($data['cuisines']);
         

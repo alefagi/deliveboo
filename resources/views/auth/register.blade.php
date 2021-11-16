@@ -2,8 +2,6 @@
 
 @section('content')
 <div class="container">
-    {{-- ++++++++++++++++++++++++++ERRORS+++++++++++++++++++++++++++++++++++ --}}
-
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -14,10 +12,6 @@
             </ul>
         </div>
     @endif
-
-
-
-    {{-- ++++++++++++++++++++++++++ERRORS+++++++++++++++++++++++++++++++++++ --}}
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -78,8 +72,6 @@
                             </div>
                         </div>
 
-                        {{-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
-
                         <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
@@ -112,17 +104,18 @@
                             <label for="cover" class="col-md-4 col-form-label text-md-right">{{ __('Cover') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cover" type="text" class="form-control @error('cover') is-invalid @enderror" name="cover" value="{{ old('cover') }}"  autocomplete="cover" autofocus>
-
+                                <input type="file" class="form-control-file mb-2 @error('cover') is-invalid @enderror" id="cover-file" name="cover" accept="image/*">
+                                <input type="text" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover') }}">
                                 @error('cover')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                            <div class="offset-md-4 col-md-6 mb-2">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" class="img-fluid" id="cover-preview">
+                            </div>
                         </div>
-
-                        
                         
                         <div class="form-group row align-items-center">
                             <label for="cuisine" class="col-md-4 col-form-label text-md-right">{{ __('Cuisine') }}</label>
@@ -142,8 +135,6 @@
                             </div>
                         </div>
                        
-
-                          {{-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -157,4 +148,8 @@
         </div>
     </div>
 </div>
+
+@section('script')
+<script src="{{ asset('js/cover-preview.js') }}"></script>
+@endsection
 @endsection
