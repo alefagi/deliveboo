@@ -21,8 +21,14 @@
                             <div>{{dish.price}}€ </div>
                         </div>
                         <div class="col-3">
-                            <span v-if="displayCart" @click="addToCart(dish)">Add</span>
-                            <span v-if="displayCart" @click="removeFronmCart(dish)">Remove</span>
+                            <span @click="addToCart(dish)">
+                                <div class="d-inline-block text-center cart-button" 
+                                :style="displayCart ? {'backgroundColor': 'rgb(58, 146, 218)'} : {'backgroundColor': 'lightgray'}"><i class="fas fa-plus"></i></div>
+                            </span>
+                            <span @click="removeFronmCart(dish)">
+                                <div class="d-inline-block text-center cart-button"
+                                :style="displayCart ? {'backgroundColor': 'rgb(58, 146, 218)'} : {'backgroundColor': 'lightgray'}"><i class="fas fa-minus"></i></div>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -146,4 +152,12 @@ export default {
     border-radius: 50%;
     background-position: center;
     background-size: cover;
-}</style>
+}
+.cart-button {
+    
+    height: 20px;
+    width: 20px;
+    color: white;
+    border-radius: 50%;
+}
+</style>

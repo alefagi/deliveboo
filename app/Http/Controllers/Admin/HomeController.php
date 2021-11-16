@@ -64,7 +64,7 @@ class HomeController extends Controller
                 $totals_year[] = 0;
             }
         }
-        dd($totals_year);
+        
         return view('admin.home', compact('totals', 'totals_year'));
     }
 }
