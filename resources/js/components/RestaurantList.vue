@@ -4,11 +4,12 @@
             <h3>Ricerca avanzata</h3>
             <div><input class="form-string" type="text" id="serached-string" v-model="searchedString" placeholder="Cerca per nome..."></div>
             <div class="form-cuisine" v-for="cuisine in cuisines" :key="cuisine.index">
-                <input type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
-                <label class="mr-2" :for="cuisine.name">{{cuisine.name}}</label>
+                <input class="cuisine-checkbox" type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
+                <label class="cuisine-img mr-2" 
+                :style="checkedCuisines.includes(cuisine.id) ? {'backgroundColor': 'lightblue'} : {'backgroundColor': 'lightgray'}" :for="cuisine.name"><img :src="cuisine.cover" alt=""></label>
             </div>
-            <div class="restaurant" v-for="restaurant in searchedRestaurants" :key="restaurant.id">
-                <RestaurantCard :restaurant="restaurant" />
+            <div class="restaurant">
+                <RestaurantCard v-for="restaurant in searchedRestaurants" :key="restaurant.id" :restaurant="restaurant" />
             </div>
         </div>
     </div>
@@ -42,7 +43,6 @@ export default {
     computed: {
         searchedRestaurants() {
             if(this.checkedCuisines.length == 0 && this.searchedString == "") {
-                console.log("hey")
                 return this.restaurants;
             }
 
@@ -70,18 +70,28 @@ export default {
 </script>
 
 <style>
-.restaurants-list{
-    width: 70%;
-    margin: 0 auto;
-}
 .form-cuisine{
     display: inline-block;
     margin-bottom: 20px;
 }
+.cuisine-checkbox {
+    display: none;
+}
+.cuisine-img {
+    text-align: center;
+    padding: 10px;
+    background-color: lightgray;
+    border-radius: 50%;
+}
+.cuisine-img img {
+    height: 55px;
+    width: 55px;
+}
+.restaurants-list{
+    width: 70%;
+    margin: 0 auto;
+}
 .form-string{
     margin-bottom: 20px;
-}
-.restaurant {
-    display: inline-block;
 }
 </style>

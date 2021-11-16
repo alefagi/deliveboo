@@ -1,5 +1,6 @@
 <template>
     <div class="dishes-list">
+        <RestaurantHeader :user="user"/>
         <h3 class="text-center">Cerca in base al tipo di piatto</h3>
         <div class="d-flex justify-content-center">
             <div class="form-tag d-inline-block" v-for="tag in tags" :key="tag.index">
@@ -53,10 +54,15 @@
 </template>
 
 <script>
+import RestaurantHeader from './RestaurantHeader';
 export default {
+    components: {
+        RestaurantHeader,
+    },
     data() {
         return {
             dishes: [],
+            user: [],
             tags: [],
             checkedTags: [],
             cart: [],
@@ -136,6 +142,7 @@ export default {
     created: function () {
         axios.get("http://127.0.0.1:8000/api/users/" + this.id).then((res) => {
             this.dishes = res.data;
+            this.user = res.data[0].user;
         });
         axios.get("http://127.0.0.1:8000/api/tags").then((res) => {
             this.tags = res.data;

@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+.card {
+    display: inline-block;
+}
 </style>
