@@ -1,11 +1,6 @@
 <template>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" :src="restaurant.cover" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{restaurant.name}}</h5>
-            <p class="card-text">{{restaurant.address}}</p>
-            <div class="btn btn-primary" @click="redirect(restaurant.id)">Vedi ristorante</div>
-        </div>
+    <div class="card-style">
+        <div class="card-img" :style="{ backgroundImage: 'url(' + restaurant.cover + ')' }"></div>
     </div>
 </template>
 
@@ -22,7 +17,13 @@ export default {
 </script>
 
 <style>
-.card {
-    display: inline-block;
+.card-style {
+    width: 30%;
+}
+.card-img {
+    width: 100%;
+    height: 200px;
+
+    background-size: cover;
 }
 </style>
