@@ -36,6 +36,7 @@
   </div>
 </template>
 
+
 <script>
 import RestaurantCard from "./RestaurantCard.vue";
 import Load from "./Load.vue";
