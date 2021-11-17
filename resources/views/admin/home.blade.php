@@ -41,8 +41,13 @@
 
 @section('script')
 <script>
+
+    // Get data from controller
     var totals = {!! json_encode($totals) !!};
     var totalsYear = {!! json_encode($totals_current_year) !!};
+
+    // Get elements on document
+    
     const inputYear = document.getElementById('year');
     const inputType = document.getElementById('type-chart');
     const inputMonth = document.getElementById('month');
@@ -53,7 +58,7 @@
 
     function getLabels(type) {
         const labels = [];
-        let days = 31;
+        let days;
 
         if (type == 'year_chart') {
             return ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
@@ -76,6 +81,7 @@
             labels.push(`${i + 1}/${inputMonth.value}`)
             
         }
+        console.log(days)
         return labels;
         
     }
@@ -86,7 +92,7 @@
 
         
 
-        if (type == 'month_chart') {
+        if (month) {
             switch (month)
             {
                 case 2:
