@@ -1,23 +1,51 @@
 <template>
-    <Load v-if="isLoading" />
-    <div class="restaurants-list" v-else>
-        <Jumbotron />
-        <div class="container">
-            <h3>Ricerca avanzata</h3>
-            <div><input class="form-string" type="text" id="serached-string" v-model="searchedString" placeholder="Cerca per nome..."></div>
-            <div class="form-cuisine" v-for="cuisine in cuisines" :key="cuisine.index">
-                <input class="cuisine-checkbox" type="checkbox" :id="cuisine.name" :value="cuisine.id" v-model="checkedCuisines">
-                <label class="cuisine-img mr-2" 
-                :class="checkedCuisines.includes(cuisine.id) ? 'cuisine-img-checked' : ''" :for="cuisine.name"><img :src="cuisine.cover" alt=""></label>
-            </div>
-            <h4>Our restaurants</h4>
-            <RestaurantCarusel :restaurants="searchedRestaurants" /> 
-            <h4>Don't know what you want? Here some of our favourite restaurants</h4>
-            <RestaurantCarusel :restaurants="randomRestaurants" /> 
-            <h4>If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
-            <RestaurantCarusel :restaurants="randomCuisineRestaurants" /> 
-        </div>
+  <Load v-if="isLoading" />
+  <div class="restaurants-list" v-else>
+    <Jumbotron />
+    <div class="search-bar">
+      <h3>Ricerca avanzata</h3>
+      <div>
+        <input class="form-string"
+          type="text"
+          id="serached-string"
+          v-model="searchedString"
+          placeholder="Cerca per nome..."
+        />
+      </div>
     </div>
+    <div class="container text-center">
+      <div
+        class="form-cuisine"
+        v-for="cuisine in cuisines"
+        :key="cuisine.index"
+      >
+        <input
+          class="cuisine-checkbox"
+          type="checkbox"
+          :id="cuisine.name"
+          :value="cuisine.id"
+          v-model="checkedCuisines"
+        />
+        <label
+          class="cuisine-img mr-2"
+          :class="
+            checkedCuisines.includes(cuisine.id) ? 'cuisine-img-checked' : ''
+          "
+          :for="cuisine.name"
+          ><img :src="cuisine.cover" alt=""
+        /></label>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <h4 class="text-center">Our restaurants</h4>
+      <RestaurantCarusel :restaurants="searchedRestaurants" /> 
+      <h4 class="text-center">Don't know what you want? Here some of our favourite restaurants</h4>
+      <RestaurantCarusel :restaurants="randomRestaurants" /> 
+      <h4 class="text-center">If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
+      <RestaurantCarusel :restaurants="randomCuisineRestaurants" /> 
+    </div>
+  </div>
 </template>
 
 
@@ -35,15 +63,15 @@ export default {
     },
     data() {
     return {
-        isLoading: true,
-        restaurants: [],
-        cuisines: [],
-        cuisinesIds: [],
-        checkedCuisines: [],
-        searchedString: "",
+      isLoading: true,
+      restaurants: [],
+      cuisines: [],
+      cuisinesIds: [],
+      checkedCuisines: [],
+      searchedString: "",
 
-        randomCuisine: [],
-        randomCuisineRestaurants: [],
+      randomCuisine: [],
+      randomCuisineRestaurants: [],
     }
     },
     created: function(){
@@ -64,76 +92,81 @@ export default {
                     this.randomCuisineRestaurants.push(restaurant);
                 }
             })
-        });
+        })
     },
     computed: {
-        searchedRestaurants() {
-            this.position=0;
-            if(this.checkedCuisines.length == 0 && this.searchedString == "") {
-                return this.restaurants;
-            }
+    searchedRestaurants() {
+      this.position = 0;
+      if (this.checkedCuisines.length == 0 && this.searchedString == "") {
+        return this.restaurants;
+      }
 
-            return this.stringRestaurants.filter((restaurant) => {
-                let auxBoolean = true;
-                this.checkedCuisines.forEach(cuisine => {
-                    if(!restaurant.cuisines.map(i => i['id']).includes(cuisine)){
-                        auxBoolean = false;
-                    }
-                })
-                return auxBoolean
-            });
-        },
-        stringRestaurants() {
-            if(this.searchedString == "") {
-                return this.restaurants;
-            }
-
-            return this.restaurants.filter((restaurant) => {
-                return restaurant.name.toLowerCase().includes(this.searchedString.toLowerCase()) 
-            });
-        },
-        randomRestaurants() {
-            let randNumbers = [];
-            let auxRestaurants = [];
-            while(auxRestaurants.length < 6) {
-                const randNumber = Math.floor((Math.random() * this.restaurants.length));
-                if(!randNumbers.includes(randNumber)) {
-                    auxRestaurants.push(this.restaurants[randNumber]);
-                    randNumbers.push(randNumber);
-                }
-            }
-            return auxRestaurants;
-        },
+      return this.stringRestaurants.filter((restaurant) => {
+        let auxBoolean = true;
+        this.checkedCuisines.forEach((cuisine) => {
+          if (!restaurant.cuisines.map((i) => i["id"]).includes(cuisine)) {
+            auxBoolean = false;
+          }
+        });
+        return auxBoolean;
+      });
     },
+    stringRestaurants() {
+    if(this.searchedString == "") {
+        return this.restaurants;
+    }
+
+    return this.restaurants.filter((restaurant) => {
+        return restaurant.name.toLowerCase().includes(this.searchedString.toLowerCase()) 
+      });
+    },
+    randomRestaurants() {
+        let randNumbers = [];
+        let auxRestaurants = [];
+        while(auxRestaurants.length < 6) {
+            const randNumber = Math.floor((Math.random() * this.restaurants.length));
+            if(!randNumbers.includes(randNumber)) {
+                auxRestaurants.push(this.restaurants[randNumber]);
+                randNumbers.push(randNumber);
+            }
+        }
+        return auxRestaurants;
+      },
+  },
 }
 </script>
 
 <style>
-.form-cuisine{
-    display: inline-block;
-    margin-bottom: 20px;
+.search-bar {
+  text-align: center;
+  margin-top: -200px;
+  margin-bottom: 100px;
+}
+.form-cuisine {
+  display: inline-block;
+  margin-bottom: 20px;
 }
 .cuisine-checkbox {
-    display: none;
+  display: none;
 }
 .cuisine-img {
-    text-align: center;
-    padding: 10px;
-    background-color: lightgray;
-    border-radius: 50%;
+  text-align: center;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 50%;
 }
 .cuisine-img-checked {
-    background-color: lightblue;
-    border: 1px solid blue;
+  background-color: lightblue;
+  border: 1px solid blue;
 }
 .cuisine-img img {
-    height: 55px;
-    width: 55px;
+  height: 55px;
+  width: 55px;
 }
-.form-string{
-    margin-bottom: 20px;
+.form-string {
+  margin-bottom: 20px;
 }
 .carusel-btn {
-    width: 5%;
+  width: 5%;
 }
 </style>

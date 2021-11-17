@@ -1,8 +1,35 @@
 <template>
-    <div class="restaurant d-flex flex-wrap my-4">
-        <div @click="prev()" class="carusel-btn d-flex flex-column justify-content-center align-items-center">prev</div>
-        <RestaurantCard v-for="restaurant in presentRestaurants" :key="restaurant.id" :restaurant="restaurant" />
-        <div @click="next()" class="carusel-btn d-flex flex-column justify-content-center align-items-center">next</div>
+    <div class="restaurant row mb-5">
+        <div
+          @click="prev()"
+          class="
+            carusel-btn
+            col
+            d-flex
+            align-items-center
+            justify-content-center
+          "
+        >
+          <i class="fas fa-angle-left fa-4x clickable"></i>
+        </div>
+        <RestaurantCard
+          v-for="restaurant in presentRestaurants"
+          :key="restaurant.id"
+          :restaurant="restaurant"
+          class="col"
+        />
+        <div
+          @click="next()"
+          class="
+            carusel-bt
+            col
+            d-flex
+            align-items-center
+            justify-content-center
+          "
+        >
+            <i class="fas fa-angle-right fa-4x clickable"></i>
+        </div>
     </div>
 </template>
 
