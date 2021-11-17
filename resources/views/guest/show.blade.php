@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div id="app">
             <dishes-list id="{{$id}}"/>
         </div>
