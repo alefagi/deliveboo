@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Models\Order;
+use App\User;
+
 
 class OrderConfirmationMail extends Mailable
 {
@@ -31,7 +33,10 @@ class OrderConfirmationMail extends Mailable
     {
         $cart = json_decode($_COOKIE['cart'], true);
         $order = json_decode($_COOKIE['order'], true);
+        
 
-        return $this->view('mails.order_confirmation', compact('cart', 'order'));
+        $user = User::findOrFail($cart[0]['dish']['user_id']);
+
+        return $this->view('mails.order_confirmation', compact('cart', 'order', 'user'));
     }
 }

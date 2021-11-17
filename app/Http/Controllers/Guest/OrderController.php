@@ -63,7 +63,6 @@ class OrderController extends Controller
             $order->status = 0;
             $order->save();
 
-            setcookie('order', json_encode($order), time()+3600);
             
             foreach($cart as $item) {
                 $order->dishes()->attach($item['dish']['id'], ['quantity' => $item['quantity']]);
@@ -112,6 +111,8 @@ class OrderController extends Controller
         $order = new Order();
 
         setcookie('cart', json_encode($cart), time()+3600);
+        setcookie('order', json_encode($order), time()+3600);
+
         return view('guest.orders.create', compact('order','cart','total'));
     }
 
