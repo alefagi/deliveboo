@@ -1,85 +1,109 @@
 <template>
   <Load v-if="isLoading" />
-  <div class="dishes-list" v-else>
-    <RestaurantHeader :user="user" />
-    <h3 class="text-center">Cerca in base al tipo di piatto</h3>
-    <div class="d-flex justify-content-center">
-      <div class="form-tag d-inline-block" v-for="tag in tags" :key="tag.index">
-        <input
-          class="checkbox-tag"
-          type="checkbox"
-          :id="tag.name"
-          :value="tag.id"
-          v-model="checkedTags"
-        />
-        <label
-          class="checkbox-label rounded-pill"
-          :style="{ backgroundColor: tag.color }"
-          :class="checkedTags.includes(tag.id) ? 'checkbox-lable-checked' : ''"
-          :for="tag.name"
-        >
-          <span v-html="tag.icon"></span> {{ tag.name }}
-        </label>
+  <div class="" v-else>
+    <div class="dishes-list">
+      <RestaurantHeader :user="user" />
+      <div class="choice-options">
+        <h2 class="text-center font-weight-bold mt-5 mb-5">
+          Cerca in base al tipo di piatto
+        </h2>
+        <div class="d-flex justify-content-center">
+          <div
+            class="form-tag d-inline-block"
+            v-for="tag in tags"
+            :key="tag.index"
+          >
+            <input
+              class="checkbox-tag"
+              type="checkbox"
+              :id="tag.name"
+              :value="tag.id"
+              v-model="checkedTags"
+            />
+            <label
+              class="checkbox-label rounded-pill"
+              :style="{ backgroundColor: tag.color }"
+              :class="
+                checkedTags.includes(tag.id) ? 'checkbox-lable-checked' : ''
+              "
+              :for="tag.name"
+            >
+              <span v-html="tag.icon"></span> {{ tag.name }}
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
-    <h3 class="text-center">I nostri piatti</h3>
-    <ErrorMessage v-if="showError" :user="cart[0].dish.user" />
-    <div class="d-flex flex-wrap">
-      <div v-for="dish in dishTags" :key="dish.id" class="col-6">
-        <div class="my-3">
-          <div class="d-flex">
-            <div class="col-3">
-              <div
-                class="dish_img"
-                :style="{ backgroundImage: 'url(' + dish.cover + ')' }"
-              ></div>
-            </div>
-            <div class="col-6">
-              <h3>{{ dish.name }}</h3>
-              <div>{{ dish.description }}</div>
-              <div>{{ dish.price }}€</div>
-            </div>
-            <div class="col-3">
-              <span @click="addToCart(dish)">
-                <div
-                  class="d-inline-block text-center cart-button"
-                  :style="
-                    displayCart
-                      ? { backgroundColor: 'rgb(58, 146, 218)' }
-                      : { backgroundColor: 'lightgray' }
-                  "
-                >
-                  <i class="fas fa-plus"></i>
+
+      <div class="menu">
+        <h2 class="text-center">I nostri piatti</h2>
+        <ErrorMessage v-if="showError" :user="cart[0].dish.user" />
+        <div class="d-flex flex-wrap mt-4 mb-4">
+          <div v-for="dish in dishTags" :key="dish.id" class="col-6">
+            <div class="my-3">
+              <div class="d-flex">
+                <div class="col-3">
+                  <div
+                    class="dish_img"
+                    :style="{ backgroundImage: 'url(' + dish.cover + ')' }"
+                  ></div>
                 </div>
-              </span>
-              <span @click="removeFronmCart(dish)">
-                <div
-                  class="d-inline-block text-center cart-button"
-                  :style="
-                    displayCart
-                      ? { backgroundColor: 'rgb(58, 146, 218)' }
-                      : { backgroundColor: 'lightgray' }
-                  "
-                >
-                  <i class="fas fa-minus"></i>
+                <div class="col-6">
+                  <h3>{{ dish.name }}</h3>
+                  <div>{{ dish.description }}</div>
+                  <div>{{ dish.price }}€</div>
                 </div>
-              </span>
+                <div class="col-3">
+                  <span @click="addToCart(dish)">
+                    <div
+                      class="d-inline-block text-center cart-button"
+                      :style="
+                        displayCart
+                          ? { backgroundColor: 'rgb(58, 146, 218)' }
+                          : { backgroundColor: 'lightgray' }
+                      "
+                    >
+                      <i class="fas fa-plus"></i>
+                    </div>
+                  </span>
+                  <span @click="removeFronmCart(dish)">
+                    <div
+                      class="d-inline-block text-center cart-button"
+                      :style="
+                        displayCart
+                          ? { backgroundColor: 'rgb(58, 146, 218)' }
+                          : { backgroundColor: 'lightgray' }
+                      "
+                    >
+                      <i class="fas fa-minus"></i>
+                    </div>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Cart -->
-    <div>
-      <div class="d-flex flex-column text-center pb-5">
-        <h3>Carrello</h3>
 
-        <span @click="eraseCart()">Azzera carrello</span>
+      <!-- Cart -->
+      <div class="cart rounded-lg">
+        <div class="text-center container">
+          <h3 class="font-weight-bold">Carrello</h3>
 
-        <div v-for="item in cart" :key="item.index">
-          {{ item.dish.name }} {{ item.quantity }}
+          <ul>
+            <li v-for="item in cart" :key="item.index">
+              {{ item.dish.name }} {{ item.quantity }}
+            </li>
+          </ul>
+          <span type="button" class="btn btn-primary" @click="eraseCart()"
+            >Azzera carrello
+          </span>
+          <span
+            type="button"
+            class="pointer btn btn-primary"
+            @click="redirect()"
+            >Procedi con l'acquisto</span
+          >
         </div>
-        <div class="pointer" @click="redirect()">Procedi con l'acquisto</div>
       </div>
     </div>
   </div>
@@ -89,11 +113,14 @@
 import RestaurantHeader from "./RestaurantHeader";
 import ErrorMessage from "./ErrorMessage.vue";
 import Load from "./Load.vue";
+import Jumbotron from "./Jumbotron.vue";
+
 export default {
   components: {
     RestaurantHeader,
     ErrorMessage,
     Load,
+    Jumbotron,
   },
   data() {
     return {
@@ -211,13 +238,28 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .dish_img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background-position: center;
   background-size: cover;
+}
+.choice-options {
+  margin: 30px 0px;
+  h2 {
+    font-weight: 900;
+    font-size: 3rem;
+  }
+}
+.menu {
+  margin: 30px 0px;
+  h2 {
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 20px 0px;
+  }
 }
 .cart-button {
   height: 20px;
@@ -239,5 +281,21 @@ export default {
 }
 .checkbox-lable-checked {
   border: 1px solid black;
+}
+.cart {
+  margin: 20px 0px;
+  div {
+    background-color: rgb(85, 199, 85);
+    ul {
+      margin: 20px 0px;
+      li {
+        text-align: left;
+        list-style: square;
+      }
+    }
+    span {
+      margin: 20px 10px 30px 0px;
+    }
+  }
 }
 </style>

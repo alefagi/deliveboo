@@ -21,7 +21,7 @@ export default {};
   background-image: url(https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: top;
-  height: 550px;
+  height: 500px;
   width: 100%;
 
   position: relative;
