@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 @section('content')
     <div>{{$errorString ?? ""}}</div>
-    <div class="container">
+    <div>
         <div id="app">
             <restaurant-list/>
         </div> 
