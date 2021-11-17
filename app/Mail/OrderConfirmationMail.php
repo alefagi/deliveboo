@@ -32,11 +32,11 @@ class OrderConfirmationMail extends Mailable
     public function build()
     {
         $cart = json_decode($_COOKIE['cart'], true);
-        $order = json_decode($_COOKIE['order'], true);
+        $data = json_decode($_COOKIE['data'], true);
+        $total = json_decode($_COOKIE['total'], true);
         
-
         $user = User::findOrFail($cart[0]['dish']['user_id']);
 
-        return $this->view('mails.order_confirmation', compact('cart', 'order', 'user'));
+        return $this->view('mails.order_confirmation', compact('cart', 'data', 'user', 'total'));
     }
 }

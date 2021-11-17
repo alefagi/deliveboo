@@ -2,10 +2,10 @@
 
 <h2>Customer Data</h2>
 <ul>
-  <li><strong>Name: </strong>{{ $order['name'] }}</li>
-  <li><strong>E-mail: </strong>{{$order['email'] }}</li>
-  <li><strong>Address: </strong>{{$order['address']}}</li>
-  <li><strong>Phone number: </strong>{{$order['phone']}}</li>
+  <li><strong>Name: </strong>{{ $data['name'] }}</li>
+  <li><strong>E-mail: </strong>{{$data['email'] }}</li>
+  <li><strong>Address: </strong>{{$data['address']}}</li>
+  <li><strong>Phone number: </strong>{{$data['phone']}}</li>
 </ul>
 
 <h2>Order Summary</h2>
@@ -22,5 +22,5 @@
 </ul>
 <hr>
 <div>
-  <h4>Total: {{ $order['total'] }} €</h3>
+  <h4>Total: {{ $total }} €</h3>
 </div>
