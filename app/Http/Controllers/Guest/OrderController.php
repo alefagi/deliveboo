@@ -9,6 +9,8 @@ use App\Models\Dish;
 use Braintree;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderConfirmationMail;
+use App\User;
+
 
 
 
@@ -68,11 +70,11 @@ class OrderController extends Controller
             $transaction = $result->transaction;
 
             $mail = new OrderConfirmationMail();
+            $user = User::findOrFail($cart[0]['dish']['user_id']);
+            $restaurantEmail = $user->email;
             
             Mail::to($order->email)->send($mail);
-
-            //------------ da inserire  mail ristorante------------------//
-            Mail::to('test@prova.it')->send($mail);
+            Mail::to($restaurantEmail)->send($mail);
 
             
             return view('guest.orders.confirmation');
