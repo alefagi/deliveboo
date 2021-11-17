@@ -4,9 +4,6 @@
     <div class="dishes-list">
       <RestaurantHeader :user="user" />
       <div class="choice-options">
-        <h2 class="text-center font-weight-bold mt-5 mb-5">
-          Cerca in base al tipo di piatto
-        </h2>
         <div class="d-flex justify-content-center">
           <div
             class="form-tag d-inline-block"
@@ -34,7 +31,7 @@
         </div>
       </div>
 
-      <div class="menu">
+      <div class="menu container">
         <h2 class="text-center">I nostri piatti</h2>
         <ErrorMessage v-if="showError" :user="cart[0].dish.user" />
         <div class="d-flex flex-wrap mt-4 mb-4">
@@ -47,15 +44,15 @@
                     :style="{ backgroundImage: 'url(' + dish.cover + ')' }"
                   ></div>
                 </div>
-                <div class="col-6">
-                  <h3>{{ dish.name }}</h3>
-                  <div>{{ dish.description }}</div>
-                  <div>{{ dish.price }}€</div>
+                <div class="col-6 d-flex flex-column justify-content-center">
+                  <h3 class="dish-name">{{ dish.name }}</h3>
+                  <div class="dish-description">{{ dish.description }}</div>
+                  <div class="dish-price">{{ dish.price }}€</div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 dish-btn d-flex align-items-center">
                   <span @click="addToCart(dish)">
                     <div
-                      class="d-inline-block text-center cart-button"
+                      class="d-inline-block text-center cart-button mx-1"
                       :style="
                         displayCart
                           ? { backgroundColor: 'rgb(58, 146, 218)' }
@@ -67,7 +64,7 @@
                   </span>
                   <span @click="removeFronmCart(dish)">
                     <div
-                      class="d-inline-block text-center cart-button"
+                      class="d-inline-block text-center cart-button mx-1"
                       :style="
                         displayCart
                           ? { backgroundColor: 'rgb(58, 146, 218)' }
@@ -247,18 +244,25 @@ export default {
   background-size: cover;
 }
 .choice-options {
-  margin: 30px 0px;
-  h2 {
-    font-weight: 900;
-    font-size: 3rem;
-  }
+  margin: -40px 0px;
 }
 .menu {
-  margin: 30px 0px;
+  margin: 65px auto;
   h2 {
     font-weight: 900;
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 20px 0px;
+  }
+  .dish-description {
+    color: gray;
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+  }
+  .dish-name {
+    line-height: 1.1rem;
+  }
+  .dish-price {
+    line-height: 2rem;
   }
 }
 .cart-button {
@@ -266,6 +270,9 @@ export default {
   width: 20px;
   color: white;
   border-radius: 50%;
+
+  position: relative;
+  top: -15px;
 }
 .checkbox-tag {
   display: none;
