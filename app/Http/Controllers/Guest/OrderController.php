@@ -63,19 +63,22 @@ class OrderController extends Controller
             $order->status = 0;
             $order->save();
 
+            setcookie('order', json_encode($order), time()+3600);
+            
             foreach($cart as $item) {
                 $order->dishes()->attach($item['dish']['id'], ['quantity' => $item['quantity']]);
             }
 
             $transaction = $result->transaction;
 
-            $mail = new OrderConfirmationMail();
             $user = User::findOrFail($cart[0]['dish']['user_id']);
             $restaurantEmail = $user->email;
-            
-            Mail::to($order->email)->send($mail);
-            Mail::to($restaurantEmail)->send($mail);
 
+            $emails = [$order->email, $restaurantEmail];
+
+            foreach($emails as $email) {
+                Mail::to($email)->send(new OrderConfirmationMail());
+            }
             
             return view('guest.orders.confirmation');
         } else {
