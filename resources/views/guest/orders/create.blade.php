@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container">
+  <div id="order-details" class=" container">
     <div class="row justify-content-center">
       <div class="col-8">
         <h1 class="text-center w-100">Your address data </h1>
@@ -54,8 +54,8 @@
         </form>
       </div>
       <div class="col-4">
-        <h1>Order Summary</h1>
-        <ul>
+        <h2>Order Summary</h1>
+        <ul class="mt-2">
           
           @foreach ($cart as $item)
               <li>
@@ -74,5 +74,25 @@
       </div>
     </div>
   </div>
+
+<style>
+  #order-details{
+    background-color: rgb(196, 226, 147);
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+  }
+  h1{
+    font-weight: 700;
+    margin: 20px 0px;
+  }
+  h2{
+    font-weight: 500;
+    margin: 20px 0px;
+  }
+  h5{
+    font-weight: 500; 
+  }
+</style>
 @endsection
 
