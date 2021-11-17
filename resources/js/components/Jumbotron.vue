@@ -12,7 +12,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .jumbotron {
   position: relative;
   z-index: -1;

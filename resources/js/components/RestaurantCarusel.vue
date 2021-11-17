@@ -4,31 +4,35 @@
           @click="prev()"
           class="
             carusel-btn
-            col
             d-flex
             align-items-center
             justify-content-center
           "
         >
-          <i class="fas fa-angle-left fa-4x clickable"></i>
+          <i class="fas fa-angle-left clickable"></i>
         </div>
-        <RestaurantCard
-          v-for="restaurant in presentRestaurants"
-          :key="restaurant.id"
-          :restaurant="restaurant"
-          class="col"
-        />
+        
+        <div class="carusel-container" v-if="presentRestaurants.length > 0">
+            <RestaurantCard
+              v-for="restaurant in presentRestaurants"
+              :key="restaurant.id"
+              :restaurant="restaurant"
+            />
+        </div>
+        <div class="carusel-container text-center" v-else>
+            Unfortunately there are no restaurants that match your needs :(
+        </div>
+        
         <div
           @click="next()"
           class="
-            carusel-bt
-            col
+            carusel-btn
             d-flex
             align-items-center
             justify-content-center
           "
         >
-            <i class="fas fa-angle-right fa-4x clickable"></i>
+            <i class="fas fa-angle-right clickable"></i>
         </div>
     </div>
 </template>
@@ -85,5 +89,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.carusel-container {
+    width: 90%;
+}
+.carusel-btn {
+  width: 5%;
+}
 </style>

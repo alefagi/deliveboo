@@ -2,7 +2,7 @@
     <div class="card-style px-1" @click="redirect(restaurant.id)">
         <div class="card-img" :style="{ backgroundImage: 'url(' + restaurant.cover + ')' }"></div>
         <h3 class="mt-1 mb-0">{{restaurant.name}}</h3>
-        <p class="card-p">{{restaurant.address}}</p>
+        <p class="card-p ">{{restaurant.address}}</p>
     </div>
 </template>
 
@@ -18,21 +18,27 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card-style {
-    width: 30%;
+    width: calc(100% / 3);
+    display: inline-block;
 }
-.card-style:hover {
-    padding: 0 0 !important;
+.card-style:hover .card-img {
+    transform: scale(105%);
 }
 .card-img {
     width: 100%;
     height: 180px;
 
     background-size: cover;
+    background-position: center;
 }
 .card-p {
     color: gray;
     font-size: 10px;
+    padding-right: 15px;
+}
+h3 {
+    padding-right: 15px;
 }
 </style>

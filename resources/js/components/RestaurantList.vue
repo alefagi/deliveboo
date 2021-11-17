@@ -5,7 +5,7 @@
     <div class="search-bar">
       <h3>Ricerca avanzata</h3>
       <div>
-        <input class="form-string"
+        <input class="form-string rounded-pill text-center "
           type="text"
           id="serached-string"
           v-model="searchedString"
@@ -37,7 +37,7 @@
       </div>
     </div>
     
-    <div class="container-fluid">
+    <div class="container">
       <h4 class="text-center">Our restaurants</h4>
       <RestaurantCarusel :restaurants="searchedRestaurants" /> 
       <h4 class="text-center">Don't know what you want? Here some of our favourite restaurants</h4>
@@ -136,11 +136,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .search-bar {
   text-align: center;
   margin-top: -200px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 .form-cuisine {
   display: inline-block;
@@ -156,8 +156,8 @@ export default {
   border-radius: 50%;
 }
 .cuisine-img-checked {
-  background-color: lightblue;
-  border: 1px solid blue;
+  background-color: white;
+  border: 1px solid black;
 }
 .cuisine-img img {
   height: 55px;
@@ -165,8 +165,9 @@ export default {
 }
 .form-string {
   margin-bottom: 20px;
+  width: 40%;
 }
-.carusel-btn {
-  width: 5%;
+h4 {
+  font-weight: bolder;
 }
 </style>
