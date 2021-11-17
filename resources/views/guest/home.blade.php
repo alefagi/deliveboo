@@ -9,8 +9,6 @@
 @endsection
 
 @section('script')
-<script src="https://unpkg.com/vue-slick-carousel
-"></script>
 <script src="{{ asset('js/guestHome.js') }}"></script> 
 @endsection
 
