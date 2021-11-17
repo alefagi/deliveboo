@@ -66,10 +66,10 @@
 
         switch (inputMonth.value)
         {
-        case 2:
+        case '2':
             days = 28
             break;
-        case 4, 6, 9, 11:
+        case '4', '6', '9', '11':
             days = 30
             break;
 
@@ -95,10 +95,10 @@
         if (month) {
             switch (month)
             {
-                case 2:
+                case '2':
                     days = 28
                     break;
-                case 4, 6, 9, 11:
+                case '4', '6', '0', '11':
                     days = 30
                     break;
 
