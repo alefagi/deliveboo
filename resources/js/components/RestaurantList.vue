@@ -10,27 +10,28 @@
                 <label class="cuisine-img mr-2" 
                 :class="checkedCuisines.includes(cuisine.id) ? 'cuisine-img-checked' : ''" :for="cuisine.name"><img :src="cuisine.cover" alt=""></label>
             </div>
-            <div class="restaurant d-flex flex-wrap mb-5">
-                <div @click="prev()" class="carusel-btn">prev</div>
-                <RestaurantCard v-for="restaurant in presentRestaurants" :key="restaurant.id" :restaurant="restaurant" />
-                <div @click="next()" class="carusel-btn">next</div>
-            </div>
+            <h4>Our restaurants</h4>
+            <RestaurantCarusel :restaurants="searchedRestaurants" /> 
+            <h4>Don't know what you want? Here some of our favourite restaurants</h4>
+            <RestaurantCarusel :restaurants="randomRestaurants" /> 
+            <h4>If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
+            <RestaurantCarusel :restaurants="randomCuisineRestaurants" /> 
         </div>
     </div>
 </template>
 
 
 <script>
-import RestaurantCard from "./RestaurantCard.vue";
 import Load from "./Load.vue";
 import Jumbotron from "./Jumbotron.vue";
+import RestaurantCarusel from "./RestaurantCarusel.vue";
 
 export default {
     name: 'RestaurantList',
     components: {
-        RestaurantCard,
         Load,
         Jumbotron,
+        RestaurantCarusel,
     },
     data() {
     return {
@@ -41,7 +42,8 @@ export default {
         checkedCuisines: [],
         searchedString: "",
 
-        position: 0,
+        randomCuisine: [],
+        randomCuisineRestaurants: [],
     }
     },
     created: function(){
@@ -52,7 +54,16 @@ export default {
         axios.get('http://127.0.0.1:8000/api/cuisines').then(res => {
             this.cuisines = res.data;
             this.cuisinesIds = this.cuisines.map((cuisine) => {return cuisine.id});
+
             this.isLoading = false;
+
+            this.randomCuisine = this.cuisines[Math.floor((Math.random() * this.cuisines.length))];
+            
+            this.restaurants.forEach((restaurant) => {
+                if(restaurant.cuisines.map(i => i['id']).includes(this.randomCuisine.id)) {
+                    this.randomCuisineRestaurants.push(restaurant);
+                }
+            })
         });
     },
     computed: {
@@ -81,38 +92,19 @@ export default {
                 return restaurant.name.toLowerCase().includes(this.searchedString.toLowerCase()) 
             });
         },
-        presentRestaurants() {
+        randomRestaurants() {
+            let randNumbers = [];
             let auxRestaurants = [];
-            for(let i = this.position; (i < this.position+3 && i < this.searchedRestaurants.length) ; i++) {
-                auxRestaurants.push(this.searchedRestaurants[i]);
-
-            }
-
-            if(auxRestaurants.length<3 && this.searchedRestaurants.length!=auxRestaurants.length) {
-                for(let i = 0; (i < 4 - auxRestaurants.length && i < this.searchedRestaurants.length - auxRestaurants.length) ; i++ ) {
-                    auxRestaurants.push(this.searchedRestaurants[i]);
+            while(auxRestaurants.length < 6) {
+                const randNumber = Math.floor((Math.random() * this.restaurants.length));
+                if(!randNumbers.includes(randNumber)) {
+                    auxRestaurants.push(this.restaurants[randNumber]);
+                    randNumbers.push(randNumber);
                 }
             }
             return auxRestaurants;
-        }
-    },
-    methods: {
-        next(){
-           if(this.position < this.searchedRestaurants.length-1) {
-               this.position++
-           } else {
-               this.position = 0;
-           }
         },
-        prev(){
-            if(this.position > 0) {
-                this.position--
-            } else {
-                this.position = this.searchedRestaurants.length-1;
-            }
-        }
     },
-    
 }
 </script>
 
