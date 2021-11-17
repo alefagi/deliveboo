@@ -1,11 +1,12 @@
 <template>
   <header>
-    <div class="card">
-      <div
-        class="img-card"
-        :style="{ backgroundImage: 'url(' + user.cover + ')' }"
-      ></div>
-      <h1 class="name-card">{{ user.name }}</h1>
+    <div class="card" :style="{ backgroundImage: 'url(' + user.cover + ')' }">
+      <div class="overlay"></div>
+      <div class="card-text">
+        <h1>{{ user.name }}</h1>
+        <p>You can find us at:</p>
+        <p class="p-special">{{ user.address }}</p>
+      </div>
     </div>
   </header>
 </template>
@@ -17,28 +18,47 @@ export default {
 };
 </script>
 
-<style>
-.img-card {
+<style scoped>
+.card {
   position: relative;
-  height: 300px;
-  width: 100%;
-  margin-top: -60px;
+  z-index: -1;
+  top: -60px;
 
+  background-image: url(https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
+  height: 400px;
+  width: 100%;
+
+  position: relative;
+
+  font-size: 30px;
+  line-height: 10px;
 }
-.name-card {
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.card-text {
   position: absolute;
-  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
 
-  color: black;
-  font-weight: 900;
-  text-transform: uppercase;
-
-  font-family: "Roboto", sans-serif;
-  padding: 30px 0px;
+  text-align: center;
+}
+h1 {
+  font-family: "Cedarville Cursive", cursive;
+  font-style: italic;
+  font-size: 100px;
+}
+p {
+  font-size: 30px;
+}
+.p-special {
+  font-style: italic;
+  font-size: 15px;
 }
 </style>
