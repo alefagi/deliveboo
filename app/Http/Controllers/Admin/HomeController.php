@@ -85,7 +85,9 @@ class HomeController extends Controller
 
 
 
+        $user = User::where('id', Auth::id())->get();
+       
 
-        return view('admin.home', compact('totals', 'years', 'months'));
+        return view('admin.home', compact('totals', 'years', 'months','user'));
     }
 }

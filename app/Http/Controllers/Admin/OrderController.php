@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use App\User;
 use App\Models\Order;
 use App\Models\Dish;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +40,8 @@ class OrderController extends Controller
 
         };
         $orders = $this->paginate($orders);
-        return view('admin.orders.index', compact('orders'));
+        $user = User::where('id', Auth::id())->get();
+        return view('admin.orders.index', compact('orders','user'));
 
 
 

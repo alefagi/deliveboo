@@ -1,5 +1,32 @@
 #links {
-    a {
-        color: black;
+    background-color: gray;
+    height: 100%;
+    padding-right: 0;
+    .user {
+        padding: 1rem;
+
+        a {
+            color: black;
+        }
+    }
+    .link {
+        display: flex;
+        align-items: center;
+        height: 4rem;
+        font-size: larger;
+        &:hover {
+            background-color: lightgray;
+            opacity: 0.9;
+        }
+        i {
+            margin: 0 1.5rem 0 1.5rem;
+        }
+        a {
+            color: black;
+            font-size: medium;
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
 }

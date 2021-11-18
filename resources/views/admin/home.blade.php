@@ -5,32 +5,29 @@
 @endsection
 
 @section('content')
-<header class="my-5 d-flex justify-content-between align-items-center">
-    <h1 class="text-center w-100">My statistics</h1>
-</header>
- <div class="container">
-     <div class="row">
-         <div id="links" class="col-4">@include('admin.includes.links')</div>
-         <div class="col-8">
-             <select name="type_chart" id="type-chart">
-                 <option value="year_chart">Annuale</option>
-                 <option selected value="month_chart">Mensile</option>
-             </select>
-             <select name="year" id="year">
-                 @foreach ($years as $year)
-                     <option value="{{$year}}">{{$year}}</option>
-                 @endforeach
-             </select>
-            <select name="month" id="month" class="">
-                @for ($i = 0; $i < 12; $i++)
-                    <option value="{{$i+1}}">{{$months[$i]}}</option>                   
-                @endfor
-
-             </select>
-             <canvas id="myChart" width="400" height="400"></canvas>
-            </div>
-     </div>
- </div>
+         <div class="row h-100 w-100">
+             <div id="links" class="col-3">@include('admin.includes.links')</div>
+             <div id="statistics" class="col-9">
+                 <div class="graph">
+                            <select name="type_chart" id="type-chart">
+                                <option value="year_chart">Annuale</option>
+                                <option selected value="month_chart">Mensile</option>
+                            </select>
+                            <select name="year" id="year">
+                                @foreach ($years as $year)
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endforeach
+                            </select>
+                                        <select name="month" id="month" class="">
+                                @for ($i = 0; $i < 12; $i++)
+                                    <option value="{{$i+1}}">{{$months[$i]}}</option>
+                                @endfor
+                            </select>
+                            <canvas id="myChart"></canvas>
+                    </div>
+                 </div>
+         </div>
+     
 @endsection
 
 <style>
