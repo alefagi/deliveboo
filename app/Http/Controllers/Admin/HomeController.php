@@ -78,6 +78,8 @@ class HomeController extends Controller
                     $totals_current_year[] = 0;
                 }
             }
+        } else {
+            $totals = [];
         }
 
 

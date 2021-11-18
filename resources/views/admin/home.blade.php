@@ -44,7 +44,7 @@
 
     // Get data from controller
     var totals = {!! json_encode($totals) !!};
-    var totalsYear = {!! json_encode($totals_current_year) !!};
+
 
     // Get elements on document
     
