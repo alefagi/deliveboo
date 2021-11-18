@@ -10998,6 +10998,7 @@ a.text-dark:focus {
   background-color: gray;
   height: 100%;
   padding-right: 0;
+  padding-left: 0;
 }
 
 #links .user {
@@ -11063,5 +11064,17 @@ a.text-dark:focus {
 #dishes tr .cover img {
   height: 50px;
   width: auto;
+}
+
+#new-dish {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 5rem;
+}
+
+#orders {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 5rem;
 }
 

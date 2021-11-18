@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="row h-100 w-100">
+        <div class="row h-100 w-100 m-0">
             <div id="links" class="col-3">@include('admin.includes.links')</div>
-            
             <div id="dishes" class="col-9">
                 <table class="table">
                     <thead>

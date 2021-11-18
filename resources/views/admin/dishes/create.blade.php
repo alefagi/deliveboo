@@ -1,17 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-  <header class="my-5 d-flex justify-content-between align-items-center">
-    <h1 class="text-center w-100">Add new dish</h1>
-  </header>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-4">
-        <nav id="links"> @include('admin.includes.links') </nav>
-      </div>
-    
-      <div class="col-8">
+    <div class="row h-100 w-100 m-0">
+      
+      <div id="links" class="col-3">@include('admin.includes.links')</div>
+
+      <div id="new-dish" class="col-9">
         <form method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.store') }}">
           @csrf
           <div class="form-group">
@@ -78,7 +72,7 @@
         </form>
       </div>
     </div>
-  </div>
+
 
   @section('script')
     <script src="{{ asset('js/cover-preview.js') }}"></script>

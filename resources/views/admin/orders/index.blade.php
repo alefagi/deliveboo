@@ -2,16 +2,10 @@
 
 
 @section('content')
-    
-    <div class="container">
-        <header class="text-center my-5">
-            <h1 class="font-weight-bold">My Orders</h1>
-        </header>
-        
-        <div class="row">
-            <nav id="links" class="col-2">@include('admin.includes.links')</nav>
-            <div class="col-10">
-                <table class="table bg-dark text-white font-weight-bold">
+        <div class="row w-100 h-100 m-0">
+            <div id="links" class="col-3">@include('admin.includes.links')</div>
+            <div id="orders" class="col-9">
+                <table class="table ">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -52,6 +46,6 @@
         <footer class="d-flex justify-content-end">
             {{-- {{ $orders->links() }} --}}
         </footer>
-    </div>
+
     
 @endsection
