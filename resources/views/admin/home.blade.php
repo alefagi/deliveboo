@@ -95,7 +95,6 @@
             labels.push(`${i + 1}/${inputMonth.value}`)
             
         }
-        console.log(days)
         return labels;
         
     }
@@ -179,7 +178,6 @@
 
         }
 
-    console.log(data);
 
     myChart.data.labels = labels;
     myChart.data.datasets[0].data = data;
@@ -205,7 +203,6 @@
     });
     
 
-    console.log(totals);
 
 //  !! CHART
 
