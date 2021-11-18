@@ -1,6 +1,6 @@
 <template>
   <Load v-if="isLoading" />
-  <div class="" v-else>
+  <div v-else>
     <div class="dishes-list">
       <RestaurantHeader :user="user" />
       <div class="choice-options">
@@ -32,74 +32,92 @@
       </div>
 
       <div class="menu container">
-        <h2 class="text-center">I nostri piatti</h2>
+        <h2 class="text-center">Our dishes</h2>
         <ErrorMessage v-if="showError" :user="cart[0].dish.user" />
-        <div class="d-flex flex-wrap mt-4 mb-4">
-          <div v-for="dish in dishTags" :key="dish.id" class="col-6">
-            <div class="my-3">
-              <div class="d-flex">
-                <div class="col-3">
-                  <div
-                    class="dish_img"
-                    :style="{ backgroundImage: 'url(' + dish.cover + ')' }"
-                  ></div>
-                </div>
-                <div class="col-6 d-flex flex-column justify-content-center">
-                  <h3 class="dish-name">{{ dish.name }}</h3>
-                  <div class="dish-description">{{ dish.description }}</div>
-                  <div class="dish-price">{{ dish.price }}€</div>
-                </div>
-                <div class="col-3 dish-btn d-flex align-items-center">
-                  <span @click="addToCart(dish)">
-                    <div
-                      class="d-inline-block text-center cart-button mx-1"
-                      :style="
-                        displayCart
-                          ? { backgroundColor: 'rgb(58, 146, 218)' }
-                          : { backgroundColor: 'lightgray' }
-                      "
-                    >
-                      <i class="fas fa-plus"></i>
+        <div class="d-flex">
+
+          <div class="d-flex flex-wrap mt-4 mb-4" :class="displayCart ? 'col-8' : 'col-12'">
+              <div v-for="dish in dishTags" :key="dish.id" class="col">
+                <div class="my-3">
+                  <div class="d-flex">
+                    <div class="col-3">
+                      <div
+                        class="dish_img"
+                        :style="{ backgroundImage: 'url(' + dish.cover + ')' }"
+                      >
+                      </div>
                     </div>
-                  </span>
-                  <span @click="removeFronmCart(dish)">
-                    <div
-                      class="d-inline-block text-center cart-button mx-1"
-                      :style="
-                        displayCart
-                          ? { backgroundColor: 'rgb(58, 146, 218)' }
-                          : { backgroundColor: 'lightgray' }
-                      "
-                    >
-                      <i class="fas fa-minus"></i>
+                    <div class="col-6 d-flex flex-column justify-content-center">
+                      <h3 class="dish-name">{{ dish.name }}</h3>
+                      <div class="dish-description">{{ dish.description }}</div>
+                      <div class="dish-price">{{ dish.price }}€</div>
                     </div>
-                  </span>
+                    <div class="col-3 dish-btn d-flex align-items-center">
+                      <span @click="addToCart(dish)">
+                        <div
+                          class="d-inline-block text-center cart-button mx-1"
+                          :style="
+                            displayCartButton
+                              ? { backgroundColor: 'rgb(58, 146, 218)' }
+                              : { backgroundColor: 'lightgray' }
+                          "
+                        >
+                          <i class="fas fa-plus"></i>
+                        </div>
+                      </span>
+                      <div class="cart-count d-inline-block">
+                        {{ isIncluded(dish) }}
+                      </div>
+                      <span @click="removeFronmCart(dish)">
+                        <div
+                          class="d-inline-block text-center cart-button mx-1"
+                          :style="
+                            displayCartButton
+                              ? { backgroundColor: 'rgb(58, 146, 218)' }
+                              : { backgroundColor: 'lightgray' }
+                          "
+                        >
+                          <i class="fas fa-minus"></i>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
                 </div>
+              </div>
+          </div>
+
+          <!-- Cart -->
+          <div class="cart mt-4 rounded-lg" :class="displayCart ? 'col-4' : 'd-none'">
+            <div class="container">
+              <h3 class="font-weight-bold"> Cart <span v-if="!displayCartButton" class="cart-restaurant">(from: {{cart[0].dish.user.name}})</span> </h3>
+              <span class="erease" @click="eraseCart()"
+                >Deselect all items
+              </span>
+
+              <hr>
+              <div v-for="item in cart" :key="item.index">
+                <div class="d-flex justify-content-between">
+
+                  <div>{{ item.dish.name }}</div> 
+                  <div>{{ item.quantity }} x <span class="font-weight-bold">{{item.dish.price}}€</span></div>
+
+                </div>
+                <hr>
+              </div>
+              <div class="text-right">
+                Partial total ({{totalCart.quantity}} items): <span class="font-weight-bold ml-2">{{totalCart.price}}€</span> 
+              </div>
+
+              <div class="text-right">
+                <span
+                  type="button"
+                  class="pointer btn btn-primary mt-3"
+                  @click="redirect()"
+                  >Procedi con l'acquisto</span
+                >
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Cart -->
-      <div class="cart rounded-lg">
-        <div class="text-center container">
-          <h3 class="font-weight-bold">Carrello</h3>
-
-          <ul>
-            <li v-for="item in cart" :key="item.index">
-              {{ item.dish.name }} {{ item.quantity }}
-            </li>
-          </ul>
-          <span type="button" class="btn btn-primary" @click="eraseCart()"
-            >Azzera carrello
-          </span>
-          <span
-            type="button"
-            class="pointer btn btn-primary"
-            @click="redirect()"
-            >Procedi con l'acquisto</span
-          >
         </div>
       </div>
     </div>
@@ -145,20 +163,35 @@ export default {
         return auxBoolean;
       });
     },
-    displayCart() {
+    displayCartButton() {
       if (!this.cart.length > 0) {
         return true;
       }
-      if (this.cart[0].dish.user_id == this.id) {
+      if (this.cart[0].dish.user_id == this.id) { 
         return true;
       }
       return false;
     },
+    displayCart() {
+      if(this.cart.length > 0) {
+        return true
+      }
+      return false
+    },
+    totalCart() {
+      let totalPrice = 0;
+      let totalItems = 0;
+      this.cart.forEach(item => {
+        totalPrice += parseFloat(item.dish.price)*item.quantity;
+        totalItems += item.quantity;
+      })
+      return {price: totalPrice.toFixed(2), quantity: totalItems}
+    }
   },
   methods: {
     addToCart(object) {
       let cartIncludesDish = false;
-      if (this.displayCart) {
+      if (this.displayCartButton) {
         this.cart.forEach((item) => {
           if (item.dish.id == object.id) {
             item.quantity++;
@@ -175,7 +208,7 @@ export default {
       }
     },
     removeFronmCart(object) {
-      if (this.displayCart) {
+      if (this.displayCartButton) {
         this.cart.forEach((item, index) => {
           if (item.dish.id == object.id) {
             if (item.quantity != 1) {
@@ -204,8 +237,17 @@ export default {
         this.cart = JSON.parse(localStorage.getItem("cart"));
       }
     },
+    isIncluded(dish) {
+      let quantity = 0;
+      this.cart.forEach(item => {
+        if(item['dish']['id'] == dish.id) {
+          quantity = item['quantity'];
+        }
+      })
+      return quantity
+    },
     scrollToTop() {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 400);
     },
     redirect() {
       window.location.href =
@@ -235,7 +277,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dish_img {
   width: 100px;
   height: 100px;
@@ -259,7 +301,7 @@ export default {
     line-height: 0.7rem;
   }
   .dish-name {
-    line-height: 1.1rem;
+    line-height: 1.5rem;
   }
   .dish-price {
     line-height: 2rem;
@@ -273,12 +315,24 @@ export default {
 
   position: relative;
   top: -15px;
+
+  i {
+    position: relative;
+    top: -2px;
+  }
+}
+.cart-count {
+  position: relative;
+  top: -17px;
+
+  width: 30px;
+  text-align: center;
 }
 .checkbox-tag {
   display: none;
 }
 .checkbox-label {
-  width: 120px;
+  width: 150px;
   padding: 10px 10px;
   text-align: center;
   margin: 0 10px;
@@ -290,19 +344,23 @@ export default {
   border: 1px solid black;
 }
 .cart {
-  margin: 20px 0px;
-  div {
-    background-color: rgb(85, 199, 85);
-    ul {
-      margin: 20px 0px;
-      li {
-        text-align: left;
-        list-style: square;
-      }
-    }
-    span {
-      margin: 20px 10px 30px 0px;
-    }
+  .container {
+    padding: 0;
+    position: sticky;
+    top: 20px;
   }
+  .erease {
+    position: relative;
+    top: -10px;
+
+    font-size: 15px;
+    color: rgb(20, 123, 243);
+  }
+  .cart-restaurant {
+    font-size: 15px;
+    color: gray;
+  }
+
+
 }
 </style>
