@@ -29,7 +29,7 @@
         </div>
           
         <div class="form-group">
-            <label for="address">address</label>
+            <label for="address">Address</label>
             <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address'), $order->address }}">
             @error('address')
               <div class="invalid-feedback">
@@ -69,7 +69,7 @@
         </ul>
         <hr>
         <div id="total">
-          <h4>Total: {{$total}}</h3>
+          <h4>Total: {{$total}} €</h3>
         </div>
       </div>
     </div>

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Dish;
 use Braintree;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmationMail;
+use App\User;
+
 
 
 
@@ -58,12 +62,22 @@ class OrderController extends Controller
             $order->total = $total;
             $order->status = 0;
             $order->save();
-
+            
             foreach($cart as $item) {
                 $order->dishes()->attach($item['dish']['id'], ['quantity' => $item['quantity']]);
             }
 
             $transaction = $result->transaction;
+
+            $user = User::findOrFail($cart[0]['dish']['user_id']);
+            $restaurantEmail = $user->email;
+
+            $emails = [$order->email, $restaurantEmail];
+
+            foreach($emails as $email) {
+                Mail::to($email)->send(new OrderConfirmationMail());
+            }
+            
             return view('guest.orders.confirmation');
         } else {
             $errorString = "An error occured with the payment we're sorry";
@@ -96,6 +110,7 @@ class OrderController extends Controller
         $order = new Order();
 
         setcookie('cart', json_encode($cart), time()+3600);
+
         return view('guest.orders.create', compact('order','cart','total'));
     }
 
@@ -123,6 +138,7 @@ class OrderController extends Controller
 
         $data = $request->all();
         setcookie('data', json_encode($data), time()+3600);
+        setcookie('total', json_encode($total), time()+3600);
 
         return redirect()->route('buy.payment', ['total' => $total]);
     }
