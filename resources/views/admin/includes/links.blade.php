@@ -35,8 +35,8 @@
     </ul>
 </div>
 <hr>
-<div class="link"><i class="far fa-chart-bar fa-2x"></i><a href="{{route('admin.home')}}">Statistics</a></div>
-<div class="link"><i class="fas fa-utensils fa-2x"></i><a href="{{route('admin.dishes.index')}}">All your dishes</a></div>
-<div class="link"><i class="fas fa-plus fa-2x"></i><a href="{{route('admin.dishes.create')}}">Add a new dish</a></div>
-<div class="link"><i class="fas fa-shopping-cart fa-2x"></i><a href="{{route('admin.orders.index')}}">Your orders</a></div>
-<div class="link"><i class="fas fa-home fa-2x"></i><a href="{{url('/')}}">Back to home</a></div>
+<a class="link {{ request()->routeIs('admin.home') ? 'active' : '' }}" href="{{route('admin.home')}}"> <i class="far fa-chart-bar fa-2x"></i>Statistics</a>
+<a class="link {{ request()->routeIs('admin.dishes.index') ? 'active' : '' }}" href="{{route('admin.dishes.index')}}"><i class="fas fa-utensils fa-2x"></i>All your dishes</a>
+<a  class="link {{ request()->routeIs('admin.dishes.create') ? 'active' : '' }}" href="{{route('admin.dishes.create')}}"><i class="fas fa-plus fa-2x"></i> Add a new dish</a>
+<a  class="link {{ request()->routeIs('admin.orders.index') ? 'active' : '' }}" href="{{route('admin.orders.index')}}"><i class="fas fa-shopping-cart fa-2x"></i>Your orders</a>
+<a  class="link" href="{{url('/')}}"><i class="fas fa-home fa-2x"></i>Back to home</a>
