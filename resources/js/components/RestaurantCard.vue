@@ -1,8 +1,10 @@
 <template>
     <div class="card-style px-1" @click="redirect(restaurant.id)">
+
         <div class="card-img" :style="[restaurant.cover.startsWith('http') ? { backgroundImage: 'url(' + restaurant.cover + ')'} : { backgroundImage: 'url(' + 'storage/' + restaurant.cover + ')'}]"></div>
         <h3 class="mt-1 mb-0">{{restaurant.name}}</h3>
         <p class="card-p ">{{restaurant.address}}</p>
+        
     </div>
 </template>
 
