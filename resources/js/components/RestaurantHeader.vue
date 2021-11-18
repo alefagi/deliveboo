@@ -1,11 +1,11 @@
 <template>
   <header>
-    <div class="card" :style="[user.cover.startsWith('http') ? { backgroundImage: 'url(' + user.cover + ')'} : { backgroundImage: 'url(' + '/storage/' + user.cover + ')'}]">
+    <div class="card" :style="[userObj.cover.startsWith('http') ? { backgroundImage: 'url(' + userObj.cover + ')'} : { backgroundImage: 'url(' + '/storage/' + userObj.cover + ')'}]">
       <div class="overlay"></div>
       <div class="card-text">
-        <h1>{{ user.name }}</h1>
+        <h1>{{ userObj.name }}</h1>
         <p>You can find us at:</p>
-        <p class="p-special">{{ user.address }}</p>
+        <p class="p-special">{{ userObj.address }}</p>
       </div>
     </div>
   </header>
@@ -15,6 +15,15 @@
 export default {
   name: "RestaurantHeader",
   props: ["user"],
+  data() {
+    return {
+      userObj: [],
+    }
+  },
+  created: function () {
+    console.log(JSON.parse(this.user));
+    this.userObj = JSON.parse(this.user);
+  },
 };
 </script>
 
