@@ -247,7 +247,7 @@ export default {
       return quantity
     },
     scrollToTop() {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 400);
     },
     redirect() {
       window.location.href =
