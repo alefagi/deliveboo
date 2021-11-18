@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="card" :style="{ backgroundImage: 'url(' + user.cover + ')' }">
+    <div class="card" :style="[user.cover.startsWith('http') ? { backgroundImage: 'url(' + user.cover + ')'} : { backgroundImage: 'url(' + 'storage/' + user.cover + ')'}]">
       <div class="overlay"></div>
       <div class="card-text">
         <h1>{{ user.name }}</h1>

@@ -37,13 +37,13 @@
         <div class="d-flex">
 
           <div class="d-flex flex-wrap mt-4 mb-4" :class="displayCart ? 'col-8' : 'col-12'">
-              <div v-for="dish in dishTags" :key="dish.id" class="col">
+              <div v-for="(dish, index) in dishTags" :key="index" class="col">
                 <div class="my-3">
-                  <div class="d-flex">
+                  <div class="d-flex" :class="(dishes.length % 2 != 0  && index == dishes.length-1 && !displayCart) ? 'col-6 pl-0 pt-4' : ''">
                     <div class="col-3">
                       <div
                         class="dish_img"
-                        :style="{ backgroundImage: 'url(' + dish.cover + ')' }"
+                        :style="[dish.cover.startsWith('http') ? { backgroundImage: 'url(' + dish.cover + ')'} : { backgroundImage: 'url(' + 'storage/' + dish.cover + ')'}]"
                       >
                       </div>
                     </div>
@@ -53,7 +53,7 @@
                       <div class="dish-price">{{ dish.price }}€</div>
                     </div>
                     <div class="col-3 dish-btn d-flex align-items-center">
-                      <span @click="addToCart(dish)">
+                      <span @click="displayCartButton ? addToCart(dish) : showErrorFx()">
                         <div
                           class="d-inline-block text-center cart-button mx-1"
                           :style="
@@ -68,7 +68,7 @@
                       <div class="cart-count d-inline-block">
                         {{ isIncluded(dish) }}
                       </div>
-                      <span @click="removeFronmCart(dish)">
+                      <span @click="displayCartButton ? removeFronmCart(dish) : showErrorFx()">
                         <div
                           class="d-inline-block text-center cart-button mx-1"
                           :style="
@@ -87,9 +87,9 @@
           </div>
 
           <!-- Cart -->
-          <div class="cart mt-4 rounded-lg" :class="displayCart ? 'col-4' : 'd-none'">
+          <div v-if="displayCart" class="cart mt-4 col-4 rounded-lg">
             <div class="container">
-              <h3 class="font-weight-bold"> Cart <span v-if="!displayCartButton" class="cart-restaurant">(from: {{cart[0].dish.user.name}})</span> </h3>
+              <h3 class="font-weight-bold"> Cart <span class="cart-restaurant">(from: {{cart[0].dish.user.name}})</span> </h3>
               <span class="erease" @click="eraseCart()"
                 >Deselect all items
               </span>
@@ -191,6 +191,7 @@ export default {
   methods: {
     addToCart(object) {
       let cartIncludesDish = false;
+      console.log('hey');
       if (this.displayCartButton) {
         this.cart.forEach((item) => {
           if (item.dish.id == object.id) {
@@ -202,9 +203,6 @@ export default {
           this.cart.push({ dish: object, quantity: 1 });
         }
         localStorage.setItem("cart", JSON.stringify(this.cart));
-      } else {
-        this.showError = true;
-        this.scrollToTop();
       }
     },
     removeFronmCart(object) {
@@ -219,17 +217,15 @@ export default {
           }
         });
         localStorage.setItem("cart", JSON.stringify(this.cart));
-      } else {
-        this.showError = true;
-        this.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth",
-        });
       }
+    },
+    showErrorFx() {
+      this.showError = true;
+      this.scrollToTop();
     },
     eraseCart() {
       localStorage.clear();
+      this.showError = false;
       this.cart = [];
     },
     getCart() {
