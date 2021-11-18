@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dish;
+use App\User;
 use App\Models\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,8 @@ class DishController extends Controller
     public function index()
     {
         $dishes = Dish::where('user_id', Auth::id())->get();
-        
-        return view('admin.dishes.index', compact('dishes'));
+        $user = User::where('id', Auth::id())->get();
+        return view('admin.dishes.index', compact('dishes','user'));
     }
 
     /**
@@ -34,8 +35,8 @@ class DishController extends Controller
     {
         $dish = new Dish();
         $tags = Tag::all();
-
-        return view('admin.dishes.create', compact('dish', 'tags'));
+        $user = User::where('id', Auth::id())->get();
+        return view('admin.dishes.create', compact('dish', 'tags','user'));
     }
 
     /**
