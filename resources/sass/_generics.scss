@@ -23,7 +23,11 @@ header {
     text-decoration: none;
     color: black;
 }
-.a:hover {
+.btn-style:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+
     text-decoration: none;
-    color: inherit;
 }
