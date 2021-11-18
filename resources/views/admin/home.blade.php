@@ -18,12 +18,12 @@
              </select>
              <select name="year" id="year">
                  @foreach ($years as $year)
-                     <option value="{{$year}}">{{$year}}</option>
+                     <option value="{{$year}}" @if ($year == $current_year) {{'selected'}} @endif>{{$year}}</option>
                  @endforeach
              </select>
             <select name="month" id="month" class="">
                 @for ($i = 0; $i < 12; $i++)
-                    <option value="{{$i+1}}">{{$months[$i]}}</option>                   
+                    <option value="{{$i+1}}" @if (($i+1) == $current_month) {{'selected'}}@endif>{{$months[$i]}} </option>                   
                 @endfor
 
              </select>
@@ -61,7 +61,7 @@
         let days;
 
         if (type == 'year_chart') {
-            return ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
+            return ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
         };
 
         switch (inputMonth.value)

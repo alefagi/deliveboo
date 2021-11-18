@@ -66,18 +66,22 @@ class HomeController extends Controller
                 }
             }
 
-            $totals_current_year = [];
-            for ($i = 1; $i <= 12; $i++) {
-                if (array_key_exists($i, $totals[Carbon::now()->year])) {
-                    $month = $totals[2021][$i];
-                    if ($month['total']) {
-                        $totals_current_year[] = $month['total'];
-                    }
-                } else {
+            $current_year = Carbon::now()->year;
+            $current_month = Carbon::now()->month;
+            // dd($current_month);
 
-                    $totals_current_year[] = 0;
-                }
-            }
+
+            // for ($i = 1; $i <= 12; $i++) {
+            //     if (array_key_exists($i, $totals[Carbon::now()->year])) {
+            //         $month = $totals[2021][$i];
+            //         if ($month['total']) {
+            //             $totals_current_year[] = $month['total'];
+            //         }
+            //     } else {
+
+            //         $totals_current_year[] = 0;
+            //     }
+            // }
         } else {
             $totals = [];
         }
@@ -86,6 +90,6 @@ class HomeController extends Controller
 
 
 
-        return view('admin.home', compact('totals', 'years', 'months'));
+        return view('admin.home', compact('totals', 'years', 'months', 'current_year', 'current_month'));
     }
 }
