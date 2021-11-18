@@ -32,7 +32,6 @@ class HomeController extends Controller
         foreach ($orders_all as $order) {
             $dishes = $order['dishes'];
             if ($dishes && $order['dishes'][0]['user_id'] == Auth::id()) {
-                // dd($order['dishes'][0]['user_id']);
                 $orders[] = $order;
             }
         };
@@ -53,12 +52,11 @@ class HomeController extends Controller
                             $totals[$date->year][$date->month][$date->day] = $order['total'];
                         }
                     };
-                    // $total[$date->year]['total'] += $order['total'];
                 } else {
                     $totals[$date->year][$date->month]['total'] = $order['total'];
                     $totals[$date->year][$date->month][$date->day] = $order['total'];
                 }
-                // dd($date->day);
+
                 if (!array_key_exists($date->year, $years)) {
                     if (!in_array($date->year, $years)) {
                         $years[] = $date->year;
@@ -68,24 +66,9 @@ class HomeController extends Controller
 
             $current_year = Carbon::now()->year;
             $current_month = Carbon::now()->month;
-            // dd($current_month);
-
-
-            // for ($i = 1; $i <= 12; $i++) {
-            //     if (array_key_exists($i, $totals[Carbon::now()->year])) {
-            //         $month = $totals[2021][$i];
-            //         if ($month['total']) {
-            //             $totals_current_year[] = $month['total'];
-            //         }
-            //     } else {
-
-            //         $totals_current_year[] = 0;
-            //     }
-            // }
         } else {
             $totals = [];
         }
-
 
 
 

@@ -6,12 +6,22 @@
 
 @section('content')
 <header class="my-5 d-flex justify-content-between align-items-center">
-    <h1 class="text-center w-100">My statistics</h1>
+    <h1 class="text-center w-100">{{Auth::user()->name}} Statistics</h1>
 </header>
  <div class="container">
      <div class="row">
          <div class="col-4">@include('admin.includes.links')</div>
          <div class="col-8">
+             <div class="totals d-flex">
+                 <div class="m-3">
+                    <h4>Totale {{$current_year}}</h4>
+                    <div id="total-current-year"></div>
+                 </div>
+                 <div class="m-3">
+                    <h4>Totale {{$months[$current_month-1]}}</h4>
+                    <div id="total-current-month"></div>
+                 </div>
+             </div>
              <select name="type_chart" id="type-chart">
                  <option value="year_chart">Annuale</option>
                  <option selected value="month_chart">Mensile</option>
@@ -27,6 +37,7 @@
                 @endfor
 
              </select>
+             
              <canvas id="myChart" width="400" height="400"></canvas>
             </div>
      </div>
@@ -51,6 +62,9 @@
     const inputYear = document.getElementById('year');
     const inputType = document.getElementById('type-chart');
     const inputMonth = document.getElementById('month');
+
+    const totalYearElement = document.getElementById('total-current-year');
+    const totalMonthElement = document.getElementById('total-current-month');
 
     let labels = getLabels(inputType.value);
     let data = getData(inputType.value, inputYear.value, inputMonth.value);
@@ -90,8 +104,6 @@
         const data = [];
         let days;
 
-        
-
         if (month) {
             switch (month)
             {
@@ -124,10 +136,7 @@
             
                 for (let i = 0 ; i < 12; i++) {
                     if (totals[year][i+1]) {
-
                         data.push(parseFloat(totals[year][i+1]['total']))
-                            
-                       
                     } else{
                         data.push(0);
                     }
@@ -142,6 +151,20 @@
     }
 
 
+    function getTotalYear(type, year) {
+        const reducer = (previousValue, currentValue) => previousValue + currentValue;
+        const total = getData(type, year)
+        return total.reduce(reducer)
+        
+    }
+    function getTotalMonth(type, year, month) {
+        const reducer = (previousValue, currentValue) => previousValue + currentValue;
+        const total = getData(type, year, month)
+        return total.reduce(reducer)
+        
+    }
+    totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}})
+    totalMonthElement.innerText = getTotalMonth('month-chart', {{$current_year}}, 11)
 
 
     function updateChart(type, year, month = 0) {
