@@ -90,7 +90,8 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        return view('admin.dishes.show', compact('dish'));
+        $user = User::where('id', Auth::id())->get();
+        return view('admin.dishes.show', compact('dish','user'));
     }
 
     /**
@@ -104,8 +105,8 @@ class DishController extends Controller
         $tags = Tag::all();
         $tagsId = $dish->tags->pluck('id')->toArray();
 
-
-        return view('admin.dishes.edit', compact('dish', 'tags', 'tagsId'));
+        $user = User::where('id', Auth::id())->get();
+        return view('admin.dishes.edit', compact('dish', 'tags', 'tagsId','user'));
     }
 
     /**

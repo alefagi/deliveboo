@@ -86,7 +86,9 @@ class OrderController extends Controller
         $dishes = Dish::where('user_id', Auth::id())->get();
 
         //dd($dishes);
-        return view('admin.orders.show', compact('order', 'dishes'));
+        $user = User::where('id', Auth::id())->get();
+
+        return view('admin.orders.show', compact('order', 'dishes','user'));
     }
 
     /**

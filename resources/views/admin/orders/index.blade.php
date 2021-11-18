@@ -15,7 +15,6 @@
                         <th scope="col">Phone</th>
                         <th scope="col">Date</th>
                         <th scope="col">Total</th>
-                        <th scope="col">Status</th>
                         <th scope="col">View</th>
                     </tr>
                     </thead>
@@ -29,7 +28,6 @@
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->date }}</td>
                                 <td>{{ $order->total }}</td>
-                                <td>{{ $order->status }}</td>
                                 <td><a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">View</a></td>
                             </tr>
                         @empty
