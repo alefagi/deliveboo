@@ -10,7 +10,7 @@
 </header>
  <div class="container">
      <div class="row">
-         <div class="col-4">@include('admin.includes.links')</div>
+         <div id="links" class="col-4">@include('admin.includes.links')</div>
          <div class="col-8">
              <select name="type_chart" id="type-chart">
                  <option value="year_chart">Annuale</option>

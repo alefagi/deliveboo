@@ -7,7 +7,7 @@
 
     <div class="container">
         <div class="row">
-            <nav class="col-4">@include('admin.includes.links')</nav>
+            <nav id="links" class="col-4">@include('admin.includes.links')</nav>
 
             <div class="col-8">
                 <table class="table">

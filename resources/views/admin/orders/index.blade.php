@@ -9,7 +9,7 @@
         </header>
         
         <div class="row">
-            <nav class="col-2">@include('admin.includes.links')</nav>
+            <nav id="links" class="col-2">@include('admin.includes.links')</nav>
             <div class="col-10">
                 <table class="table bg-dark text-white font-weight-bold">
                     <thead>
