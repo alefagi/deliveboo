@@ -11072,6 +11072,11 @@ a.text-dark:focus {
   padding: 5rem;
 }
 
+#new-dish #cover-preview {
+  width: 200px;
+  height: 200px;
+}
+
 #orders {
   height: 100%;
   overflow-y: scroll;
