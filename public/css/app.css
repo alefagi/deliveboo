@@ -22053,3 +22053,13 @@ a.text-dark:focus {
   padding: 5rem;
 }
 
+#order-show {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 5rem;
+}
+
+#order-show span {
+  display: block;
+}
+
