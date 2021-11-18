@@ -5,43 +5,42 @@
 @endsection
 
 @section('content')
-<header class="my-5 d-flex justify-content-between align-items-center">
-    <h1 class="text-center w-100">{{Auth::user()->name}} Statistics</h1>
-</header>
- <div class="container">
-     <div class="row">
-         <div class="col-4">@include('admin.includes.links')</div>
-         <div class="col-8">
-             <div class="totals d-flex">
-                 <div class="m-3">
-                    <h4>Totale {{$current_year}}</h4>
-                    <div id="total-current-year"></div>
-                 </div>
-                 <div class="m-3">
-                    <h4>Totale {{$months[$current_month-1]}}</h4>
-                    <div id="total-current-month"></div>
-                 </div>
-             </div>
-             <select name="type_chart" id="type-chart">
-                 <option value="year_chart">Annuale</option>
-                 <option selected value="month_chart">Mensile</option>
-             </select>
-             <select name="year" id="year">
-                 @foreach ($years as $year)
-                     <option value="{{$year}}" @if ($year == $current_year) {{'selected'}} @endif>{{$year}}</option>
-                 @endforeach
-             </select>
-            <select name="month" id="month" class="">
-                @for ($i = 0; $i < 12; $i++)
-                    <option value="{{$i+1}}" @if (($i+1) == $current_month) {{'selected'}}@endif>{{$months[$i]}} </option>                   
-                @endfor
 
-             </select>
-             
-             <canvas id="myChart" width="400" height="400"></canvas>
+
+     <div class="row w-100 h-100 m-0">
+         <div id="links" class="col-3">@include('admin.includes.links')</div>
+         <div id="statistics" class="col-9 h-100 w-100">
+                <div class="graph">
+                    <div class="totals d-flex">
+                        <div class="m-3">
+                            <h4>Totale {{$current_year}}</h4>
+                            <div id="total-current-year"></div>
+                        </div>
+                        <div class="m-3">
+                            <h4>Totale {{$months[$current_month-1]}}</h4>
+                            <div id="total-current-month"></div>
+                        </div>
+                    </div>
+                    <select name="type_chart" id="type-chart">
+                        <option value="year_chart">Annuale</option>
+                        <option selected value="month_chart">Mensile</option>
+                    </select>
+                    <select name="year" id="year">
+                        @foreach ($years as $year)
+                            <option value="{{$year}}" @if ($year == $current_year) {{'selected'}} @endif>{{$year}}</option>
+                        @endforeach
+                    </select>
+                                <select name="month" id="month" class="">
+                        @for ($i = 0; $i < 12; $i++)
+                            <option value="{{$i+1}}" @if (($i+1) == $current_month) {{'selected'}}@endif>{{$months[$i]}} </option>
+                        @endfor
+                    </select>
+                    
+                    <canvas id="myChart" ></canvas>
+                </div>
             </div>
      </div>
- </div>
+
 @endsection
 
 <style>
