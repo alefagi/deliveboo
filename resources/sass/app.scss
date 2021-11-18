@@ -1,20 +1,30 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 // Icons
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 // Variables
-@import 'variables';
-@import 'generics';
+@import "variables";
+@import "generics";
 
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
 
 // Font Awesome
 // @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 // @import "~@fortawesome/fontawesome-free/scss/regular";
 // @import "~@fortawesome/fontawesome-free/scss/solid";
 // @import "~@fortawesome/fontawesome-free/scss/brands";
+
+//admin interface ->by riccardo
+@import "admin/links.scss";
+@import "admin/statistics.scss";
+@import "admin/dishes.scss";
+@import "admin/newDish.scss";
+@import "admin/orders.scss";

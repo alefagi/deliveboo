@@ -5,32 +5,42 @@
 @endsection
 
 @section('content')
-<header class="my-5 d-flex justify-content-between align-items-center">
-    <h1 class="text-center w-100">My statistics</h1>
-</header>
- <div class="container">
-     <div class="row">
-         <div class="col-4">@include('admin.includes.links')</div>
-         <div class="col-8">
-             <select name="type_chart" id="type-chart">
-                 <option value="year_chart">Annuale</option>
-                 <option selected value="month_chart">Mensile</option>
-             </select>
-             <select name="year" id="year">
-                 @foreach ($years as $year)
-                     <option value="{{$year}}">{{$year}}</option>
-                 @endforeach
-             </select>
-            <select name="month" id="month" class="">
-                @for ($i = 0; $i < 12; $i++)
-                    <option value="{{$i+1}}">{{$months[$i]}}</option>                   
-                @endfor
 
-             </select>
-             <canvas id="myChart" width="400" height="400"></canvas>
+
+     <div class="row w-100 h-100 m-0">
+         <div id="links" class="col-3">@include('admin.includes.links')</div>
+         <div id="statistics" class="col-9 h-100 w-100">
+                <div class="graph">
+                    <div class="totals d-flex">
+                        <div class="m-3">
+                            <h4>Totale {{$current_year}}</h4>
+                            <div id="total-current-year"></div>
+                        </div>
+                        <div class="m-3">
+                            <h4>Totale {{$months[$current_month-1]}}</h4>
+                            <div id="total-current-month"></div>
+                        </div>
+                    </div>
+                    <select name="type_chart" id="type-chart">
+                        <option value="year_chart">Annuale</option>
+                        <option selected value="month_chart">Mensile</option>
+                    </select>
+                    <select name="year" id="year">
+                        @foreach ($years as $year)
+                            <option value="{{$year}}" @if ($year == $current_year) {{'selected'}} @endif>{{$year}}</option>
+                        @endforeach
+                    </select>
+                                <select name="month" id="month" class="">
+                        @for ($i = 0; $i < 12; $i++)
+                            <option value="{{$i+1}}" @if (($i+1) == $current_month) {{'selected'}}@endif>{{$months[$i]}} </option>
+                        @endfor
+                    </select>
+                    
+                    <canvas id="myChart" ></canvas>
+                </div>
             </div>
      </div>
- </div>
+
 @endsection
 
 <style>
@@ -52,6 +62,9 @@
     const inputType = document.getElementById('type-chart');
     const inputMonth = document.getElementById('month');
 
+    const totalYearElement = document.getElementById('total-current-year');
+    const totalMonthElement = document.getElementById('total-current-month');
+
     let labels = getLabels(inputType.value);
     let data = getData(inputType.value, inputYear.value, inputMonth.value);
 
@@ -61,7 +74,7 @@
         let days;
 
         if (type == 'year_chart') {
-            return ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre']
+            return ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
         };
 
         switch (inputMonth.value)
@@ -81,7 +94,6 @@
             labels.push(`${i + 1}/${inputMonth.value}`)
             
         }
-        console.log(days)
         return labels;
         
     }
@@ -89,8 +101,6 @@
     function getData(type, year, month = 0) {
         const data = [];
         let days;
-
-        
 
         if (month) {
             switch (month)
@@ -124,10 +134,7 @@
             
                 for (let i = 0 ; i < 12; i++) {
                     if (totals[year][i+1]) {
-
                         data.push(parseFloat(totals[year][i+1]['total']))
-                            
-                       
                     } else{
                         data.push(0);
                     }
@@ -142,6 +149,20 @@
     }
 
 
+    function getTotalYear(type, year) {
+        const reducer = (previousValue, currentValue) => previousValue + currentValue;
+        const total = getData(type, year)
+        return total.reduce(reducer)
+        
+    }
+    function getTotalMonth(type, year, month) {
+        const reducer = (previousValue, currentValue) => previousValue + currentValue;
+        const total = getData(type, year, month)
+        return total.reduce(reducer)
+        
+    }
+    totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}})
+    totalMonthElement.innerText = getTotalMonth('month-chart', {{$current_year}}, 11)
 
 
     function updateChart(type, year, month = 0) {
@@ -156,7 +177,6 @@
 
         }
 
-    console.log(data);
 
     myChart.data.labels = labels;
     myChart.data.datasets[0].data = data;
@@ -182,7 +202,6 @@
     });
     
 
-    console.log(totals);
 
 //  !! CHART
 

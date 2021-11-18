@@ -1,0 +1,15 @@
+#dishes {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 5rem;
+    tr {
+        height: 50px;
+        .cover {
+            height: 100%;
+            img {
+                height: 50px;
+                width: auto;
+            }
+        }
+    }
+}

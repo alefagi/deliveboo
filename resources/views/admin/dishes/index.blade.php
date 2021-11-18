@@ -1,15 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <header class="my-5 d-flex justify-content-between align-items-center">
-        <h1 class="text-center w-100">My Dishes</h1>
-    </header>
-
-    <div class="container">
-        <div class="row">
-            <nav class="col-4">@include('admin.includes.links')</nav>
-
-            <div class="col-8">
+        <div class="row h-100 w-100 m-0">
+            <div id="links" class="col-3">@include('admin.includes.links')</div>
+            <div id="dishes" class="col-9">
                 <table class="table">
                     <thead>
                         <tr>
@@ -31,7 +25,9 @@
                                 <th scope="row">{{ $dish->id }}</th>
                                 <td>{{ $dish->name }}</td>
                                 <td>{{ $dish->description }}</td>
-                                <td><img src="{{ str_starts_with($dish->cover, 'http') ? $dish->cover : asset('storage/' . $dish->cover) }}" class="img-fluid" alt="{{ $dish->name }}"></td>
+                                <td class="cover">
+                                    <img  src="{{ str_starts_with($dish->cover, 'http') ? $dish->cover : asset('storage/' . $dish->cover) }}"  alt="{{ $dish->name }}">
+                                </td>
                                 <td>{{ $dish->price }}</td>
                                 <td>
                                     @forelse ($dish->tags as $tag)
@@ -59,7 +55,7 @@
                 </table>
             </div>
         </div>
-    </div>
+ 
 
     @section('script')
         <script src="{{ asset('js/confirm-delete.js') }}"></script>
