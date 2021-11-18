@@ -23,12 +23,12 @@ class HomeController extends Controller
 
         $orders = [];
         $totals = [];
+        $years = [];
 
+        $months = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
 
         $orders_all = Order::with('dishes')->get()->toArray();
-        // $dishes_user = Dish::with('user')->where('user_id', Auth::id())->get()->toArray();
-        // dd($dishes_user);
-        // dd($orders_all[101]['dishes'][0]);
+
         foreach ($orders_all as $order) {
             $dishes = $order['dishes'];
             if ($dishes && $order['dishes'][0]['user_id'] == Auth::id()) {
@@ -38,32 +38,50 @@ class HomeController extends Controller
         };
         
 
-        foreach ($orders as $order) {
-            $date = Carbon::parse($order['date']);
-            if (array_key_exists($date->year, $totals)) {
-                if (array_key_exists($date->month, $totals[$date->year])) {
-                    $totals[$date->year][$date->month]['total'] += $order['total'];
+        if (!empty($orders)) {
+            foreach ($orders as $order) {
+                $date = Carbon::parse($order['date']);
+                if (array_key_exists($date->year, $totals)) {
+                    if (array_key_exists($date->month, $totals[$date->year])) {
+                        $totals[$date->year][$date->month]['total'] += $order['total'];
+
+                        if (array_key_exists($date->day, $totals[$date->year][$date->month])) {
+
+                            $totals[$date->year][$date->month][$date->day] += $order['total'];
+                        } else {
+
+                            $totals[$date->year][$date->month][$date->day] = $order['total'];
+                        }
+                    };
+                    // $total[$date->year]['total'] += $order['total'];
+                } else {
+                    $totals[$date->year][$date->month]['total'] = $order['total'];
+                    $totals[$date->year][$date->month][$date->day] = $order['total'];
                 }
-                // $total[$date->year]['total'] += $order['total'];
-            } else {
-                $total[$date->year][$date->month]['total'] = $order['total'];
-                $totals[$date->year] = $total[$date->year];
+                // dd($date->day);
+                if (!array_key_exists($date->year, $years)) {
+                    if (!in_array($date->year, $years)) {
+                        $years[] = $date->year;
+                    }
+                }
             }
         }
 
-        $totals_year = [];
+
+        $totals_current_year = [];
         for ($i = 1; $i <= 12; $i++) {
-            if (array_key_exists($i, $totals[2021])) {
+            if (array_key_exists($i, $totals[Carbon::now()->year])) {
                 $month = $totals[2021][$i];
                 if ($month['total']) {
-                    $totals_year[] = $month['total'];
+                    $totals_current_year[] = $month['total'];
                 }
             } else {
 
-                $totals_year[] = 0;
+                $totals_current_year[] = 0;
             }
         }
         
-        return view('admin.home', compact('totals', 'totals_year'));
+
+        return view('admin.home', compact('totals', 'totals_current_year', 'years', 'months'));
     }
 }
