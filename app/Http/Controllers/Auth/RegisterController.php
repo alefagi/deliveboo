@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Cuisine;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
+
 
 class RegisterController extends Controller
 {
@@ -86,22 +89,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'address' => $data['address'],
-            'p_iva' => $data['p_iva'],
-            'cover' => $data['cover']
-        ]);
-        
-        if(!is_null($data['cover']) && !str_starts_with($data['cover'], 'http')) {
-            $img_path = Storage::put('uploads', $data['cover']);
-            $data['cover'] = $img_path;
-        }
-        else if(is_null($data['cover'])) {
-            $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
-        }
+        function addCover($data){
+            if(!is_null($data['cover']) && !str_starts_with($data['cover'], 'http')) {
+                $img_path = Storage::put('uploads', $data['cover']);
+                return $data['cover'] = $img_path;
+            }
+            else if(is_null($data['cover'])) {
+                return $data['cover'] = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+            }  
+            return $data['cover'];
+        };
+
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->address = $data['address'];
+        $user->p_iva = $data['p_iva'];        
+        $user->cover = addCover($data);
+               
+        $user->save();
 
         $user->cuisines()->attach($data['cuisines']);
         

@@ -56,6 +56,7 @@ h1 {
 }
 p {
   font-size: 30px;
+  margin-top: revert;
 }
 .p-special {
   font-style: italic;
