@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <div id="app">
-            <dishes-list id="{{$id}}"/>
+            <dishes-list user="{{$user}}" id="{{$id}}"/>
         </div>
     </div>
 @endsection

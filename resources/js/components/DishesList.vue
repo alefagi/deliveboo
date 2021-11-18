@@ -43,7 +43,7 @@
                     <div class="col-3">
                       <div
                         class="dish_img"
-                        :style="[dish.cover.startsWith('http') ? { backgroundImage: 'url(' + dish.cover + ')'} : { backgroundImage: 'url(' + 'storage/' + dish.cover + ')'}]"
+                        :style="[dish.cover.startsWith('http') ? { backgroundImage: 'url(' + dish.cover + ')'} : { backgroundImage: 'url(' + '/storage/' + dish.cover + ')'}]"
                       >
                       </div>
                     </div>
@@ -141,14 +141,13 @@ export default {
     return {
       isLoading: true,
       dishes: [],
-      user: [],
       tags: [],
       checkedTags: [],
       cart: [],
       showError: false,
     };
   },
-  props: ["id"],
+  props: ["id", "user"],
   computed: {
     dishTags() {
       if (this.checkedTags.length == 0) {
@@ -260,7 +259,6 @@ export default {
     axios.get("http://127.0.0.1:8000/api/users/" + this.id).then((res) => {
       this.dishes = res.data;
       this.isLoading = false;
-      this.user = res.data[0].user;
     });
     axios.get("http://127.0.0.1:8000/api/tags").then((res) => {
       this.tags = res.data;

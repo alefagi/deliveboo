@@ -64,12 +64,12 @@ class HomeController extends Controller
                 }
             }
 
-            $current_year = Carbon::now()->year;
-            $current_month = Carbon::now()->month;
         } else {
             $totals = [];
         }
-
+        
+        $current_year = Carbon::now()->year;
+        $current_month = Carbon::now()->month;
 
         $user = User::where('id', Auth::id())->get();
 

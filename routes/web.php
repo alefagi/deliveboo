@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->namespace('Admin')
 });
 
 Route::get('/restaurant/{id}', function($id) {
-    return view('guest.show', compact('id'));
+    $user = User::findOrFail($id);
+    return view('guest.show', compact('id', 'user'));
 });
 
 Route::post('/buy/checkout/{total}','Guest\OrderController@store')->name('buy.store');
