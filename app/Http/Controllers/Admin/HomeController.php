@@ -84,6 +84,6 @@ class HomeController extends Controller
 
 
 
-        return view('admin.home', compact('totals', 'totals_current_year', 'years', 'months'));
+        return view('admin.home', compact('totals', 'years', 'months'));
     }
 }
