@@ -81,14 +81,21 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
-    {
-        //
-        $dishes = Dish::where('user_id', Auth::id())->get();
+    {   
+        $buyied = [];
+
+        foreach($order->dishes as $dish){
+            $buyied[] = array('name'=>$dish->name,'quantity'=>$dish->pivot->quantity);
+        
+
+        }
+        // dd($buyied);     
+        // $dishes = Dish::where('user_id', Auth::id())->get();
 
         //dd($dishes);
         $user = User::where('id', Auth::id())->get();
 
-        return view('admin.orders.show', compact('order', 'dishes','user'));
+        return view('admin.orders.show', compact('order','user','buyied'));
     }
 
     /**

@@ -20,8 +20,13 @@
       
       <h4>Ordered Products </h4>
       <ul>
-        @foreach ($dishes as $dish)
-        <li>{{ $dish->name }}</li>
+       
+        @foreach ($buyied as $d)
+          <li>
+            <span>{{$d['name']}}---><strong>{{$d['quantity']}}</strong></span>
+            
+          </li>
+          
         @endforeach
       </ul>
     </div>
