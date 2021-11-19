@@ -46,6 +46,8 @@
       <h4 class="text-center">If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
       <RestaurantCarusel :restaurants="randomCuisineRestaurants"/> 
     </div>
+
+    <Footer />
   </div>
 </template>
 
@@ -54,6 +56,7 @@
 import Load from "./Load.vue";
 import Jumbotron from "./Jumbotron.vue";
 import RestaurantCarusel from "./RestaurantCarusel.vue";
+import Footer from "./Footer.vue";
 
 export default {
     name: 'RestaurantList',
@@ -61,6 +64,7 @@ export default {
         Load,
         Jumbotron,
         RestaurantCarusel,
+        Footer,
     },
     data() {
     return {
