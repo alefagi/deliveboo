@@ -1,44 +1,58 @@
 <template>
   <section id="footer">
     <div class="container">
-      <div class="social">
-        <div class="logo">
-          <a class="logo-brand"><i class="fas fa-utensils"></i> DELIVEBOO </a>
+      <div class="footer-top row pb-5">
+        <div class="social col-4">
+          <div class="logo">
+            <a class="logo-brand"><i class="fas fa-utensils"></i> DELIVEBOO </a>
+          </div>
+          <div>Deliveboo's mission is to transform the way customers eat. A key ingredient of our success is offering our customers the best selection of restaurants.</div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
         </div>
-        <div>Deliveboo's mission is to transform the way customers eat. A key ingredient of our success is offering our customers the best selection of restaurants.</div>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+        <div class="links-container col-4">
+          <div class="links-list">
+            <h5>Discover Deliveboo</h5>
+            <ul>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Investors</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>About us</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Takeaway</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Newsroom</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Foodscene blog</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Gift Cards</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Careers</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Become a rider</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="newsletter col-4">
+          <h5>Newsletter</h5>
+          <div>Sign up and receive the latest tips via email.</div>
+          <div>Write your email <span>*</span></div>
+          <form  method="post" class="your-email">
+            <label for="email"></label>
+            <input type="email" placeholder="example@example.com" class="form-control" id="email" name="email">
+            <button type="submit" class="btn mt-4">Subscribe</button>
+          </form>
         </div>
       </div>
-
-      <div class="links-container">
-        <div class="links-list">
-          <h5>Discover Deliveboo</h5>
-          <ul>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Investors</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>About us</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Takeaway</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Newsroom</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Foodscene blog</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Gift Cards</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Careers</a></li>
-            <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Become a rider</a></li>
-          </ul>
+      <div class="footer-bottom row">
+        <div class="col">
+          <div>
+            &#169; 2021 Deliveboo
+          </div>
         </div>
-      </div>
-
-      <div class="newsletter">
-        <h5>Newsletter</h5>
-        <div>Sign up and receive the latest tips via email.</div>
-        <div>Write your email <span>*</span></div>
-        <div class="your-email">
-          <i class="far fa-envelope"></i>
-          <input type="email">
+        <div class="col">
+          <div class="text-right">
+            Design with <i class="fas fa-utensils"></i> by Team5
+          </div>
         </div>
-        <button class="btn"><span>Subscribe</span></button>
       </div>
     </div>
   </section>
@@ -54,15 +68,7 @@ export default {
   #footer {
     background-color: black;
     color: white;
-    padding: 50px 0;
-  }
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    &>* {
-      width: 30%;
-    }
+    padding-top: 50px;
   }
 
   h5 {
@@ -114,56 +120,40 @@ export default {
   }
 
   .newsletter {
-    width: 25%;
-    span:first-child {
-      color: #E43F52;
+    span {
+      color: #38C172;
     }
     div:first-of-type {
       padding-bottom: 25px;
     }
     .your-email {
-      display: flex;
-      border-radius: 10px;
-      background-color: #27314F;
-      padding: 15px;
-      margin: 15px 0;
-      span {
-        font-size: 0.9rem;
-        margin-right: 3px;
-        display: flex;
-        align-items: center;
-      }
       input {
-        border: none;
-        margin-left: 5px;
-        outline: none;
         background-color: #27314F;
         color: white;
       }
-      i {
-        margin-right: 12px;
-        align-self: center;
-      }
     }
     button {
-      border-radius: 5px;
-      color: white;
-      padding: 14px 12px;
+      color: #38C172;
       background-color: #27314F;
-      border: none;
-      box-shadow: 1px 3px 10px rgba(233, 70, 73, .2);
       width: 100%;
+      font-size: 1rem;
+      font-weight: bold;
+      border: 1px solid #ced4da;
     }
-  }
-
-  button span {
-    font-size: 1rem;
-    font-weight: bold;
   }
   
   .links-container {
     width: 40%;
     display: flex;
     justify-content: space-around;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #3C4858;
+    padding: 25px 0;
+    i {
+      padding: 0 5px;
+      color: #38C172;
+    }
   }
 </style>
