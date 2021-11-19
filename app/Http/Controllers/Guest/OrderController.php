@@ -104,14 +104,17 @@ class OrderController extends Controller
             array_push($cart, (object)["dish" => Dish::findOrFail($item->dishId), "quantity" => $item->quantity]);
         };
         $total = 0;
+        $totalQuantity = 0;
         foreach($cart as $item){
             $total += $item->dish->price * $item->quantity;
+            $totalQuantity += $item->quantity;
         };
         $order = new Order();
+        $total = number_format($total, 2);
 
         setcookie('cart', json_encode($cart), time()+3600);
 
-        return view('guest.orders.create', compact('order','cart','total'));
+        return view('guest.orders.create', compact('order','cart','total','totalQuantity'));
     }
 
     /**

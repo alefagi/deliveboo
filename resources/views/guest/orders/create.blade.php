@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container">
+  <div class="container pt-4">
     <div class="row justify-content-center">
       <div class="col-8">
         <h1 class="text-center w-100">Your address data </h1>
@@ -53,24 +53,22 @@
         <a href=" {{ url("/") }} " class="btn btn-secondary">Back to Chart</a>
         </form>
       </div>
+
       <div class="col-4">
         <h1>Order Summary</h1>
-        <ul>
-          
+        
+          <hr class="mt-4">
           @foreach ($cart as $item)
-              <li>
-               <h5>
-                 {{$item->dish->name}}
-              </h5>
-              <span>Quantity: {{$item->quantity}}</span>
-              <p>Price: {{$item->dish->price * $item->quantity }} €</p>
-            </li>
+              <div class="d-flex justify-content-between">
+                <h6>{{ $item->dish->name }}</h6> 
+                <div>{{ $item->quantity }} x <span class="font-weight-bold">{{$item->dish->price}}€</span></div>
+              </div>
+              <hr>
           @endforeach
-        </ul>
-        <hr>
-        <div id="total">
-          <h4>Total: {{$total}} €</h3>
-        </div>
+        
+          <div id="total" class="text-right">
+            <h4>Partial total ({{ $totalQuantity }} items): <span class="font-weight-bold ml-2">{{$total}}€</span> </h3>
+          </div>
       </div>
     </div>
   </div>
