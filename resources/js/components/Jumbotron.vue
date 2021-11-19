@@ -16,7 +16,6 @@ export default {};
 .jumbotron {
   position: relative;
   z-index: -1;
-  top: -60px;
 
   background-image: url(https://images.pexels.com/photos/349609/pexels-photo-349609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;

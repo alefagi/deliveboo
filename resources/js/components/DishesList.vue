@@ -4,7 +4,7 @@
     <div class="dishes-list">
       <RestaurantHeader :user="user" />
       <div class="choice-options">
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" :style="(windowWidth < 990) ? { width: '550px',  flexWrap: 'wrap', margin: 'auto'} : {  }">
           <div
             class="form-tag d-inline-block"
             v-for="tag in tags"
@@ -18,7 +18,7 @@
               v-model="checkedTags"
             />
             <label
-              class="checkbox-label rounded-pill"
+              class="checkbox-label rounded-pill mt-2"
               :style="{ backgroundColor: tag.color }"
               :class="
                 checkedTags.includes(tag.id) ? 'checkbox-lable-checked' : ''
@@ -34,12 +34,14 @@
       <div class="menu container">
         <h2 class="text-center">Our dishes</h2>
         <ErrorMessage v-if="showError" :user="cart[0].dish.user" />
-        <div class="d-flex">
+        <div class="d-flex" :class="(displayCart && windowWidth<767) ? 'flex-column-reverse' : ''">
 
-          <div class="d-flex flex-wrap mt-4 mb-4" :class="displayCart ? 'col-8' : 'col-12'">
-              <div v-for="(dish, index) in dishTags" :key="index" class="col">
+          <div class="d-flex flex-wrap mt-4 mb-4" 
+          :class="[(displayCart && windowWidth>767) ? 'col-8' : 'col-12']">
+              <div v-for="(dish, index) in dishTags" :key="index" 
+              :class="[(!displayCart && windowWidth>990) ? 'col-6' : '', (displayCart && windowWidth>990) ? 'col-12' : '', (!displayCart && windowWidth>767 && windowWidth<990) ? 'col-12' : '']">
                 <div class="my-3">
-                  <div class="d-flex" :class="(dishes.length % 2 != 0  && index == dishes.length-1 && !displayCart) ? 'col-6 pl-0 pt-4' : ''">
+                  <div class="d-flex">
                     <div class="col-3">
                       <div
                         class="dish_img"
@@ -47,7 +49,8 @@
                       >
                       </div>
                     </div>
-                    <div class="col-6 d-flex flex-column justify-content-center">
+                    <div class="col-6 d-flex flex-column justify-content-center" 
+                    :class="(displayCart && windowWidth>767) ? 'pl-5' : ''">
                       <h3 class="dish-name">{{ dish.name }}</h3>
                       <div class="dish-description">{{ dish.description }}</div>
                       <div class="dish-price">{{ dish.price }}€</div>
@@ -87,7 +90,7 @@
           </div>
 
           <!-- Cart -->
-          <div v-if="displayCart" class="cart mt-4 col-4 rounded-lg">
+          <div v-if="displayCart" :class="windowWidth>767 ? 'col-4' : ''" class="cart mt-4 rounded-lg">
             <div class="container">
               <h3 class="font-weight-bold"> Cart <span class="cart-restaurant">(from: {{cart[0].dish.user.name}})</span> </h3>
               <span class="erease" @click="eraseCart()"
@@ -149,6 +152,7 @@ export default {
       checkedTags: [],
       cart: [],
       showError: false,
+      windowWidth: window.innerWidth,
     };
   },
   props: ["id", "user"],
@@ -272,6 +276,11 @@ export default {
     console.log(this.$refs.errorElement);
     this.getCart();
   },
+  mounted() {
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth;
+    })
+  }
 };
 </script>
 
@@ -284,10 +293,10 @@ export default {
   background-size: cover;
 }
 .choice-options {
-  margin: -40px 0px;
+  margin-top: 30px
 }
 .menu {
-  margin: 65px auto;
+  margin: 55px auto;
   h2 {
     font-weight: 900;
     font-size: 2.5rem;

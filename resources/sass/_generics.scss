@@ -2,7 +2,10 @@ header {
     width: 100%;
     z-index: 1;
 }
-
+.navbar-style {
+    position: absolute !important;
+    width: 100%;
+}
 .btn-style {
     display: inline-block;
     width: 100px;

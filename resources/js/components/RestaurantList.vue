@@ -153,7 +153,7 @@ export default {
 .search-bar {
   text-align: center;
   margin-top: -200px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 .form-cuisine {
   display: inline-block;

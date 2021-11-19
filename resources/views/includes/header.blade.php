@@ -1,6 +1,6 @@
 <header>
     <div>
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md navbar-light navbar-style">
             <div class="container">
                 <a class="logo-brand" href="{{ url('/') }}"><i class="fas fa-utensils"></i> DELIVEBOO </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -27,7 +27,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-lin rounded-pill dropdown-toggle btn-style p-1 px-3 w-auto" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="rounded-pill dropdown-toggle btn-style p-1 px-3 w-auto" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
