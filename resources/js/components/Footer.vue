@@ -2,7 +2,7 @@
   <section id="footer">
     <div class="container">
       <div class="footer-top row pb-5">
-        <div class="social col-12 col-md-4 pb-5">
+        <div class="social col-12 col-md-5 pb-5">
           <div class="logo">
             <a class="logo-brand"><i class="fas fa-utensils"></i> DELIVEBOO </a>
           </div>
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="links-container col-12 col-md-4 pb-5">
+        <div class="links-container col-12 col-md-3 pb-5">
           <div class="links-list">
             <h5>Discover Deliveboo</h5>
             <ul>
