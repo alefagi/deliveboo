@@ -23,7 +23,8 @@
        
         @foreach ($buyied as $d)
           <li>
-            <span>{{$d['name']}}---><strong>{{$d['quantity']}}</strong></span>
+            <span><strong>Dish: </strong>{{$d['name']}}</span>
+              <span><strong>Quantity: </strong>{{$d['quantity']}}</span>
             
           </li>
           
