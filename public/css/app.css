@@ -22001,7 +22001,7 @@ a.text-dark:focus {
   align-items: center;
   height: 4rem;
   font-size: larger;
-  color: black;
+  color: #00ccbc;
 }
 
 #links a.link:hover {
