@@ -214,10 +214,10 @@
                 label: '# Totale Ordini',
                 data: getData(inputType.value, inputYear. value, inputMonth.value),
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(0, 204, 188, 1)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
+                    'rgba(0, 204, 188, 1)',
                 ],
                 borderWidth: 1
             }]

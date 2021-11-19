@@ -22017,6 +22017,8 @@ a.text-dark:focus {
 #statistics .graph canvas {
   width: 50%;
   height: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
 }
 
 #dishes {
@@ -22038,6 +22040,10 @@ a.text-dark:focus {
   width: auto;
 }
 
+#dishes .table {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 #dish-show {
   height: 100%;
   overflow-y: scroll;
@@ -22047,6 +22053,11 @@ a.text-dark:focus {
 #dish-show img {
   width: 300px;
   height: 300px;
+}
+
+#dish-show .wr {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5rem;
 }
 
 #dish-edit {
@@ -22077,13 +22088,22 @@ a.text-dark:focus {
   padding: 5rem;
 }
 
+#orders .table {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 #order-show {
   height: 100%;
   overflow-y: scroll;
-  padding: 5rem;
+  padding-top: 4rem;
 }
 
 #order-show span {
   display: block;
+}
+
+#order-show .wr {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5rem;
 }
 
