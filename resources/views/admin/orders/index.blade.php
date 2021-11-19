@@ -5,7 +5,7 @@
         <div class="row w-100 h-100 m-0">
             <div id="links" class="col-3">@include('admin.includes.links')</div>
             <div id="orders" class="col-9">
-                <table class="table ">
+                <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -22,7 +22,7 @@
                         @forelse ($orders as $order)
                             <tr>
                                 <th scope="row">{{ $order->id }}</th>
-                                <td>{{ $order->name }}</td>
+                                <td >{{ $order->name }}</td>
                                 <td>{{ $order->email }}</td>
                                 <td>{{ $order->address }}</td>
                                 <td>{{ $order->phone }}</td>
