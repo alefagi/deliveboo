@@ -92,9 +92,13 @@ export default {
     list-style-type: none;
     a {
       color: white;
+      text-decoration: none;
       i {
         padding-right: 8px;
       }
+    }
+    a:hover {
+      color: #38C172;
     }
   }  
 
@@ -112,6 +116,10 @@ export default {
       border-radius: 5px;
       border: 1px solid white;
       color: white;
+    }
+    a:hover {
+      color: #38C172;
+      border-color: #38C172;
     }
   }
 
