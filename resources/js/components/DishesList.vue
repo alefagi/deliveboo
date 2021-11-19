@@ -120,6 +120,8 @@
           </div>
         </div>
       </div>
+      
+      <Footer />
     </div>
   </div>
 </template>
@@ -129,6 +131,7 @@ import RestaurantHeader from "./RestaurantHeader";
 import ErrorMessage from "./ErrorMessage.vue";
 import Load from "./Load.vue";
 import Jumbotron from "./Jumbotron.vue";
+import Footer from "./Footer.vue";
 
 export default {
   components: {
@@ -136,6 +139,7 @@ export default {
     ErrorMessage,
     Load,
     Jumbotron,
+    Footer,
   },
   data() {
     return {
