@@ -15,7 +15,7 @@
     </div>
     <div class="container text-center">
       <div
-        class="form-cuisine"
+        class="form-cuisine mr-3"
         v-for="cuisine in cuisines"
         :key="cuisine.index"
       >
@@ -27,13 +27,14 @@
           v-model="checkedCuisines"
         />
         <label
-          class="cuisine-img mr-2"
+          class="cuisine-img"
           :class="
             checkedCuisines.includes(cuisine.id) ? 'cuisine-img-checked' : ''
           "
           :for="cuisine.name"
           ><img :src="cuisine.cover" alt=""
         /></label>
+        <div>{{cuisine.name}}</div>
       </div>
     </div>
     
@@ -136,7 +137,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .search-bar {
   text-align: center;
   margin-top: -200px;
@@ -145,9 +146,13 @@ export default {
 .form-cuisine {
   display: inline-block;
   margin-bottom: 20px;
+  div {
+    font-size: 13px;
+  }
 }
 .cuisine-checkbox {
   display: none;
+
 }
 .cuisine-img {
   text-align: center;
