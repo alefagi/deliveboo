@@ -1,17 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Purchase went trough. Your food is about to come</h1>
-    <a href="{{url('/')}}">Back to home</a>
+@extends('layouts.guest')
 
-    <script>
+@section('content')
+    <div class="container">
+        <h1>Purchase went trough. Your food is about to come</h1>
+        <hr>
+        <h2>Your Data</h2>
+        <ul>
+          <li><strong>Name: </strong>{{ $data['name'] }}</li>
+          <li><strong>E-mail: </strong>{{$data['email'] }}</li>
+          <li><strong>Address: </strong>{{$data['address']}}</li>
+          <li><strong>Phone number: </strong>{{$data['phone']}}</li>
+        </ul>
+        
+        <h2>Order Summary</h2>
+        <ul>
+          @foreach ($cart as $item)
+          <li>
+           <h5>
+             {{$item['dish']['name']}} | {{$item['dish']['price']}} &euro;
+          </h5>
+          <b><span>Quantity: {{$item['quantity']}}</span></b> 
+          <b><p>Price: {{$item['dish']['price'] * $item['quantity'] }} €</p></b> 
+        </li>
+          @endforeach
+        </ul>
+        <hr>
+        <div>
+          <h4>Total: {{ $total }} €</h3>
+        </div>
+        <a href="{{url('/')}}" class="btn-style">Back to home</a>
+
+    </div>
+@endsection
+
+@section('script')
+        <script>
         localStorage.clear()
     </script>
-</body>
-</html>
+@endsection

@@ -23,7 +23,7 @@ class OrderController extends Controller
      */
     public function payment($total)
     {
-        $gateway = new Braintree\Gateway ([
+        $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
             'publicKey' => config('services.braintree.publicKey'),
@@ -34,8 +34,9 @@ class OrderController extends Controller
         return view('guest.orders.payment', compact('token', 'total'));
     }
 
-    public function store(Request $request, $total) {
-        $gateway = new Braintree\Gateway ([
+    public function store(Request $request, $total)
+    {
+        $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
             'publicKey' => config('services.braintree.publicKey'),
@@ -62,8 +63,8 @@ class OrderController extends Controller
             $order->total = $total;
             $order->status = 0;
             $order->save();
-            
-            foreach($cart as $item) {
+
+            foreach ($cart as $item) {
                 $order->dishes()->attach($item['dish']['id'], ['quantity' => $item['quantity']]);
             }
 
@@ -74,15 +75,18 @@ class OrderController extends Controller
 
             $emails = [$order->email, $restaurantEmail];
 
-            foreach($emails as $email) {
+            foreach ($emails as $email) {
                 Mail::to($email)->send(new OrderConfirmationMail());
             }
-            
-            return view('guest.orders.confirmation');
+
+            $cart = json_decode($_COOKIE['cart'], true);
+            $data = json_decode($_COOKIE['data'], true);
+            $total = json_decode($_COOKIE['total'], true);
+            return view('guest.orders.confirmation', compact('cart', 'data', 'total'));
         } else {
             $errorString = "An error occured with the payment we're sorry";
 
-            foreach($result->errors->deepAll() as $error) {
+            foreach ($result->errors->deepAll() as $error) {
                 $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
             }
 
@@ -97,21 +101,21 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($cart)
-    {   
+    {
         $auxArray = json_decode($cart);
         $cart = [];
-        foreach($auxArray as $item) {
+        foreach ($auxArray as $item) {
             array_push($cart, (object)["dish" => Dish::findOrFail($item->dishId), "quantity" => $item->quantity]);
         };
         $total = 0;
-        foreach($cart as $item){
+        foreach ($cart as $item) {
             $total += $item->dish->price * $item->quantity;
         };
         $order = new Order();
 
-        setcookie('cart', json_encode($cart), time()+3600);
+        setcookie('cart', json_encode($cart), time() + 3600);
 
-        return view('guest.orders.create', compact('order','cart','total'));
+        return view('guest.orders.create', compact('order', 'cart', 'total'));
     }
 
     /**
@@ -132,14 +136,14 @@ class OrderController extends Controller
         ]);
 
         $total = 0;
-        foreach($cart as $item){
-            $total += $item['dish']['price'] * $item['quantity']; 
+        foreach ($cart as $item) {
+            $total += $item['dish']['price'] * $item['quantity'];
         };
 
         $data = $request->all();
-        setcookie('data', json_encode($data), time()+3600);
-        setcookie('total', json_encode($total), time()+3600);
+        setcookie('data', json_encode($data), time() + 3600);
+        setcookie('total', json_encode($total), time() + 3600);
 
-        return redirect()->route('buy.payment', ['total' => $total]);
+        return redirect()->route('buy.payment', compact('total', 'data', 'cart'));
     }
 }
