@@ -21973,12 +21973,27 @@ a.text-dark:focus {
   padding-left: 0;
 }
 
+#links hr {
+  margin: 0;
+}
+
 #links .user {
   padding: 1rem;
 }
 
 #links .user a {
   color: black;
+}
+
+#links .user-name {
+  padding: 0.5rem;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1rem;
+}
+
+#links a.user-name {
+  margin-top: 1rem;
 }
 
 #links a.link {
