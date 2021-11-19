@@ -10991,6 +10991,16 @@ header {
   text-decoration: none;
 }
 
+.elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.w-auto {
+  width: auto;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -21940,6 +21950,20 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+#register {
+  height: 100%;
+  padding: 5rem;
+}
+
+#register .card {
+  overflow-y: scroll;
+}
+
+#register img {
+  height: 50px;
+  width: 50px;
 }
 
 #links {
