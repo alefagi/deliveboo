@@ -1,7 +1,14 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="container">
+
+
+
+  <div id="loader" class="d-none">
+    ciao
+  </div>
+
+    <div id="payment-container" class="container">
       @if (session('success_message'))
           <div class="alert alert-success">
               {{ session('success_message') }}
@@ -32,9 +39,16 @@
 
 @section('script')
     <script src="https://js.braintreegateway.com/web/dropin/1.32.0/js/dropin.min.js"></script>
+    <script src="{{asset('js/paymment.js')}}"></script>
+
     <script>
         var form = document.querySelector('#payment-form');
         var client_token = "{{$token}}";
+
+        loaderElement = document.getElementById('loader');
+        paymentContainerElement= document.getElementById('payment-container');
+
+        let isLoading = false;
 
         braintree.dropin.create({
           authorization: client_token,
@@ -58,6 +72,8 @@
 
               // Add the nonce to the form and submit
               document.querySelector('#nonce').value = payload.nonce;
+              loaderElement.classList.remove('d-none');
+              paymentContainerElement.classList.add('d-none')
               form.submit();
             });
           });
