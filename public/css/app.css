@@ -21990,17 +21990,18 @@ a.text-dark:focus {
 }
 
 #links a.link:hover {
-  background-color: lightgray;
+  background-color: #d0eb99;
   opacity: 0.9;
   text-decoration: none;
 }
 
 #links a.link i {
   margin: 0 1.5rem 0 1.5rem;
+  color: #00ccbc;
 }
 
 .active {
-  background-color: lightgray;
+  background-color: #d0eb99;
 }
 
 #statistics {
