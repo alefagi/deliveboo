@@ -28,7 +28,7 @@
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->date }}</td>
                                 <td>{{ $order->total }}</td>
-                                <td><a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-primary">View</a></td>
+                                <td><a href="{{ route('admin.orders.show', $order->id) }}" class="btn btn-info">View</a></td>
                             </tr>
                         @empty
                         <tr>

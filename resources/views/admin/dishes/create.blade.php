@@ -67,7 +67,7 @@
           </div>
         
           <div class="buttons">
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-info">Save</button>
             <a href="{{ route('admin.dishes.index') }}" class="btn btn-secondary">Back to dishes list</a>
           </div>
 

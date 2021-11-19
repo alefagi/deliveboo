@@ -14,9 +14,8 @@
                             <th scope="col">Price</th>
                             <th scope="col">Tags</th>
                             <th scope="col">Visibility</th>
-                            <th scope="col">View</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Remove</th>
+                            <th scope="col">Buttons</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -36,14 +35,14 @@
                                     @endforelse
                                 </td>
                                 <td>{{ $dish->visible }}</td>
-                                <td><a href="{{ route('admin.dishes.show', $dish->id) }}" class="btn btn-primary">View</a></td>
-                                <td><a href="{{ route('admin.dishes.edit', $dish->id) }}" class="btn btn-warning">Edit</a></td>
-                                <td>
+                                <td class="d-flex">
+                                    <a href="{{ route('admin.dishes.show', $dish->id) }}" class="btn btn-info">View</a>
+                                    <a href="{{ route('admin.dishes.edit', $dish->id) }}" class="btn btn-secondary ml-2">Edit</a>
                                     <form action="{{ route('admin.dishes.destroy', $dish->id)}}" method="post" class="ml-2 delete-button">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>    
+                                    </form>   
                                 </td>
                             </tr>
                         @empty
