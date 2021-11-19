@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container h-100">    
+
     <div id="register" class="row justify-content-center h-100">
         <div class="col-md-12 h-100">
             <div class="card h-100">
@@ -134,7 +135,7 @@
                        
                         <div class="form-group row pb-5">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info">
                                     {{ __('Register') }}
                                 </button>
                             </div>
