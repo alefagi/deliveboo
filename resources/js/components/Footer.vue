@@ -2,7 +2,7 @@
   <section id="footer">
     <div class="container">
       <div class="footer-top row pb-5">
-        <div class="social col-4">
+        <div class="social col-12 col-md-4 pb-5">
           <div class="logo">
             <a class="logo-brand"><i class="fas fa-utensils"></i> DELIVEBOO </a>
           </div>
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="links-container col-4">
+        <div class="links-container col-12 col-md-4 pb-5">
           <div class="links-list">
             <h5>Discover Deliveboo</h5>
             <ul>
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="newsletter col-4">
+        <div class="newsletter col-12 col-md-4 pb-5">
           <h5>Newsletter</h5>
           <div>Sign up and receive the latest tips via email.</div>
           <div>Write your email <span>*</span></div>
@@ -148,12 +148,6 @@ export default {
       font-weight: bold;
       border: 1px solid #ced4da;
     }
-  }
-  
-  .links-container {
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
   }
 
   .footer-bottom {
