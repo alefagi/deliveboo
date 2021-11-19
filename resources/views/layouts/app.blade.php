@@ -24,7 +24,8 @@
 <body>
   
 
-        <main style="background-color: lightgray" class="vh-100 vw-100">
+        <main style="background: rgb(208,235,153);
+        background: linear-gradient(149deg, rgba(208,235,153,1) 0%, rgba(208,235,153,1) 50%, rgba(0,204,188,1) 50%);" class="vh-100 vw-100">
             @yield('content')
         </main>
     </div>
