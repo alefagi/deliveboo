@@ -10991,6 +10991,16 @@ header {
   text-decoration: none;
 }
 
+.elipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.w-auto {
+  width: auto;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -21942,11 +21952,29 @@ a.text-dark:focus {
   }
 }
 
+#register {
+  height: 100%;
+  padding: 5rem;
+}
+
+#register .card {
+  overflow-y: scroll;
+}
+
+#register img {
+  height: 50px;
+  width: 50px;
+}
+
 #links {
   background-color: gray;
   height: 100%;
   padding-right: 0;
   padding-left: 0;
+}
+
+#links hr {
+  margin: 0;
 }
 
 #links .user {
@@ -21955,6 +21983,17 @@ a.text-dark:focus {
 
 #links .user a {
   color: black;
+}
+
+#links .user-name {
+  padding: 0.5rem;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1rem;
+}
+
+#links a.user-name {
+  margin-top: 1rem;
 }
 
 #links a.link {
@@ -21966,17 +22005,18 @@ a.text-dark:focus {
 }
 
 #links a.link:hover {
-  background-color: lightgray;
+  background-color: #d0eb99;
   opacity: 0.9;
   text-decoration: none;
 }
 
 #links a.link i {
   margin: 0 1.5rem 0 1.5rem;
+  color: #00ccbc;
 }
 
 .active {
-  background-color: lightgray;
+  background-color: #d0eb99;
 }
 
 #statistics {
@@ -21993,6 +22033,8 @@ a.text-dark:focus {
 #statistics .graph canvas {
   width: 50%;
   height: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
 }
 
 #dishes {
@@ -22011,7 +22053,11 @@ a.text-dark:focus {
 
 #dishes tr .cover img {
   height: 50px;
-  width: auto;
+  width: 50px;
+}
+
+#dishes .table {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #dish-show {
@@ -22023,6 +22069,11 @@ a.text-dark:focus {
 #dish-show img {
   width: 300px;
   height: 300px;
+}
+
+#dish-show .wr {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5rem;
 }
 
 #dish-edit {
@@ -22053,13 +22104,22 @@ a.text-dark:focus {
   padding: 5rem;
 }
 
+#orders .table {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 #order-show {
   height: 100%;
   overflow-y: scroll;
-  padding: 5rem;
+  padding-top: 4rem;
 }
 
 #order-show span {
   display: block;
+}
+
+#order-show .wr {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5rem;
 }
 

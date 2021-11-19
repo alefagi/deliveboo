@@ -1,25 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container h-100">    
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+    <div id="register" class="row justify-content-center h-100">
+        <div class="col-md-12 h-100">
+            <div class="card h-100">
                 <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+                @if ($errors->any())
+                    <div class="alert alert-danger m-2">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                     </div>
+                @endif
+                <div class="card-body h-100">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}" class="h-100">
                         @csrf
 
                         <div class="form-group row">
@@ -135,9 +133,9 @@
                             </div>
                         </div>
                        
-                        <div class="form-group row mb-0">
+                        <div class="form-group row pb-5">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info">
                                     {{ __('Register') }}
                                 </button>
                             </div>

@@ -3,7 +3,9 @@
     height: 100%;
     padding-right: 0;
     padding-left: 0;
-
+    hr {
+        margin: 0;
+    }
     .user {
         padding: 1rem;
 
@@ -11,6 +13,16 @@
             color: black;
         }
     }
+    .user-name {
+        padding: 0.5rem;
+        background-color: white;
+        opacity: 0.8;
+        border-radius: 1rem;
+    }
+    a.user-name {
+        margin-top: 1rem;
+    }
+
     a.link {
         display: flex;
         align-items: center;
@@ -18,16 +30,17 @@
         font-size: larger;
         color: black;
         &:hover {
-            background-color: lightgray;
+            background-color: #d0eb99;
             opacity: 0.9;
             text-decoration: none;
         }
         i {
             margin: 0 1.5rem 0 1.5rem;
+            color: #00ccbc;
         }
     }
 }
 
 .active {
-    background-color: lightgray;
+    background-color: #d0eb99;
 }
