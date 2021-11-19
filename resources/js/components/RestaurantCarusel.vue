@@ -17,6 +17,7 @@
               v-for="restaurant in presentRestaurants"
               :key="restaurant.id"
               :restaurant="restaurant"
+              :windowWidth="windowWidth"
             />
         </div>
         <div class="carusel-container text-center" v-else>
@@ -48,22 +49,31 @@ export default {
     data() {
     return {
         position: 0,
+        windowWidth: window.innerWidth,
         }
     },
     computed: {
         presentRestaurants() {
             let auxRestaurants = [];
-            for(let i = this.position; (i < this.position+3 && i < this.restaurants.length) ; i++) {
+            for(let i = this.position; (i < this.position+this.numberOfCards && i < this.restaurants.length) ; i++) {
                 auxRestaurants.push(this.restaurants[i]);
 
             }
-            if(auxRestaurants.length<3 && this.restaurants.length!=auxRestaurants.length) {
-                for(let i = 0; (i < 4 - auxRestaurants.length && i < this.restaurants.length - auxRestaurants.length) ; i++ ) {
+            if(auxRestaurants.length<this.numberOfCards && this.restaurants.length!=auxRestaurants.length) {
+                for(let i = 0; (i < (this.numberOfCards +1) - auxRestaurants.length && i < this.restaurants.length - auxRestaurants.length) ; i++ ) {
                     auxRestaurants.push(this.restaurants[i]);
                 }
             }
             return auxRestaurants;
-        }, 
+        },
+        numberOfCards() {
+            if (this.windowWidth > 990) {
+                return 3
+            } else if (this.windowWidth > 576) {
+                return 2
+            }
+            return 1
+        }
     },
     watch: {
         restaurants: function() {
@@ -86,6 +96,12 @@ export default {
             }
         }
     },
+    mounted() {
+        window.addEventListener('resize', () => {
+            console.log(window.innerWidth);
+            this.windowWidth = window.innerWidth;
+        })
+    }
 }
 </script>
 

@@ -12,7 +12,7 @@
 export default {};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .jumbotron {
   position: relative;
   z-index: -1;
@@ -27,7 +27,7 @@ export default {};
   position: relative;
 
   font-size: 30px;
-  line-height: 10px;
+  line-height: 25px;
 }
 .jumbotron-text {
   position: absolute;
@@ -45,5 +45,7 @@ h1 {
 .p-special {
   font-style: italic;
   font-size: 20px;
+
+  
 }
 </style>

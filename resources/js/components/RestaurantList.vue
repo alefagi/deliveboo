@@ -13,7 +13,7 @@
         />
       </div>
     </div>
-    <div class="container text-center">
+    <div class="container text-center" :style="(windowWidth < 990) ? { width: '550px' } : {  }">
       <div
         class="form-cuisine mr-3"
         v-for="cuisine in cuisines"
@@ -44,7 +44,7 @@
       <h4 class="text-center">Don't know what you want? Here some of our favourite restaurants</h4>
       <RestaurantCarusel :restaurants="randomRestaurants" /> 
       <h4 class="text-center">If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
-      <RestaurantCarusel :restaurants="randomCuisineRestaurants" /> 
+      <RestaurantCarusel :restaurants="randomCuisineRestaurants"/> 
     </div>
   </div>
 </template>
@@ -73,6 +73,8 @@ export default {
 
       randomCuisine: [],
       randomCuisineRestaurants: [],
+
+      windowWidth: window.innerWidth,
     }
     },
     created: function(){
@@ -132,8 +134,14 @@ export default {
             }
         }
         return auxRestaurants;
-      },
+    },
   },
+  mounted() {
+  window.addEventListener('resize', () => {
+    console.log(window.innerWidth);
+    this.windowWidth = window.innerWidth;
+  })
+}
 }
 </script>
 
