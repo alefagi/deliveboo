@@ -39,8 +39,13 @@ export default {
     color: gray;
     font-size: 10px;
     padding-right: 15px;
+
 }
 h3 {
     padding-right: 15px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>

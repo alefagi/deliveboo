@@ -31,3 +31,13 @@ header {
 
     text-decoration: none;
 }
+
+
+.elipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.w-auto {
+    width: auto;
+}
