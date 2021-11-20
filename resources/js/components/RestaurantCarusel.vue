@@ -112,4 +112,9 @@ export default {
 .carusel-btn {
   width: 5%;
 }
+
+i:hover {
+    transform: scale(250%);
+    cursor: pointer;
+}
 </style>

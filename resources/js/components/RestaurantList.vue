@@ -162,6 +162,11 @@ export default {
     font-size: 13px;
   }
 }
+
+.form-cuisine label:hover {
+  cursor: pointer;
+}
+
 .cuisine-checkbox {
   display: none;
 

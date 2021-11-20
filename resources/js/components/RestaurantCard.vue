@@ -36,6 +36,7 @@ export default {
 }
 .card-style:hover .card-img {
     transform: scale(105%);
+    cursor: pointer;
 }
 .card-img {
     width: 100%;
