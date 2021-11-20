@@ -1,5 +1,5 @@
 #links {
-    background-color: gray;
+    background-color: black;
     height: 100%;
     padding-right: 0;
     padding-left: 0;
@@ -14,10 +14,12 @@
         }
     }
     .user-name {
-        padding: 0.5rem;
+        display: inline-block;
+        padding: 0.3rem 01rem;
         background-color: white;
-        opacity: 0.8;
+        opacity: 1;
         border-radius: 1rem;
+        margin-top: 0.5rem;
     }
     a.user-name {
         margin-top: 1rem;
@@ -28,19 +30,19 @@
         align-items: center;
         height: 4rem;
         font-size: larger;
-        color: #00ccbc;
+        color: #d0eb99;
         &:hover {
-            background-color: #d0eb99;
+            background-color: #00ccbc;
             opacity: 0.9;
             text-decoration: none;
         }
         i {
             margin: 0 1.5rem 0 1.5rem;
-            color: #00ccbc;
+            color: #d0eb99;
         }
     }
 }
 
 .active {
-    background-color: #d0eb99;
+    background-color: #00ccbc;
 }

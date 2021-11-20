@@ -6,6 +6,7 @@
       <div id="links" class="col-3">@include('admin.includes.links')</div>
 
       <div id="new-dish" class="col-9">
+        <h4>New dish</h4>
         <form method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.store') }}">
           @csrf
           <div class="form-group">

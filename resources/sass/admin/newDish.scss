@@ -3,6 +3,16 @@
     overflow-y: scroll;
     padding: 5rem;
 
+    form {
+        background-color: white;
+        padding: 1rem;
+    }
+    h4 {
+        background-color: rgb(240, 240, 240);
+        padding: 1rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid gray;
+    }
     #cover-preview {
         width: 200px;
         height: 200px;

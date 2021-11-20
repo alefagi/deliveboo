@@ -40,22 +40,6 @@ class DishesTableSeeder extends Seeder
             ],
             [
             'visibility' => 1,
-            'user_id' => 1,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 1,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
             'user_id' => 2,
             'name' => 'Vanilla ice cream small cone',
             'description' => 'Fresh and delicious small ice cream cone',
@@ -81,30 +65,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 2,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 2,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 2,
-            'name' => 'Chocolate ice cream big cone',
-            'description' => 'Fresh and delicious big ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 4.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 2,
             'name' => 'Coffee ice cream small cone',
             'description' => 'Fresh and delicious small ice cream cone',
             'cover' => 'https://www.simplyrecipes.com/thmb/wjKlfxU1uYI7jQ1NCZFT-VM07FM=/735x0/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__04__coffee-ice-cream-vertical-00dc174a766a4ff79f443e516e11fcb7.jpg',
@@ -118,8 +78,8 @@ class DishesTableSeeder extends Seeder
             'cover' => 'https://www.simplyrecipes.com/thmb/wjKlfxU1uYI7jQ1NCZFT-VM07FM=/735x0/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__04__coffee-ice-cream-vertical-00dc174a766a4ff79f443e516e11fcb7.jpg',
             'price' => 3.00
             ],
-            [
-            'visibility' => 1,
+            [ 
+            'visibility' => 1, 
             'user_id' => 2,
             'name' => 'Coffee ice cream big cone',
             'description' => 'Fresh and delicious big ice cream cone',
@@ -212,30 +172,6 @@ class DishesTableSeeder extends Seeder
             'name' => 'Vanilla ice cream big cone',
             'description' => 'Fresh and delicious big ice cream cone',
             'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-            'price' => 4.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 3,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 3,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 3,
-            'name' => 'Chocolate ice cream big cone',
-            'description' => 'Fresh and delicious big ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
             'price' => 4.00
             ],
             [
@@ -460,30 +396,6 @@ class DishesTableSeeder extends Seeder
             'name' => 'Vanilla ice cream big cone',
             'description' => 'Fresh and delicious big ice cream cone',
             'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-            'price' => 4.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 5,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 5,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 5,
-            'name' => 'Chocolate ice cream big cone',
-            'description' => 'Fresh and delicious big ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
             'price' => 4.00
             ],
             [
@@ -713,14 +625,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 6,
-            'name' => 'Hawaiian special pizza pizza',
-            'description' => "Pineapple doesn't belong to pizza!!!",
-            'cover' => 'https://lh3.googleusercontent.com/proxy/da289UfcW4AbTgFCdijXh_RIlFA7yxuL23SmXVKQkiKkwxlFyv1xBtF7ywY0-grRSZFk95qTocL-cSzu0ndn5RGd6leBOsHHxxuvgDFZJy0Ju3wyy0k0MTpknnrLa9KAOIKsYCD5Tc7E1T4',
-            'price' => 100.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 6,
             'name' => 'Bottle of water small',
             'description' => 'Fresh small bottle of water',
             'cover' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR93H4EpqHcrtTL8erIjmuEJIRlWuy_aR3xgg&usqp=CAU',
@@ -853,14 +757,6 @@ class DishesTableSeeder extends Seeder
             'description' => 'Italian pizza with mozzarella chese, pistachio and mortadella ham',
             'cover' => 'https://blog.giallozafferano.it/eleme/wp-content/uploads/2020/03/Pizza-bianca-mozzarella-mortadella-e-granella-di-pistacchi.jpg',
             'price' => 4.50
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 7,
-            'name' => 'Hawaiian special pizza pizza',
-            'description' => "Pineapple doesn't belong to pizza!!!",
-            'cover' => 'https://lh3.googleusercontent.com/proxy/da289UfcW4AbTgFCdijXh_RIlFA7yxuL23SmXVKQkiKkwxlFyv1xBtF7ywY0-grRSZFk95qTocL-cSzu0ndn5RGd6leBOsHHxxuvgDFZJy0Ju3wyy0k0MTpknnrLa9KAOIKsYCD5Tc7E1T4',
-            'price' => 100.00
             ],
             [
             'visibility' => 1,
@@ -1001,14 +897,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 8,
-            'name' => 'Hawaiian special pizza pizza',
-            'description' => "Pineapple doesn't belong to pizza!!!",
-            'cover' => 'https://lh3.googleusercontent.com/proxy/da289UfcW4AbTgFCdijXh_RIlFA7yxuL23SmXVKQkiKkwxlFyv1xBtF7ywY0-grRSZFk95qTocL-cSzu0ndn5RGd6leBOsHHxxuvgDFZJy0Ju3wyy0k0MTpknnrLa9KAOIKsYCD5Tc7E1T4',
-            'price' => 100.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 8,
             'name' => 'Bottle of water small',
             'description' => 'Fresh small bottle of water',
             'cover' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR93H4EpqHcrtTL8erIjmuEJIRlWuy_aR3xgg&usqp=CAU',
@@ -1097,14 +985,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 9,
-            'name' => 'Huramaki n4',
-            'description' => 'Typical sushi dish. 6 pieces',
-            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
-            'price' => 5.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 9,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1244,14 +1124,6 @@ class DishesTableSeeder extends Seeder
             'name' => 'Huramaki n3',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.miyosushi.it/wp-content/uploads/2019/08/113.png',
-            'price' => 5.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 10,
-            'name' => 'Huramaki n4',
-            'description' => 'Typical sushi dish. 6 pieces',
-            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
             'price' => 5.00
             ],
             [
@@ -1401,14 +1273,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 11,
-            'name' => 'Huramaki n4',
-            'description' => 'Typical sushi dish. 6 pieces',
-            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
-            'price' => 5.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 11,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1548,14 +1412,6 @@ class DishesTableSeeder extends Seeder
             'name' => 'Huramaki n3',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.miyosushi.it/wp-content/uploads/2019/08/113.png',
-            'price' => 5.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 12,
-            'name' => 'Huramaki n4',
-            'description' => 'Typical sushi dish. 6 pieces',
-            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
             'price' => 5.00
             ],
             [
@@ -1635,7 +1491,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 12,
             'name' => 'Poke bowl n2 small',
             'description' => 'Typical asian dish. Small bowl',
-            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
+            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
             'price' => 5.00
             ],
             [
@@ -1643,7 +1499,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 12,
             'name' => 'Poke bowl n2 big',
             'description' => 'Typical asian dish. Big bowl',
-            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
+            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
             'price' => 8.00
             ],
             [
@@ -1769,14 +1625,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 13,
-            'name' => 'Huramaki n4',
-            'description' => 'Typical sushi dish. 6 pieces',
-            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
-            'price' => 5.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 13,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1851,7 +1699,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 13,
             'name' => 'Poke bowl n2 small',
             'description' => 'Typical asian dish. Small bowl',
-            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
+            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
             'price' => 5.00
             ],
             [
@@ -1859,7 +1707,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 13,
             'name' => 'Poke bowl n2 big',
             'description' => 'Typical asian dish. Big bowl',
-            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
+            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
             'price' => 8.00
             ],
             [
@@ -1985,14 +1833,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 14,
-            'name' => 'Huramaki n4',
-            'description' => 'Typical sushi dish. 6 pieces',
-            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
-            'price' => 5.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 14,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -2067,7 +1907,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 14,
             'name' => 'Poke bowl n2 small',
             'description' => 'Typical asian dish. Small bowl',
-            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
+            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
             'price' => 5.00
             ],
             [
@@ -2075,7 +1915,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 14,
             'name' => 'Poke bowl n2 big',
             'description' => 'Typical asian dish. Big bowl',
-            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
+            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
             'price' => 8.00
             ],
             [
@@ -2772,30 +2612,6 @@ class DishesTableSeeder extends Seeder
             'name' => 'Vanilla ice cream big cone',
             'description' => 'Fresh and delicious big ice cream cone',
             'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-            'price' => 4.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 19,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 19,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 19,
-            'name' => 'Chocolate ice cream big cone',
-            'description' => 'Fresh and delicious big ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
             'price' => 4.00
             ],
             [
@@ -2977,30 +2793,6 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 20,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 20,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 20,
-            'name' => 'Chocolate ice cream big cone',
-            'description' => 'Fresh and delicious big ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 4.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 20,
             'name' => 'Coffee ice cream small cone',
             'description' => 'Fresh and delicious small ice cream cone',
             'cover' => 'https://www.simplyrecipes.com/thmb/wjKlfxU1uYI7jQ1NCZFT-VM07FM=/735x0/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__04__coffee-ice-cream-vertical-00dc174a766a4ff79f443e516e11fcb7.jpg',
@@ -3172,30 +2964,6 @@ class DishesTableSeeder extends Seeder
             'name' => 'Vanilla ice cream big cone',
             'description' => 'Fresh and delicious big ice cream cone',
             'cover' => 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dmFuaWxsYSUyMGljZSUyMGNyZWFtfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-            'price' => 4.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 21,
-            'name' => 'Chocolate ice cream small cone',
-            'description' => 'Fresh and delicious small ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 2.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 21,
-            'name' => 'Chocolate ice cream medium cone',
-            'description' => 'Fresh and delicious medium ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
-            'price' => 3.00
-            ],
-            [
-            'visibility' => 1,
-            'user_id' => 21,
-            'name' => 'Chocolate ice cream big cone',
-            'description' => 'Fresh and delicious big ice cream cone',
-            'cover' => 'https://www.thespruceeats.com/thmb/BYOHKcXhja-ez7Fr9obgBrDHJ1Y=/3064x2042/filters:fill(auto,1)/easy-chocolate-ice-cream-recipe-1945798-hero-01-45d9f26a0aaf4c1dba38d7e0a2ab51e2.jpg',
             'price' => 4.00
             ],
             [

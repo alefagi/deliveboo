@@ -11,26 +11,26 @@
          <div id="links" class="col-3">@include('admin.includes.links')</div>
          <div id="statistics" class="col-9 h-100 w-100">
                 <div class="graph">
-                    <div class="totals d-flex">
-                        <div class="m-3">
+                    <div class="totals d-flex mb-3">
+                        <div class="">
                             <h4>Totale {{$current_year}}</h4>
                             <div id="total-current-year"></div>
                         </div>
-                        <div class="m-3">
+                        <div class="ml-5">
                             <h4>Totale {{$months[$current_month-1]}}</h4>
                             <div id="total-current-month"></div>
                         </div>
                     </div>
-                    <select name="type_chart" id="type-chart">
+                    <select class="btn-style rounded-pill py-1" name="type_chart" id="type-chart">
                         <option value="year_chart">Annuale</option>
                         <option selected value="month_chart">Mensile</option>
                     </select>
-                    <select name="year" id="year">
+                    <select class="btn-style rounded-pill py-1" name="year" id="year">
                         @foreach ($years as $year)
                             <option value="{{$year}}" @if ($year == $current_year) {{'selected'}} @endif>{{$year}}</option>
                         @endforeach
                     </select>
-                                <select name="month" id="month" class="">
+                    <select class="btn-style rounded-pill py-1" name="month" id="month" class="">
                         @for ($i = 0; $i < 12; $i++)
                             <option value="{{$i+1}}" @if (($i+1) == $current_month) {{'selected'}}@endif>{{$months[$i]}} </option>
                         @endfor
@@ -152,13 +152,13 @@
     function getTotalYear(type, year) {
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const total = getData(type, year)
-        return total.reduce(reducer)
+        return total.reduce(reducer) + " €"
         
     }
     function getTotalMonth(type, year, month) {
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const total = getData(type, year, month)
-        return total.reduce(reducer)
+        return total.reduce(reducer) + " €"
         
     }
     totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}})
