@@ -3,9 +3,9 @@
 @section('content')
 
 
-
-  <div id="loader" class="d-none">
-    ciao
+  <div id="loader-container" class="d-none">
+    <h2 class="text-center">Payment in progress</h2>
+    <div id="loader" class="loading-spinner m-auto"></div>
   </div>
 
     <div id="payment-container" class="container">
@@ -45,7 +45,7 @@
         var form = document.querySelector('#payment-form');
         var client_token = "{{$token}}";
 
-        loaderElement = document.getElementById('loader');
+        loaderElement = document.getElementById('loader-container');
         paymentContainerElement= document.getElementById('payment-container');
 
         let isLoading = false;
