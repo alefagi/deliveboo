@@ -11,7 +11,7 @@
           @csrf
           <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name'), $dish->name }}">
+              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $dish->name) }}">
               @error('name')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -20,7 +20,7 @@
           </div>
           <div class="form-group mb-5">
             <label for="description">Description</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5">{{ old('description'), $dish->description }}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5">{{ old('description', $dish->description) }}</textarea>
             @error('description')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -30,19 +30,19 @@
           <div class="form-group mb-4">
             <label class="mb-2" for="cover">Choose an image from your files or paste an URL</label>
             <input type="file" class="form-control-file mb-2 @error('cover') is-invalid @enderror" id="cover-file" name="cover" accept="image/*">
-            <input placeholder="Paste an URL" type="text" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover'), $dish->cover }}">
+            <input placeholder="Paste an URL" type="text" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover', $dish->cover) }}">
             @error('cover') 
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
             @enderror
             <div class="mb-2">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview"    id="cover-preview">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" id="cover-preview">
             </div>
           </div>
           <div class="form-group mb-4">
               <label for="price">Price</label>
-              <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price'), $dish->price }}">
+              <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price', $dish->price) }}">
               @error('price')
                 <div class="invalid-feedback">
                   {{ $message }}

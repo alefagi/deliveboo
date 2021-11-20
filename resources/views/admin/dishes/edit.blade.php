@@ -13,7 +13,7 @@
           @csrf
           <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $dish->name }}">
+              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $dish->name) }}">
               @error('name')
                 <div class="invalid-feedback">
                   {{ $message }}
@@ -23,7 +23,7 @@
       
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5">{{ $dish->description }}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5">{{ old('description', $dish->description) }}</textarea>
             @error('description')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -34,19 +34,19 @@
           <div class="form-group mb-4">
             <label for="cover">Choose a Cover to Upload</label>
               <input type="file" class=" mb-2 form-control-file @error('cover') is-invalid @enderror" id="cover-file" name="cover" accept="image/*">
-              <input type="text" placeholder="URL" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover'), $dish->cover }}">
+              <input type="text" placeholder="URL" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover', $dish->cover) }}">
             @error('cover')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>
             @enderror
             <div class="mb-2">
-              <img src="{{ str_starts_with($dish->cover, 'http') ? $dish->cover : asset('storage/' . $dish->cover) }}" alt="cover-preview"  id="cover-preview">
+              <img src="{{ str_starts_with($dish->cover, 'http') ? $dish->cover : asset('storage/' . $dish->cover) }}" alt="cover-preview" id="cover-preview">
             </div>
           </div>
           <div class="form-group">
               <label for="price">Price</label>
-              <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ $dish->price }}">
+              <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price', $dish->price) }}">
               @error('price')
                 <div class="invalid-feedback">
                   {{ $message }}
