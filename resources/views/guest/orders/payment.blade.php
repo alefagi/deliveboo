@@ -3,38 +3,39 @@
 @section('content')
 
 
-  <div id="loader-container" class="d-none">
-    <h2 class="text-center">Payment in progress</h2>
-    <div id="loader" class="loading-spinner m-auto"></div>
-  </div>
-
-    <div id="payment-container" class="container">
-      @if (session('success_message'))
-          <div class="alert alert-success">
-              {{ session('success_message') }}
-          </div>
-      @endif
-      @if(count($errors) > 0)
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
-      <form method="post" id="payment-form" action="{{ route('buy.store', ['total' => $total]) }}">
-          @csrf
-          <section>
-              <h1>Il tuo totale è: {{$total}}</h1>
-              <div class="bt-drop-in-wrapper">
-                  <div id="bt-dropin"></div>
-              </div>
-          </section>
-          <input id="nonce" name="payment_method_nonce" type="hidden" />
-          <button class="button" type="submit"><span>Test Transaction</span></button>
-      </form>
+  <section id="payment-section">
+    <div id="loader-container" class="d-none">
+      <h2 class="text-center">Payment in progress</h2>
+      <div id="loader" class="loading-spinner m-auto"></div>
     </div>
+      <div id="payment-container" class="container">
+        @if (session('success_message'))
+            <div class="alert alert-success">
+                {{ session('success_message') }}
+            </div>
+        @endif
+        @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form method="post" id="payment-form" action="{{ route('buy.store', ['total' => $total]) }}">
+            @csrf
+            <section>
+                <h1>Il tuo totale è: {{$total}}</h1>
+                <div class="bt-drop-in-wrapper">
+                    <div id="bt-dropin"></div>
+                </div>
+            </section>
+            <input id="nonce" name="payment_method_nonce" type="hidden" />
+            <button class="button" type="submit"><span>Test Transaction</span></button>
+        </form>
+      </div>
+  </section>
 @endsection
 
 @section('script')
