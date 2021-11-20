@@ -3,13 +3,13 @@
   <div class="restaurants-list" v-else>
     <Jumbotron />
     <div class="search-bar">
-      <h3>Ricerca avanzata</h3>
+      <h3>Advanced Search</h3>
       <div>
         <input class="form-string rounded-pill text-center "
           type="text"
           id="serached-string"
           v-model="searchedString"
-          placeholder="Cerca per nome..."
+          placeholder="Search by name..."
         />
       </div>
     </div>

@@ -49,7 +49,7 @@
         </div>
         <div class="col">
           <div class="text-right">
-            Design with <i class="fas fa-utensils"></i> by Team5
+            Designed with <i class="fas fa-utensils"></i> by Team5
           </div>
         </div>
       </div>
