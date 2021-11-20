@@ -3,12 +3,12 @@
 @section('content')
 
 
-  <section id="payment-section">
-    <div id="loader-container" class="d-none">
+  <section id="payment-section" class="pt-5"  class="vh-100 vw-100">
+    <div id="loader-container" class="d-none mt-5">
       <h2 class="text-center">Payment in progress</h2>
       <div id="loader" class="loading-spinner m-auto"></div>
     </div>
-      <div id="payment-container" class="container">
+      <div id="payment-container" class="container mt-5">
         @if (session('success_message'))
             <div class="alert alert-success">
                 {{ session('success_message') }}

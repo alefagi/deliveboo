@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container pt-4">
+  <div class="container pt-5">
     <div class="row justify-content-center">
       <div class="col-8">
         <h1 class="text-center w-100">Your address data </h1>
