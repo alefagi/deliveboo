@@ -2,7 +2,7 @@
   <section id="footer">
     <div class="container">
       <div class="footer-top row pb-5">
-        <div class="social col-12 col-md-5 pb-5">
+        <div class="social col-12 col-md-4 pb-5">
           <div class="logo">
             <a class="logo-brand"><i class="fas fa-utensils"></i> DELIVEBOO </a>
           </div>
@@ -15,8 +15,7 @@
           </div>
         </div>
 
-        <div class="links-container col-12 col-md-3 pb-5">
-          <div class="links-list">
+        <div class="links-discover col-12 col-md-3 offset-md-1 pb-5">
             <h5>Discover Deliveboo</h5>
             <ul>
               <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Investors</a></li>
@@ -28,18 +27,18 @@
               <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Careers</a></li>
               <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Become a rider</a></li>
             </ul>
-          </div>
         </div>
 
-        <div class="newsletter col-12 col-md-4 pb-5">
-          <h5>Newsletter</h5>
-          <div>Sign up and receive the latest tips via email.</div>
-          <div>Write your email <span>*</span></div>
-          <form  method="post" class="your-email">
-            <label for="email"></label>
-            <input type="email" placeholder="example@example.com" class="form-control" id="email" name="email">
-            <button type="submit" class="btn mt-4">Subscribe</button>
-          </form>
+        <div class="links-legal col-12 col-md-3 offset-md-1 pb-5">
+          <h5>Legal</h5>
+          <ul>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Terms and conditions</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Privacy</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Cookies</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Modern Slavery Statement</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Tax Strategy</a></li>
+              <li><a href="#"><i class="fas fa-angle-right fa-sm"></i>Section 172 Statement</a></li>
+          </ul>
         </div>
       </div>
       <div class="footer-bottom row">
@@ -73,7 +72,7 @@ export default {
 
   h5 {
     margin-bottom: 20px;
-    color: white;
+    color: #38C172;
   }
 
   ul {
@@ -85,7 +84,7 @@ export default {
   }
 
   .logo-brand {
-    color: white;
+    color: #38C172;
   }
 
   li {
@@ -127,7 +126,7 @@ export default {
     width: 25%;
   }
 
-  .newsletter {
+  .links-legal {
     span {
       color: #38C172;
     }
