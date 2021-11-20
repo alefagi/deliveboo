@@ -26,13 +26,13 @@
         <form method="post" id="payment-form" action="{{ route('buy.store', ['total' => $total]) }}">
             @csrf
             <section>
-                <h1>Il tuo totale è: {{$total}}</h1>
+                <h1>Your Total is: {{$total}}</h1>
                 <div class="bt-drop-in-wrapper">
                     <div id="bt-dropin"></div>
                 </div>
             </section>
             <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="button" type="submit"><span>Test Transaction</span></button>
+            <button class="button btn-style" type="submit"><span>Test Transaction</span></button>
         </form>
       </div>
   </section>
@@ -40,7 +40,6 @@
 
 @section('script')
     <script src="https://js.braintreegateway.com/web/dropin/1.32.0/js/dropin.min.js"></script>
-    <script src="{{asset('js/paymment.js')}}"></script>
 
     <script>
         var form = document.querySelector('#payment-form');

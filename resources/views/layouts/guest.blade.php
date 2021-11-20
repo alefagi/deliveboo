@@ -12,7 +12,7 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body class="h-100">
         @include('includes.header')
         @yield('content')
         @yield('script')
