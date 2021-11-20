@@ -161,8 +161,8 @@
         return total.reduce(reducer) + " €"
         
     }
-    totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}})
-    totalMonthElement.innerText = getTotalMonth('month-chart', {{$current_year}}, 11)
+    totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}}).toFixed(2) + '€';
+    totalMonthElement.innerText = getTotalMonth('month-chart', {{$current_year}}, 11).toFixed(2) + '€';
 
 
     function updateChart(type, year, month = 0) {

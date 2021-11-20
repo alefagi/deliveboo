@@ -1,0 +1,22 @@
+#confirmation-section {
+    border: 1px solid $green;
+    border-radius: 5rem;
+}
+
+.loading-spinner {
+    width: 10rem;
+    height: 10rem;
+    border: 3px solid $orange;
+    position: absolute;
+    left: 47%;
+    top: 47%;
+    border-radius: 50%;
+    border-top-color: rgba($color: #000000, $alpha: 0);
+    animation: 1s spin infinite linear;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
