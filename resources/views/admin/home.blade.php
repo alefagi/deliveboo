@@ -152,13 +152,13 @@
     function getTotalYear(type, year) {
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const total = getData(type, year)
-        return total.reduce(reducer) + " €"
+        return total.reduce(reducer)
         
     }
     function getTotalMonth(type, year, month) {
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const total = getData(type, year, month)
-        return total.reduce(reducer) + " €"
+        return total.reduce(reducer)
         
     }
     totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}}).toFixed(2) + '€';
