@@ -1,6 +1,5 @@
 <template>
   <section id="loader">
-    <h1>Loading...</h1>
   </section>
 </template>
 
@@ -17,14 +16,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  color: rgb(250, 7, 7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url();
-}
-img {
-  height: 500px;
-  width: 500px;
+  background: url('https://cdn.dribbble.com/users/645440/screenshots/3266490/loader-2_food.gif') no-repeat center center;
+  background-color: white;
 }
 </style>
