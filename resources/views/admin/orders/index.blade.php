@@ -5,6 +5,7 @@
         <div class="row w-100 h-100 m-0">
             <div id="links" class="col-3">@include('admin.includes.links')</div>
             <div id="orders" class="col-9">
+                <h4>All your orders</h4>
                 <table class="table">
                     <thead>
                     <tr>

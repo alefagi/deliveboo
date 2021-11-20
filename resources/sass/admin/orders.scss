@@ -3,6 +3,13 @@
     overflow-y: scroll;
     padding: 5rem;
 
+    h4 {
+        background-color: rgba(240, 240, 240, 0.8);
+        padding: 1rem;
+        margin-bottom: 0;
+        border-bottom: 1px solid gray;
+    }
+
     .table {
         background-color: rgba(255, 255, 255, 0.8);
     }
