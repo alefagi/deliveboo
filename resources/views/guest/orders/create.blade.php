@@ -3,8 +3,8 @@
 @section('content')
 
   <div class="container pt-5">
-    <div class="row justify-content-center mt-5">
-      <div class="col-8">
+    <div class="row justify-content-between mt-5">
+      <div class="col-7">
         <h1 class="text-center w-100">Your address data </h1>
         <form method="post" enctype="multipart/form-data" action="{{ url('buy/{cart}') }}">
           @csrf
