@@ -163,9 +163,9 @@ export default {
       }
 
       return this.dishes.filter((dish) => {
-        let auxBoolean = false;
+        let auxBoolean = true;
         dish.tags.forEach((tag) => {
-          if (this.checkedTags.includes(tag.id)) auxBoolean = true;
+          if (!this.checkedTags.includes(tag.id)) auxBoolean = false;
         });
         return auxBoolean;
       });

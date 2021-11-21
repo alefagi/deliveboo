@@ -100,7 +100,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => 'https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly9kMXJhbHNvZ25qbmczNy5jbG91ZGZyb250Lm5ldC9iOGRhYzJiYi0zNTA1LTQ1ZDYtOWQ4Ny01NTI4NGVlNjk0MTcuanBlZw==',
             ], 
             [
-                'name' => 'Thats tasty',
+                'name' => "That's tasty",
                 'cover' => 'https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly9kMXJhbHNvZ25qbmczNy5jbG91ZGZyb250Lm5ldC9jNjFiOWM3OS04ZmM2LTQ3NWYtOTg3Zi00MmRhNTI0OGM2MWEuanBlZw==',
             ]
         ];

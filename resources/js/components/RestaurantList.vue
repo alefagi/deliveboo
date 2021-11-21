@@ -43,7 +43,7 @@
       <RestaurantCarusel :restaurants="searchedRestaurants" /> 
       <h4 class="text-center">Don't know what you want? Here some of our favourite restaurants</h4>
       <RestaurantCarusel :restaurants="randomRestaurants" /> 
-      <h4 class="text-center">If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
+      <h4 class="text-center">If you crave some {{randomCuisine ? randomCuisine.name.toLowerCase() : ""}}</h4>
       <RestaurantCarusel :restaurants="randomCuisineRestaurants"/> 
     </div>
 
