@@ -38,7 +38,7 @@
                                 <td>{{ $dish->visible }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('admin.dishes.show', $dish->id) }}" class="btn btn-info">View</a>
-                                    <a href="{{ route('admin.dishes.edit', $dish->id) }}" class="btn btn-secondary ml-2">Edit</a>
+                                    <a href="{{ route('admin.dishes.edit', $dish->id) }}" class="btn btn-warning ml-2">Edit</a>
                                     <form action="{{ route('admin.dishes.destroy', $dish->id)}}" method="post" class="ml-2 delete-button">
                                         @csrf
                                         @method('DELETE')
