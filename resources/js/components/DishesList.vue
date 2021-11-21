@@ -136,6 +136,7 @@
             <div class="container border border-success">
               <div class="m-3">
                 <h3 class="font-weight-bold">
+                  <i class="fas fa-shopping-cart"></i>
                   Cart
                   <span class="cart-restaurant"
                     >(from: {{ cart[0].dish.user.name }})</span
