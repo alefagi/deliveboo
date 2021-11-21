@@ -37,7 +37,7 @@
               </div>
             @enderror
             <div class="mb-2">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" id="cover-preview">
+              <img src="{{ old('cover', $dish->cover) != null ? old('cover', $dish->cover) : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'}}" alt="cover-preview" id="cover-preview">
             </div>
           </div>
           <div class="form-group mb-4">

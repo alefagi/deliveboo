@@ -10,6 +10,7 @@ coverElementFile.addEventListener('change', function(){
     const fileReader = new FileReader();
     fileReader.onload = function (event) {
       coverPreviewElement.setAttribute('src', event.target.result);
+      coverElementUrl.value = '';
     };
 
     fileReader.readAsDataURL(coverInput[0]);
@@ -27,7 +28,7 @@ coverElementUrl.addEventListener('change', function(){
     const url = this.value;
     if(url) {
       coverPreviewElement.setAttribute('src', url);
-      console.log(url);
+      coverElementFile.value = '';
     }
   } else {
     coverPreviewElement.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg');
