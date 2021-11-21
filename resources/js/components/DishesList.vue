@@ -38,7 +38,7 @@
 
           <div class="d-flex flex-wrap mt-4 mb-4" 
           :class="[(displayCart && windowWidth>767) ? 'col-8' : 'col-12']">
-              <div v-for="(dish, index) in dishTags" :key="index" 
+              <div v-for="(dish, index) in dishTags" :key="index" v-if="dish.visible"
               :class="[(!displayCart && windowWidth>990) ? 'col-6' : '', (displayCart && windowWidth>990) ? 'col-12' : '', (!displayCart && windowWidth>767 && windowWidth<990) ? 'col-12' : '']">
                 <div class="my-3">
                   <div class="d-flex">
