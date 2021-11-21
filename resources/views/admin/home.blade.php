@@ -26,9 +26,11 @@
                         <option selected value="month_chart">Mensile</option>
                     </select>
                     <select class="btn-style rounded-pill py-1" name="year" id="year">
-                        @foreach ($years as $year)
+                        @forelse ($years as $year)
                             <option value="{{$year}}" @if ($year == $current_year) {{'selected'}} @endif>{{$year}}</option>
-                        @endforeach
+                        @empty
+                            <option value="{{$current_year}}">{{$current_year}}</option>
+                        @endforelse
                     </select>
                     <select class="btn-style rounded-pill py-1" name="month" id="month" class="">
                         @for ($i = 0; $i < 12; $i++)
@@ -102,7 +104,8 @@
         const data = [];
         let days;
 
-        if (month) {
+        if (totals[year]) {
+            if (month) {
             switch (month)
             {
                 case '2':
@@ -131,6 +134,7 @@
         }
 
         }else{
+
             
                 for (let i = 0 ; i < 12; i++) {
                     if (totals[year][i+1]) {
@@ -142,6 +146,10 @@
         }
 
         }
+        }
+
+
+
 
   
 
@@ -152,15 +160,22 @@
     function getTotalYear(type, year) {
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const total = getData(type, year)
+        if (!totals[year]) {
+            return 0;
+        }
         return total.reduce(reducer)
         
     }
     function getTotalMonth(type, year, month) {
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const total = getData(type, year, month)
+        if (!totals[year]) {
+            return 0;
+        }
         return total.reduce(reducer)
         
     }
+    
     totalYearElement.innerText = getTotalYear('year-chart', {{$current_year}}).toFixed(2) + '€';
     totalMonthElement.innerText = getTotalMonth('month-chart', {{$current_year}}, 11).toFixed(2) + '€';
 
