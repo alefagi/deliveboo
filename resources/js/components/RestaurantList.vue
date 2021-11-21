@@ -5,7 +5,8 @@
     <div class="search-bar">
       <h3>Advanced Search</h3>
       <div>
-        <input class="form-string rounded-pill text-center "
+        <input
+          class="form-string rounded-pill text-center"
           type="text"
           id="serached-string"
           v-model="searchedString"
@@ -13,7 +14,10 @@
         />
       </div>
     </div>
-    <div class="container text-center" :style="(windowWidth < 990) ? { width: '550px' } : {  }">
+    <div
+      class="container text-center"
+      :style="windowWidth < 990 ? { width: '550px' } : {}"
+    >
       <div
         class="form-cuisine mr-3"
         v-for="cuisine in cuisines"
@@ -34,17 +38,21 @@
           :for="cuisine.name"
           ><img :src="cuisine.cover" alt=""
         /></label>
-        <div>{{cuisine.name}}</div>
+        <div>{{ cuisine.name }}</div>
       </div>
     </div>
-    
-    <div class="container">
+
+    <div class="container text-center">
       <h4 class="text-center">Our restaurants</h4>
-      <RestaurantCarusel :restaurants="searchedRestaurants" /> 
-      <h4 class="text-center">Don't know what you want? Here some of our favourite restaurants</h4>
-      <RestaurantCarusel :restaurants="randomRestaurants" /> 
-      <h4 class="text-center">If you crave some {{randomCuisine ? randomCuisine.name : ""}}</h4>
-      <RestaurantCarusel :restaurants="randomCuisineRestaurants"/> 
+      <RestaurantCarusel :restaurants="searchedRestaurants" />
+      <h4 class="text-center">
+        Don't know what you want? Here some of our favourite restaurants
+      </h4>
+      <RestaurantCarusel :restaurants="randomRestaurants" />
+      <h4 class="text-center">
+        If you crave some {{ randomCuisine ? randomCuisine.name : "" }}
+      </h4>
+      <RestaurantCarusel :restaurants="randomCuisineRestaurants" />
     </div>
 
     <Footer />
@@ -59,14 +67,14 @@ import RestaurantCarusel from "./RestaurantCarusel.vue";
 import Footer from "./Footer.vue";
 
 export default {
-    name: 'RestaurantList',
-    components: {
-        Load,
-        Jumbotron,
-        RestaurantCarusel,
-        Footer,
-    },
-    data() {
+  name: "RestaurantList",
+  components: {
+    Load,
+    Jumbotron,
+    RestaurantCarusel,
+    Footer,
+  },
+  data() {
     return {
       isLoading: true,
       restaurants: [],
@@ -79,29 +87,36 @@ export default {
       randomCuisineRestaurants: [],
 
       windowWidth: window.innerWidth,
-    }
-    },
-    created: function(){
-        axios.get('http://127.0.0.1:8000/api/users').then(res => {
-            this.restaurants = res.data;
-            this.isLoading = false;
-        });
-        axios.get('http://127.0.0.1:8000/api/cuisines').then(res => {
-            this.cuisines = res.data;
-            this.cuisinesIds = this.cuisines.map((cuisine) => {return cuisine.id});
+    };
+  },
+  created: function () {
+    axios.get("http://127.0.0.1:8000/api/users").then((res) => {
+      this.restaurants = res.data;
+      this.isLoading = false;
+    });
+    axios.get("http://127.0.0.1:8000/api/cuisines").then((res) => {
+      this.cuisines = res.data;
+      this.cuisinesIds = this.cuisines.map((cuisine) => {
+        return cuisine.id;
+      });
 
-            this.isLoading = false;
+      this.isLoading = false;
 
-            this.randomCuisine = this.cuisines[Math.floor((Math.random() * this.cuisines.length))];
-            
-            this.restaurants.forEach((restaurant) => {
-                if(restaurant.cuisines.map(i => i['id']).includes(this.randomCuisine.id)) {
-                    this.randomCuisineRestaurants.push(restaurant);
-                }
-            })
-        })
-    },
-    computed: {
+      this.randomCuisine =
+        this.cuisines[Math.floor(Math.random() * this.cuisines.length)];
+
+      this.restaurants.forEach((restaurant) => {
+        if (
+          restaurant.cuisines
+            .map((i) => i["id"])
+            .includes(this.randomCuisine.id)
+        ) {
+          this.randomCuisineRestaurants.push(restaurant);
+        }
+      });
+    });
+  },
+  computed: {
     searchedRestaurants() {
       this.position = 0;
       if (this.checkedCuisines.length == 0 && this.searchedString == "") {
@@ -119,34 +134,36 @@ export default {
       });
     },
     stringRestaurants() {
-    if(this.searchedString == "") {
+      if (this.searchedString == "") {
         return this.restaurants;
-    }
+      }
 
-    return this.restaurants.filter((restaurant) => {
-        return restaurant.name.toLowerCase().includes(this.searchedString.toLowerCase()) 
+      return this.restaurants.filter((restaurant) => {
+        return restaurant.name
+          .toLowerCase()
+          .includes(this.searchedString.toLowerCase());
       });
     },
     randomRestaurants() {
-        let randNumbers = [];
-        let auxRestaurants = [];
-        while(auxRestaurants.length < 6) {
-            const randNumber = Math.floor((Math.random() * this.restaurants.length));
-            if(!randNumbers.includes(randNumber)) {
-                auxRestaurants.push(this.restaurants[randNumber]);
-                randNumbers.push(randNumber);
-            }
+      let randNumbers = [];
+      let auxRestaurants = [];
+      while (auxRestaurants.length < 6) {
+        const randNumber = Math.floor(Math.random() * this.restaurants.length);
+        if (!randNumbers.includes(randNumber)) {
+          auxRestaurants.push(this.restaurants[randNumber]);
+          randNumbers.push(randNumber);
         }
-        return auxRestaurants;
+      }
+      return auxRestaurants;
     },
   },
   mounted() {
-  window.addEventListener('resize', () => {
-    console.log(window.innerWidth);
-    this.windowWidth = window.innerWidth;
-  })
-}
-}
+    window.addEventListener("resize", () => {
+      console.log(window.innerWidth);
+      this.windowWidth = window.innerWidth;
+    });
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -169,7 +186,6 @@ export default {
 
 .cuisine-checkbox {
   display: none;
-
 }
 .cuisine-img {
   text-align: center;
@@ -191,5 +207,6 @@ export default {
 }
 h4 {
   font-weight: bolder;
+  margin: 30px 0px;
 }
 </style>
