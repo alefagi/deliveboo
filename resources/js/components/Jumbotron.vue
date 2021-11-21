@@ -39,7 +39,7 @@ export default {};
 h1 {
   font-family: "Cedarville Cursive", cursive;
   font-style: italic;
-  font-size: 120px;
+  font-size: 5rem;
 }
 .p-special {
   font-style: italic;
