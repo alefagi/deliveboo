@@ -625,6 +625,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 6,
+            'name' => 'Hawaiian special pizza pizza',
+            'description' => "Pineapple doesn't belong to pizza!!!",
+            'cover' => 'https://lh3.googleusercontent.com/proxy/da289UfcW4AbTgFCdijXh_RIlFA7yxuL23SmXVKQkiKkwxlFyv1xBtF7ywY0-grRSZFk95qTocL-cSzu0ndn5RGd6leBOsHHxxuvgDFZJy0Ju3wyy0k0MTpknnrLa9KAOIKsYCD5Tc7E1T4',
+            'price' => 100.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 6,
             'name' => 'Bottle of water small',
             'description' => 'Fresh small bottle of water',
             'cover' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR93H4EpqHcrtTL8erIjmuEJIRlWuy_aR3xgg&usqp=CAU',
@@ -757,6 +765,14 @@ class DishesTableSeeder extends Seeder
             'description' => 'Italian pizza with mozzarella chese, pistachio and mortadella ham',
             'cover' => 'https://blog.giallozafferano.it/eleme/wp-content/uploads/2020/03/Pizza-bianca-mozzarella-mortadella-e-granella-di-pistacchi.jpg',
             'price' => 4.50
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 7,
+            'name' => 'Hawaiian special pizza pizza',
+            'description' => "Pineapple doesn't belong to pizza!!!",
+            'cover' => 'https://lh3.googleusercontent.com/proxy/da289UfcW4AbTgFCdijXh_RIlFA7yxuL23SmXVKQkiKkwxlFyv1xBtF7ywY0-grRSZFk95qTocL-cSzu0ndn5RGd6leBOsHHxxuvgDFZJy0Ju3wyy0k0MTpknnrLa9KAOIKsYCD5Tc7E1T4',
+            'price' => 100.00
             ],
             [
             'visibility' => 1,
@@ -897,6 +913,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 8,
+            'name' => 'Hawaiian special pizza pizza',
+            'description' => "Pineapple doesn't belong to pizza!!!",
+            'cover' => 'https://lh3.googleusercontent.com/proxy/da289UfcW4AbTgFCdijXh_RIlFA7yxuL23SmXVKQkiKkwxlFyv1xBtF7ywY0-grRSZFk95qTocL-cSzu0ndn5RGd6leBOsHHxxuvgDFZJy0Ju3wyy0k0MTpknnrLa9KAOIKsYCD5Tc7E1T4',
+            'price' => 100.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 8,
             'name' => 'Bottle of water small',
             'description' => 'Fresh small bottle of water',
             'cover' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR93H4EpqHcrtTL8erIjmuEJIRlWuy_aR3xgg&usqp=CAU',
@@ -985,6 +1009,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 9,
+            'name' => 'Huramaki n4',
+            'description' => 'Typical sushi dish. 6 pieces',
+            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
+            'price' => 5.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 9,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1129,6 +1161,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 10,
+            'name' => 'Huramaki n4',
+            'description' => 'Typical sushi dish. 6 pieces',
+            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
+            'price' => 5.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 10,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1273,6 +1313,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 11,
+            'name' => 'Huramaki n4',
+            'description' => 'Typical sushi dish. 6 pieces',
+            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
+            'price' => 5.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 11,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1412,6 +1460,14 @@ class DishesTableSeeder extends Seeder
             'name' => 'Huramaki n3',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.miyosushi.it/wp-content/uploads/2019/08/113.png',
+            'price' => 5.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 12,
+            'name' => 'Huramaki n4',
+            'description' => 'Typical sushi dish. 6 pieces',
+            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
             'price' => 5.00
             ],
             [
@@ -1491,7 +1547,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 12,
             'name' => 'Poke bowl n2 small',
             'description' => 'Typical asian dish. Small bowl',
-            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
+            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
             'price' => 5.00
             ],
             [
@@ -1499,7 +1555,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 12,
             'name' => 'Poke bowl n2 big',
             'description' => 'Typical asian dish. Big bowl',
-            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
+            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
             'price' => 8.00
             ],
             [
@@ -1625,6 +1681,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 13,
+            'name' => 'Huramaki n4',
+            'description' => 'Typical sushi dish. 6 pieces',
+            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
+            'price' => 5.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 13,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1699,7 +1763,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 13,
             'name' => 'Poke bowl n2 small',
             'description' => 'Typical asian dish. Small bowl',
-            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
+            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
             'price' => 5.00
             ],
             [
@@ -1707,7 +1771,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 13,
             'name' => 'Poke bowl n2 big',
             'description' => 'Typical asian dish. Big bowl',
-            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
+            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
             'price' => 8.00
             ],
             [
@@ -1833,6 +1897,14 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 14,
+            'name' => 'Huramaki n4',
+            'description' => 'Typical sushi dish. 6 pieces',
+            'cover' => 'https://lh3.googleusercontent.com/proxy/8fFn64Ar-eCMcvp9fRaST7PTZ6rkhhnxnnlrTjfTvaTtJJ_aDzMqxPMCtga0t8jdssy11VuK5f0gH6utahqwThB69JU6sSkdehLRyM_9TQlLizctppvxpIPPuprYiJ8',
+            'price' => 5.00
+            ],
+            [
+            'visibility' => 1,
+            'user_id' => 14,
             'name' => 'Hosomaki n1',
             'description' => 'Typical sushi dish. 6 pieces',
             'cover' => 'https://www.tribugolosa.com/media/hosomaki_crop.jpg/rh/hosomaki.jpg',
@@ -1907,7 +1979,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 14,
             'name' => 'Poke bowl n2 small',
             'description' => 'Typical asian dish. Small bowl',
-            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
+            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
             'price' => 5.00
             ],
             [
@@ -1915,7 +1987,7 @@ class DishesTableSeeder extends Seeder
             'user_id' => 14,
             'name' => 'Poke bowl n2 big',
             'description' => 'Typical asian dish. Big bowl',
-            'cover' => 'https://bassano.pokesalsa.it/wp-content/uploads/2021/04/poke-salsa-img-poke-large-1.jpg',
+            'cover' => 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/48842980-4850-4ac2-83e2-0fdff673e798/Derivates/5ada0f51-0681-4c5a-bddb-d7e0ec740b1b.jpgg',
             'price' => 8.00
             ],
             [
@@ -2017,7 +2089,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 15,
-            'name' => 'Italian andwich',
+            'name' => 'Italian sandwich',
             'description' => 'Delicious sandwitch with italian ingredients',
             'cover' => 'https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2018/11/california-club-sandwich.jpg',
             'price' => 5.00
@@ -2025,7 +2097,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 15,
-            'name' => 'French andwich',
+            'name' => 'French sandwich',
             'description' => 'Delicious sandwitch with french ingredients',
             'cover' => 'https://www.ricettedigusto.info/wp-content/uploads/2013/12/club-sandwich-classico-1200x898.jpg',
             'price' => 7.00
@@ -2033,7 +2105,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 15,
-            'name' => 'American andwich',
+            'name' => 'American sandwich',
             'description' => 'Delicious sandwitch with american ingredients',
             'cover' => 'https://winedharma.com/wine-dharma/uploads/2020/10/1958-club-sandwich-ricetta-originale-come-fare-il-club-sandwich-perfetto.jpg',
             'price' => 3.50
@@ -2161,7 +2233,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 16,
-            'name' => 'Italian andwich',
+            'name' => 'Italian sandwich',
             'description' => 'Delicious sandwitch with italian ingredients',
             'cover' => 'https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2018/11/california-club-sandwich.jpg',
             'price' => 5.00
@@ -2169,7 +2241,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 16,
-            'name' => 'French andwich',
+            'name' => 'French sandwich',
             'description' => 'Delicious sandwitch with french ingredients',
             'cover' => 'https://www.ricettedigusto.info/wp-content/uploads/2013/12/club-sandwich-classico-1200x898.jpg',
             'price' => 7.00
@@ -2177,7 +2249,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 16,
-            'name' => 'American andwich',
+            'name' => 'American sandwich',
             'description' => 'Delicious sandwitch with american ingredients',
             'cover' => 'https://winedharma.com/wine-dharma/uploads/2020/10/1958-club-sandwich-ricetta-originale-come-fare-il-club-sandwich-perfetto.jpg',
             'price' => 3.50
@@ -2305,7 +2377,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 17,
-            'name' => 'Italian andwich',
+            'name' => 'Italian sandwich',
             'description' => 'Delicious sandwitch with italian ingredients',
             'cover' => 'https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2018/11/california-club-sandwich.jpg',
             'price' => 5.00
@@ -2313,7 +2385,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 17,
-            'name' => 'French andwich',
+            'name' => 'French sandwich',
             'description' => 'Delicious sandwitch with french ingredients',
             'cover' => 'https://www.ricettedigusto.info/wp-content/uploads/2013/12/club-sandwich-classico-1200x898.jpg',
             'price' => 7.00
@@ -2321,7 +2393,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 17,
-            'name' => 'American andwich',
+            'name' => 'American sandwich',
             'description' => 'Delicious sandwitch with american ingredients',
             'cover' => 'https://winedharma.com/wine-dharma/uploads/2020/10/1958-club-sandwich-ricetta-originale-come-fare-il-club-sandwich-perfetto.jpg',
             'price' => 3.50
@@ -2449,7 +2521,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 18,
-            'name' => 'Italian andwich',
+            'name' => 'Italian sandwich',
             'description' => 'Delicious sandwitch with italian ingredients',
             'cover' => 'https://blog.giallozafferano.it/ricettedilibellula/wp-content/uploads/2018/11/california-club-sandwich.jpg',
             'price' => 5.00
@@ -2457,7 +2529,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 18,
-            'name' => 'French andwich',
+            'name' => 'French sandwich',
             'description' => 'Delicious sandwitch with french ingredients',
             'cover' => 'https://www.ricettedigusto.info/wp-content/uploads/2013/12/club-sandwich-classico-1200x898.jpg',
             'price' => 7.00
@@ -2465,7 +2537,7 @@ class DishesTableSeeder extends Seeder
             [
             'visibility' => 1,
             'user_id' => 18,
-            'name' => 'American andwich',
+            'name' => 'American sandwich',
             'description' => 'Delicious sandwitch with american ingredients',
             'cover' => 'https://winedharma.com/wine-dharma/uploads/2020/10/1958-club-sandwich-ricetta-originale-come-fare-il-club-sandwich-perfetto.jpg',
             'price' => 3.50
