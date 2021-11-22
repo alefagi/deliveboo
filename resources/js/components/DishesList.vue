@@ -59,6 +59,7 @@
                   ? 'col-12'
                   : '',
               ]"
+              v-if="dish.visible"
             >
               <div class="my-3">
                 <div class="d-flex">
