@@ -31,7 +31,7 @@
           v-model="checkedCuisines"
         />
         <label
-          class="cuisine-img"
+          class="cuisine-img img-animation"
           :class="
             checkedCuisines.includes(cuisine.id) ? 'cuisine-img-checked' : ''
           "
@@ -201,6 +201,20 @@ export default {
   margin-bottom: 20px;
   width: 40%;
 }
+.img-animation:hover {
+  box-shadow: 0px 45px 20px -30px rgba(0, 0, 0, 0.2);
+  animation: up 0.5s infinite 0.4s;
+}
+@keyframes up {
+  0%,
+  100% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-10px);
+  }
+}
+
 h4 {
   font-weight: bolder;
   margin: 30px 0px;
