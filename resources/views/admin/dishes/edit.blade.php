@@ -34,7 +34,7 @@
           <div class="form-group mb-4">
             <label for="cover">Choose a Cover to Upload</label>
               <input type="file" class=" mb-2 form-control-file @error('cover') is-invalid @enderror" id="cover-file" name="cover" accept="image/*">
-              <input type="text" placeholder="URL" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover', $dish->cover) }}">
+              <input type="text" placeholder="Paste an URL" class="form-control mb-2 @error('cover') is-invalid @enderror" id="cover-url" name="cover" value="{{ old('cover', $dish->cover) }}">
             @error('cover')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -66,7 +66,7 @@
           <div class="form-group mb-5">
             <label for="visible">Visibility</label>
             <select class="form-control" id="visible" name="visible">
-              <option value="0">Invisible</option>
+              <option value="0">Hidden</option>
               <option value="1" selected>Visible</option>
             </select>
           </div>

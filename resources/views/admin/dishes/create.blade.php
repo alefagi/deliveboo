@@ -37,7 +37,7 @@
               </div>
             @enderror
             <div class="mb-2">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="cover-preview" id="cover-preview">
+              <img src="{{ old('cover', $dish->cover) != null ? old('cover', $dish->cover) : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'}}" alt="cover-preview" id="cover-preview">
             </div>
           </div>
           <div class="form-group mb-4">
@@ -62,7 +62,7 @@
           <div class="form-group mb-5">
             <label for="visible">Visibility</label>
             <select class="form-control" id="visible" name="visible">
-              <option value="0">Invisible</option>
+              <option value="0">Hidden</option>
               <option value="1" selected>Visible</option>
             </select>
           </div>

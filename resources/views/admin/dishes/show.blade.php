@@ -14,7 +14,7 @@
         @empty -
         @endforelse
         <address>Price: {{ $dish->price }}</address>
-        <address>Visibility: {{ $dish->visible }}</address>
+        <address>Visibility: {{ $dish->visible ? 'Visible' : 'Hidden' }}</address>
         <div class="d-flex justify-content-end">
           <a href="{{ route('admin.dishes.edit', $dish->id) }}" class="btn btn-warning ml-2">Edit</a>
           <form action="{{ route('admin.dishes.destroy', $dish->id)}}" method="post" class="ml-2 delete-button">
