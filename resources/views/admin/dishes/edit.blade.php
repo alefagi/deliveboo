@@ -4,9 +4,8 @@
     <div class="row h-100 w-100 m-0">
       <div id="links" class="col-3">@include('admin.includes.links')</div>
       <div id="dish-edit" class="col-9">
-        <header class="d-flex justify-content-between align-items-center mb-4">
-          <h1>Edit Dish</h1>
-        </header>
+          <h4>Edit Dish</h4>
+        
       
         <form method="post" enctype="multipart/form-data" action="{{ route('admin.dishes.update', $dish->id) }}">
           @method('PATCH')
