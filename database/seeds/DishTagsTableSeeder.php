@@ -17,8 +17,7 @@ class DishTagsTableSeeder extends Seeder
         $tagsIds = Tag::select('id')->pluck('id')->toArray();
 
         foreach($dishes as $dish) {
-            $twoTags = array_rand($tagsIds, 2);
-            $dish->tags()->attach([$tagsIds[$twoTags[0]],$tagsIds[$twoTags[1]]]);
+            $dish->tags()->attach($tagsIds[array_rand($tagsIds, 1)]);
         }
     }
 }
