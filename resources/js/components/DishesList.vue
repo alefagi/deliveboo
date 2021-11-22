@@ -41,16 +41,54 @@
       <div class="menu container">
         <h2 class="text-center">Our dishes</h2>
         <ErrorMessage v-if="showError" :user="cart[0].dish.user" />
-        <div class="d-flex" :class="(displayCart && windowWidth<767) ? 'flex-column-reverse' : ''">
-
-          <div class="d-flex flex-wrap mt-4 mb-4" 
-          :class="[(displayCart && windowWidth>767) ? 'col-8' : 'col-12']">
-              <div v-for="(dish, index) in dishTags" :key="index" v-if="dish.visible"
-              :class="[(!displayCart && windowWidth>990) ? 'col-6' : '', (displayCart && windowWidth>990) ? 'col-12' : '', (!displayCart && windowWidth>767 && windowWidth<990) ? 'col-12' : '', 
-              (windowWidth<767) ? 'col-12' : '']">
-                <div class="my-3">
-                  <div class="d-flex">
-                    <div class="col-3">
+        <div
+          class="d-flex"
+          :class="displayCart && windowWidth < 767 ? 'flex-column-reverse' : ''"
+        >
+          <div
+            class="d-flex flex-wrap mt-4 mb-4"
+            :class="[displayCart && windowWidth > 767 ? 'col-8' : 'col-12']"
+          >
+            <div
+              v-for="(dish, index) in dishTags"
+              :key="index"
+              :class="[
+                !displayCart && windowWidth > 990 ? 'col-6' : '',
+                displayCart && windowWidth > 990 ? 'col-12' : '',
+                !displayCart && windowWidth > 767 && windowWidth < 990
+                  ? 'col-12'
+                  : '',
+              ]"
+            >
+              <div class="my-3">
+                <div class="d-flex">
+                  <div class="col-3">
+                    <div
+                      class="dish_img"
+                      :style="[
+                        dish.cover.startsWith('http')
+                          ? { backgroundImage: 'url(' + dish.cover + ')' }
+                          : {
+                              backgroundImage:
+                                'url(' + '/storage/' + dish.cover + ')',
+                            },
+                      ]"
+                    ></div>
+                  </div>
+                  <div
+                    class="col-6 d-flex flex-column justify-content-center"
+                    :class="displayCart && windowWidth > 767 ? 'pl-5' : ''"
+                  >
+                    <h3 class="dish-name">{{ dish.name }}</h3>
+                    <div class="dish-description">{{ dish.description }}</div>
+                    <div class="dish-price">{{ dish.price }}€</div>
+                  </div>
+                  <div class="col-3 dish-btn d-flex align-items-center">
+                    <span
+                      @click="
+                        displayCartButton ? addToCart(dish) : showErrorFx()
+                      "
+                    >
                       <div
                         class="d-inline-block text-center cart-button mx-1"
                         :style="
@@ -347,7 +385,6 @@ export default {
   i {
     position: relative;
     top: -2px;
-    cursor: pointer;
   }
 }
 .cart-count {
@@ -366,7 +403,7 @@ export default {
   text-align: center;
   margin: 0 10px;
   color: white;
-  cursor: pointer;
+
   font-weight: bold;
 }
 .checkbox-lable-checked {
@@ -384,7 +421,7 @@ export default {
   .erease {
     position: relative;
     top: -10px;
-    cursor: pointer;
+
     font-size: 15px;
     color: rgb(20, 123, 243);
   }
