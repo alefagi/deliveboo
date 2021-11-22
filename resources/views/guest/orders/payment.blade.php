@@ -26,13 +26,13 @@
         <form method="post" id="payment-form" action="{{ route('buy.store', ['total' => $total]) }}">
             @csrf
             <section>
-                <h1>Your Total is: {{$total}}</h1>
+                <h1>Your Total is: {{$total}} &euro;</h1>
                 <div class="bt-drop-in-wrapper">
                     <div id="bt-dropin"></div>
                 </div>
             </section>
             <input id="nonce" name="payment_method_nonce" type="hidden" />
-            <button class="button btn-style" type="submit"><span>Test Transaction</span></button>
+            <button class="button btn-style rounded" type="submit"><span>Pay</span></button>
         </form>
       </div>
   </section>
