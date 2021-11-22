@@ -326,6 +326,7 @@ export default {
   i {
     position: relative;
     top: -2px;
+    cursor: pointer;
   }
 }
 .cart-count {
@@ -344,7 +345,7 @@ export default {
   text-align: center;
   margin: 0 10px;
   color: white;
-
+  cursor: pointer;
   font-weight: bold;
 }
 .checkbox-lable-checked {
@@ -359,7 +360,7 @@ export default {
   .erease {
     position: relative;
     top: -10px;
-
+    cursor: pointer;
     font-size: 15px;
     color: rgb(20, 123, 243);
   }
