@@ -50,12 +50,12 @@
 
         <button type="submit" class="btn btn-success">Save</button>
         
-        <a href=" {{ url("/") }} " class="btn btn-secondary">Back to Chart</a>
+        <a href=" {{ url("/") }} " class="btn btn-secondary">Back to Home</a>
         </form>
       </div>
 
-      <div class="col-4">
-        <h1>Order Summary</h1>
+      <div class="col-4 carts border border-success">
+        <h1 class="pt-4">Order Summary</h1>
         
           <hr class="mt-4">
           @foreach ($cart as $item)
